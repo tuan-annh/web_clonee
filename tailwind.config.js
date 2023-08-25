@@ -5,16 +5,18 @@ export default {
     extend: {
       colors: {
         'text-body': '#4f4f4f',
-        'main': '#222222',
-        'hover': '#c7ab62',
+        main: '#222222',
+        hover: '#c7ab62',
         'name-product': '#666666',
-        'current-product': '#e21c1c',
+        'current-product': '#e21c1c'
         // label-sale: '#c7ab62',
         // label-in: '#25a799',
         // label-out: '#858585',
+      },
+      boxShadow: {
+        'box-1': 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 }
-
