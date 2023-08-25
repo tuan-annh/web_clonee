@@ -1,4 +1,4 @@
-export type ProductsList = Product[]
+export type ProductsListType = Product[]
 
 export interface Product {
   id: number
