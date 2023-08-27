@@ -2,6 +2,9 @@
 import { productApi } from '../../apis/productApi.api'
 import { useQuery } from '@tanstack/react-query'
 import AsideFilter from './AsideFilter'
+import { Link } from 'react-router-dom'
+import path from '../../constants/path'
+import ProductComponent from '../../components/ProductComponent/ProductComponent'
 
 function ProductsList() {
   // const [products, setProducts] = useState({} as ProductsList)
@@ -12,28 +15,33 @@ function ProductsList() {
   })
 
   return (
-    <div className='grid grid-cols-5'>
-      <div className='col-span-1'>
-        <AsideFilter />
-      </div>
-      <div className='col-span-4 grid grid-cols-4'>
-        {ProductsData?.data.map((product) => (
-          <div className='m-3 overflow-hidden p-3'>
-            <div className='w-full relative pt-[100%] bg-product-bg'>
-              <img
-                src={product.image}
-                className='absolute left-1/2 top-1/2 h-full object-cover -translate-x-1/2 -translate-y-1/2 scale-75'
-                style={{ mixBlendMode: 'multiply' }}
-              />
-            </div>
-            <div className='text-center px-4'>
-              <p className='text-sm text-name-product font-semibold line-clamp-1 hover:text-hover ease-in-out duration-300'>{product.title}</p>
-              <p className='text-main font-semibold text-sm'>{product.price}$</p>
-            </div>
+    <>
+      <div
+        className='h-screen bg-slate-300 flex items-center justify-center'
+        style={{
+          backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/bg-breadcrumb_1920x.jpg?v=1632273468)'
+        }}
+      >
+        <div>
+          <h1 className='text-6xl font-semibold text-main'>Products</h1>
+          <div className='text-center mt-5'>
+            <Link to={path.home} className='text-main-text'>
+              Home
+            </Link>
+            <span> / </span>
+            <span>Products</span>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+      <div className='grid grid-cols-6 px-3 mt-16'>
+        <div className='lg:col-span-1'>
+          <AsideFilter />
+        </div>
+        <div className='col-span-5 grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
+          {ProductsData?.data.map((product, index) => <ProductComponent product={product} key={index} />)}
+        </div>
+      </div>
+    </>
   )
 }
 
