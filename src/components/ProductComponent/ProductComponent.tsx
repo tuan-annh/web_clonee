@@ -17,7 +17,9 @@ function ProductComponent({ product }: { product: Product }) {
         </button>
       </div>
       <div className='text-center px-4'>
-        <p className='text-name-product font-semibold line-clamp-1 hover:text-hover ease-in-out duration-300 mb-2 mt-3'>{product.title}</p>
+        <p className='text-name-product font-semibold line-clamp-1 hover:text-hover ease-in-out duration-300 mb-2 mt-3'>
+          {product.title}
+        </p>
         <div>
           <span className='text-current-product font-bold mr-2'>${(product.price * 0.8).toFixed(2)}</span>
           <span className='text-name-product line-through'>${product.price}</span>
