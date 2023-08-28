@@ -26,7 +26,7 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
     <>
       {type === 'grid' && (
         <Link
-          to={path.products}
+          to={String(product.id)}
           className='m-1 overflow-hidden p-3 cursor-pointer'
           onMouseOver={onMouseOverHandler}
           onMouseLeave={onMouseLeaveHandler}
