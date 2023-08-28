@@ -9,6 +9,7 @@ import Register from './pages/Register/Register'
 import ProductsList from './pages/ProductsList/ProductsList'
 import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
+import ProductDetail from './pages/ProductDetail/ProductDetail'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -32,6 +33,14 @@ function App() {
           element: (
             <MainLayout>
               <ProductsList />
+            </MainLayout>
+          )
+        },
+        {
+          path: `${path.products}/:id`, // Example: /products/123
+          element: (
+            <MainLayout>
+              <ProductDetail />
             </MainLayout>
           )
         },
