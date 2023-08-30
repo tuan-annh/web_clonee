@@ -4,20 +4,20 @@ import { Link } from 'react-router-dom'
 function Footer() {
   return (
     <footer className='bg-black text-white'>
-      <div className='container mx-auto px-9 py-8'>
+      <div className='container mx-auto px-9 pb-8 pt-11'>
         <div className='flex flex-wrap'>
           <div className='w-full sm:w-1/3 px-4'>
             <h2 className='text-lg font-bold mb-2'>High Ecommerce</h2>
-            <p className='text-white/50'>
+            <p className='text-white/50 my-7'>
               Since 2013 we have been creating industrial design, residential architecture, commercial interiors. Chase
               mice attack feet but rub face on everything cepteur sint occaecat cupidatat proident.
             </p>
-            <h3 className='font-bold'>Follow Us</h3>
-            <div className='grid grid-cols-4 pt-4'>
-              <Link className='px-' to={''}>
+            <h3 className='font-bold my-7'>Follow Us</h3>
+            <div className='flex gap-5'>
+              <Link className='' to={''}>
                 <svg
                   fill='currentColor'
-                  className='text-white'
+                  className='text-white w-7 h-7'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 512 512'
@@ -28,27 +28,23 @@ function Footer() {
               <Link className='px-' to={''}>
                 <svg
                   fill='currentColor'
-                  className='text-white'
+                  className='text-white w-7 h-7'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 512 512'
                 >
                   <path d='M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z' />
-                </svg>
-              </Link>
-              <Link className='px-' to={''}>
-                <svg className='' xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
-                  <path d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z' />
                 </svg>
               </Link>
               <Link className='px-' to={''}>
                 <svg
-                  className='text-white hover:text-'
+                  fill='currentColor'
+                  className='text-white w-7 h-7'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
-                  viewBox='0 0 512 512'
+                  viewBox='0 0 448 512'
                 >
-                  <path d='M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z' />
+                  <path d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z' />
                 </svg>
               </Link>
             </div>
@@ -61,10 +57,18 @@ function Footer() {
             <div className='py-3'>
               <h3 className='font-bold'>Order by Phone</h3>
               <p className='text-white/50'>Available everyday</p>
+              <p className='text-white/50 text-sm underline'>
+                <a className='link-underline-opacity-50-hover ' href='0333344444'>
+                  0333344444
+                </a>
+              </p>
             </div>
             <div className='py-3'>
               <h3 className='font-bold'>Email Us</h3>
               <p className='text-white/50'>Get in touch by email</p>
+              <p className='text-white/50 text-sm underline'>
+                <a href='mailto:example@example.com'>example@example.com</a>
+              </p>
             </div>
           </div>
           <div className='w-full sm:w-1/3 sm:flex sm:justify-between px-4 mt-4 sm:mt-0'>
@@ -88,6 +92,18 @@ function Footer() {
               <Link className='text-white/50 block py-2' to={''}>
                 FAQs
               </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Terms & Conditions
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Privacy Policy
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Accessibillity
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Documentations
+              </Link>
             </div>
             <div className='w-1/2'>
               <h3 className='font-bold mb-2'>ABOUT OHEY</h3>
@@ -104,10 +120,19 @@ function Footer() {
                 Affiliate Programme
               </Link>
               <Link className='text-white/50 block py-2' to={''}>
-                Career
+                Careers
               </Link>
               <Link className='text-white/50 block py-2' to={''}>
                 Customer Promise
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Ohey App
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Site Map
+              </Link>
+              <Link className='text-white/50 block py-2' to={''}>
+                Positively Ohey
               </Link>
             </div>
           </div>
@@ -116,26 +141,12 @@ function Footer() {
       <div className='container mx-auto px-4 py-6'>
         <div className='flex flex-wrap'>
           <div className='w-full sm:w-1/2 px-4'>
-            <p className='text-white/50'>© Copyright 2021 Ohey Limited. All Rights Reserved. Design By Bily</p>
+            <p className='text-white/50'>© Copyright 2023 Ohey Limited. All Rights Reserved. Design By Bily</p>
           </div>
-          <div className='w-full sm:w-1/2 sm:flex sm:justify-between px-4 mt-4 sm:mt-0'>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 1</h3>
-            </div>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 2</h3>
-            </div>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 3</h3>
-            </div>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 4</h3>
-            </div>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 5</h3>
-            </div>
-            <div className='w-1/6'>
-              <h3 className='text-lg font-bold mb-2'> 6</h3>
+          <div className='w-full sm:w-1/2 sm:flex sm:justify-evenly sm:items-center px-4 mt-4 sm:mt-0 gap-0 flex-nowrap'>
+            <h3>SECURE PAYMENTS </h3>
+            <div className=''>
+              <img src='//ohey-demo.myshopify.com/cdn/shop/files/payment_429x36.png?v=1630860014' alt='Payment'></img>
             </div>
           </div>
         </div>
