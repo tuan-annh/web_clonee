@@ -37,6 +37,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     // Cảnh báo khi thẻ <a target='_blank'> mà không có rel="noreferrer"
     'react/jsx-no-target-blank': 'warn',
+    // Tắt chức năng cảnh báo khi không chuyển sang entities
+    'react/no-unescaped-entities': 'off',
     // Tăng cường một số rule prettier (copy từ file .prettierrc qua)
     'prettier/prettier': [
       'warn',

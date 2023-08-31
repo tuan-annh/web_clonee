@@ -3,7 +3,7 @@ import path from '../../constants/path'
 import { authApi } from '../../apis/auth.api'
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material'
 import { useState } from 'react'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
+// import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useForm } from 'react-hook-form'
 
 interface RegisterFormData {
@@ -56,8 +56,13 @@ function Register() {
               type={showPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position='end'>
-                  <IconButton aria-label='toggle password visibility' onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge='end'>
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge='end'
+                  >
+                    {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
                   </IconButton>
                 </InputAdornment>
               }

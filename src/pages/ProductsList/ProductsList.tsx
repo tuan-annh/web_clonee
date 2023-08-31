@@ -1,33 +1,43 @@
-// import { useState } from 'react'
 import { productApi } from '../../apis/productApi.api'
 import { useQuery } from '@tanstack/react-query'
-import AsideFilter from './AsideFilter'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import path from '../../constants/path'
 import ProductComponent from '../../components/ProductComponent/ProductComponent'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { ProductsListType } from '../../types/product.type'
+import { ProductViewType, productViewList } from '../../constants/productListConst'
+import SortFilter from './SortFilter/SortFilter'
+import AsideFilter from './AsideFilter/AsideFilter'
+// import { FormControl, InputLabel, MenuItem, Select, ThemeProvider, createTheme } from '@mui/material'
 
-// Khai báo danh sách kiểu view
-const ProductViewList = {
-  grid: 'grid',
-  list: 'list'
+interface ParamsInterface {
+  category: string
+  id: string
 }
 
-// kiểu dữ liệu view trả về. Mặc dù có 2 kiểu view là grid và list thôi nhưng khai báo ra cho mn dễ type hơn nhé.
-export type ProductViewType = keyof typeof ProductViewList
-
 function ProductsList() {
+  const params = useParams() as unknown as ParamsInterface
   const [productView, setProductView] = useState<ProductViewType>('grid')
+  // const [sortType, setSortType] = useState('asc')
+  const [productsData, setProductsData] = useState({} as ProductsListType)
 
-  const { data: ProductsData } = useQuery({
-    queryKey: ['products'],
-    queryFn: () => productApi.getProducts()
+  useQuery({
+    queryKey: ['products', params.category],
+    queryFn: () => productApi.getProducts(params.category),
+    onSuccess: ({ data }) => setProductsData(data),
+    keepPreviousData: true
   })
 
   const handleViewChange = (viewType: ProductViewType) => () => {
     setProductView(viewType)
   }
+
+  console.log(params)
+
+  useEffect(() => {
+    console.log(productsData)
+  }, [productsData])
 
   return (
     <>
@@ -48,18 +58,18 @@ function ProductsList() {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-6 px-3 mt-16'>
+      <div className='grid grid-cols-6 px-4 mt-16'>
         <div className='col-span-1'>
           <AsideFilter />
         </div>
         <div className='col-span-5'>
-          <div className='flex gap-3 justify-between mb-5 px-4'>
+          <div className='flex gap-3 items-center justify-between mb-5 px-4'>
             <div>Showing 1-20 of 20 results</div>
             <div className='flex items-center gap-3 flex-grow-1'>
               <div
                 className={classNames('transition-all duration-500', {
-                  'opacity-100': productView === ProductViewList.grid,
-                  'opacity-50 hover:opacity-100': productView !== ProductViewList.grid
+                  'opacity-100': productView === productViewList.grid,
+                  'opacity-50 hover:opacity-100': productView !== productViewList.grid
                 })}
                 onClick={handleViewChange('grid')}
               >
@@ -79,8 +89,8 @@ function ProductsList() {
               </div>
               <div
                 className={classNames('transition-all duration-500', {
-                  'opacity-100': productView === ProductViewList.list,
-                  'opacity-50 hover:opacity-100': productView !== ProductViewList.list
+                  'opacity-100': productView === productViewList.list,
+                  'opacity-50 hover:opacity-100': productView !== productViewList.list
                 })}
                 onClick={handleViewChange('list')}
               >
@@ -99,19 +109,17 @@ function ProductsList() {
                 </svg>
               </div>
             </div>
-            <div>Sort by: Alphabetically, A-Z</div>
+            <SortFilter setProductsData={setProductsData} />
           </div>
-          {productView === ProductViewList.grid ? (
-            <div className='grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
-              {ProductsData?.data.map((product, index) => (
-                <ProductComponent product={product} key={index} type='grid' />
-              ))}
+          {productView === productViewList.grid ? (
+            <div className='grid 2xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
+              {productsData[0] &&
+                productsData?.map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
             </div>
           ) : (
             <div>
-              {ProductsData?.data.map((product, index) => (
-                <ProductComponent product={product} key={index} type='list' />
-              ))}
+              {productsData[0] &&
+                productsData?.map((product, index) => <ProductComponent product={product} key={index} type='list' />)}
             </div>
           )}
         </div>
