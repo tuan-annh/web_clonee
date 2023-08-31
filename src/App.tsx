@@ -18,7 +18,7 @@ function App() {
     {
       path: path.home,
       // index: true, // nhận diện route chính của useRoutes
-      element: isAuthenticated ? <Outlet /> : <Navigate to={path.login} />,
+      element: <Outlet />,
       children: [
         {
           path: '',

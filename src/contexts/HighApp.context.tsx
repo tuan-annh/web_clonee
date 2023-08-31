@@ -8,7 +8,7 @@ interface AppContextInterface {
 export const AppContext = createContext({} as AppContextInterface)
 
 function AppProvider({ children }: { children: React.ReactNode }) {
-  const [isAuthenticated, setisAuthenticated] = useState(true)
+  const [isAuthenticated, setisAuthenticated] = useState(false)
 
   return <AppContext.Provider value={{ isAuthenticated, setisAuthenticated }}>{children}</AppContext.Provider>
 }
