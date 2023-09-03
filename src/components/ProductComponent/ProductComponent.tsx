@@ -2,7 +2,8 @@ import classNames from 'classnames'
 import { Product } from '../../types/product.type'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ProductViewType } from '../../constants/productListConst'
+import { ProductViewType, productViewList } from '../../constants/productListConst.enum'
+import path from '../../constants/path'
 
 interface ProductComponentInteface {
   product: Product
@@ -13,6 +14,7 @@ interface ProductComponentInteface {
 
 function ProductComponent({ product, type }: ProductComponentInteface) {
   const [onMouseOver, setOnMouveOver] = useState(false)
+
   const onMouseOverHandler = () => {
     setOnMouveOver(true)
   }
@@ -27,9 +29,9 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
 
   return (
     <>
-      {type === 'grid' && (
+      {type === productViewList.grid && (
         <Link
-          to={`${product.category}/${product.id}`}
+          to={`${path.products}/${product.category}/${product.id}`}
           className='m-1 overflow-hidden p-3 cursor-pointer'
           onMouseOver={onMouseOverHandler}
           onMouseLeave={onMouseLeaveHandler}
@@ -91,13 +93,13 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
           </div>
         </Link>
       )}
-      {type == 'list' && (
+      {type == productViewList.list && (
         <div
           className='mx-1 mb-6 p-3 grid grid-cols-4'
           onMouseOver={onMouseOverHandler}
           onMouseLeave={onMouseLeaveHandler}
         >
-          <Link to={`${product.category}/${product.id}`} className='overflow-hidden col-span-1 pr-3'>
+          <Link to={`${path.products}/${product.category}/${product.id}`} className='overflow-hidden col-span-1 pr-3'>
             <div className='w-full relative pt-[100%] bg-product-bg'>
               <img
                 src={product.image}

@@ -1,12 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import path from '../../constants/path'
 import { Button, TextField, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
-// import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { SetStateAction, useContext, useState } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
 import { authApi } from '../../apis/auth.api'
-
-// import { offlineHttp } from '../../apis/http'
 
 function Login() {
   const { setisAuthenticated } = useContext(AppContext)
@@ -113,7 +111,7 @@ function Login() {
                       onMouseDown={handleMouseDownPassword}
                       edge='end'
                     >
-                      {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }

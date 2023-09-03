@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import AppProvider from './contexts/HighApp.context.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import App from './App'
+import AppProvider from './contexts/HighApp.context'
 
 const queryClient = new QueryClient({
   defaultOptions: {

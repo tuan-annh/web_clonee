@@ -1,16 +1,28 @@
-import { NavLink, useLocation } from 'react-router-dom'
-import path from '../../../constants/path'
-import classNames from 'classnames'
-
-const category = {
-  electornics: 'electronics',
-  jewelery: 'jewelery',
-  mensclothing: "men's clothing",
-  womensclothing: "women's clothing"
-}
+import { useContext } from 'react'
+import CategoryLink from './CategoryLink'
+import PriceRangeComponent from './PriceRangeComponent'
+import { ProductsContext } from '../ProductsList'
+import RatingStars from './RatingStars'
+import { FiltersType } from '../../../types/Filters.type'
 
 function AsideFilter() {
-  const urlPath = useLocation()
+  const { categoriesData, setFilters } = useContext(ProductsContext)
+
+  const handleProductLimit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
+    if (value === '') {
+      setFilters((prev) => ({ ...prev, queryParams: undefined }))
+      return
+    }
+    if (!Number.isNaN(Number(value))) {
+      setFilters((prev) => ({ ...prev, queryParams: { limit: value } }))
+    }
+  }
+
+  const clearAllFilter = () => {
+    setFilters({} as FiltersType)
+  }
+
   return (
     <>
       <div>
@@ -19,60 +31,59 @@ function AsideFilter() {
           <div className='border-b border-name-product/20 flex-grow'></div>
         </div>
         <div className='py-5 text-main-text'>
-          <NavLink
-            className={classNames('flex gap-3 items-center py-2 hover:font-bold', {
-              'font-bold': urlPath.pathname === path.products
-            })}
-            to={path.products}
-          >
-            <div className='w-4 h-4 rounded-full border border-hover'></div>
-            <p>All</p>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('flex gap-3 items-center py-2 hover:font-bold', {
-                'font-bold': isActive
-              })
-            }
-            to={`${path.products}/${category.electornics}`}
-          >
-            <div className='w-4 h-4 rounded-full border border-hover'></div>
-            <p>Electronics</p>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('flex gap-3 items-center py-2 hover:font-bold', {
-                'font-bold': isActive
-              })
-            }
-            to={`${path.products}/${category.jewelery}`}
-          >
-            <div className='w-4 h-4 rounded-full border border-hover'></div>
-            <p>Jewelery</p>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('flex gap-3 items-center py-2 hover:font-bold', {
-                'font-bold': isActive
-              })
-            }
-            to={`${path.products}/${category.mensclothing}`}
-          >
-            <div className='w-4 h-4 rounded-full border border-hover'></div>
-            <p>Men's clothing</p>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('flex gap-3 items-center py-2 hover:font-bold', {
-                'font-bold': isActive
-              })
-            }
-            to={`${path.products}/${category.womensclothing}`}
-          >
-            <div className='w-4 h-4 rounded-full border border-hover'></div>
-            <p>Women's clothing</p>
-          </NavLink>
+          <CategoryLink category='products' />
+          {categoriesData?.data.map((category, index) => <CategoryLink category={category} key={index} />)}
         </div>
+      </div>
+      <div>
+        <div className='flex'>
+          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Filter By Price</h3>
+          <div className='border-b border-name-product/20 flex-grow'></div>
+        </div>
+        <div className='py-5 text-main-text'>
+          <PriceRangeComponent priceRange='first_range' textContent='$0 - $50' />
+          <PriceRangeComponent priceRange='second_range' textContent='$50 - $100' />
+          <PriceRangeComponent priceRange='third_range' textContent='> $100' />
+        </div>
+      </div>
+      <div>
+        <div className='flex'>
+          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Products Limit</h3>
+          <div className='border-b border-name-product/20 flex-grow'></div>
+        </div>
+        <div className='py-5 text-main-text'>
+          <input
+            type='text'
+            placeholder='type your limit'
+            className='w-11/12 rounded outline-none border-name-product/40 px-3 py-2 border'
+            onChange={handleProductLimit}
+          />
+        </div>
+      </div>
+      <div>
+        <div className='flex'>
+          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Filter By Rating</h3>
+          <div className='border-b border-name-product/20 flex-grow'></div>
+        </div>
+        <div className='py-5 text-main-text'>
+          <RatingStars star={1} />
+          <RatingStars star={2} />
+          <RatingStars star={3} />
+          <RatingStars star={4} />
+          <RatingStars star={5} />
+        </div>
+      </div>
+      <div>
+        {/* <div className='flex'>
+          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Clear All Filters</h3>
+          <div className='border-b border-name-product/20 flex-grow'></div>
+        </div> */}
+        <button
+          onClick={clearAllFilter}
+          className='w-full py-2 border border-main bg-main text-product-bg hover:bg-white hover:text-main ease-in-out duration-300 rounded'
+        >
+          Clear All Filters
+        </button>
       </div>
     </>
   )
