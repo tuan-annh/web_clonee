@@ -8,11 +8,13 @@ import ProductComponent from '../../components/ProductComponent/ProductComponent
 import { useState } from 'react'
 import classNames from 'classnames'
 
+// Khai báo danh sách kiểu view
 const ProductViewList = {
   grid: 'grid',
   list: 'list'
 }
 
+// kiểu dữ liệu view trả về. Mặc dù có 2 kiểu view là grid và list thôi nhưng khai báo ra cho mn dễ type hơn nhé.
 export type ProductViewType = keyof typeof ProductViewList
 
 function ProductsList() {
@@ -47,7 +49,7 @@ function ProductsList() {
         </div>
       </div>
       <div className='grid grid-cols-6 px-3 mt-16'>
-        <div className='lg:col-span-1'>
+        <div className='col-span-1'>
           <AsideFilter />
         </div>
         <div className='col-span-5'>
