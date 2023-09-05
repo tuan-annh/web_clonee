@@ -18,3 +18,24 @@ export interface User {
   }
   phone: string
 }
+
+// Type cho cart
+export interface CartInterface {
+  id?: number
+  userId: number
+  date: string
+  products: CartProduct[]
+  __v?: number
+}
+
+// Type cho kiểu dữ liệu để post lên api (post add cart)
+export interface CartInterfaceForPost extends Omit<CartInterface, 'products'> {
+  products: Omit<CartProduct, 'title' | 'price'>[]
+}
+
+export interface CartProduct {
+  productId: number
+  quantity: number
+  title: string
+  price: number
+}
