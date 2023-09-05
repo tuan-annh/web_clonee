@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductViewType, productViewList } from '../../constants/productListConst.enum'
 import path from '../../constants/path'
+import { Fade, Tooltip } from '@mui/material'
+import { FavoriteBorderOutlined } from '@mui/icons-material'
 
 interface ProductComponentInteface {
   product: Product
@@ -50,13 +52,13 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
             <div className='top-5 absolute left-5'>
               <span className='bg-hover text-product-bg py-1 px-2 rounded text-sm'>-20%</span>
             </div>
-            <div
-              className={classNames('top-5 absolute right-5', {
-                'opacity-100': onMouseOver,
-                'opacity-70': !onMouseOver
-              })}
-            >
-              <span className='bg-white text-main-text py-1 px-2 rounded text-sm'>
+            <div className={'top-5 absolute right-5'}>
+              <div
+                className={classNames('bg-white text-main-text py-1 px-2 rounded text-sm', {
+                  'opacity-100': onMouseOver,
+                  'opacity-70': !onMouseOver
+                })}
+              >
                 <div className='inline-flex gap-1 items-center'>
                   {product.rating.rate}{' '}
                   <div className='inline-block text-yellow-500'>
@@ -69,7 +71,39 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
                     </svg>
                   </div>
                 </div>
-              </span>
+              </div>
+              <Tooltip
+                title={<p className='text-sm tracking-wide'>Add to Wishlist</p>}
+                placement='left'
+                TransitionComponent={Fade}
+                arrow
+              >
+                <button
+                  onClick={(event) => event.preventDefault()}
+                  className={classNames(
+                    'bg-white text-main-text w-full py-2 mt-2 rounded-md items-center justify-center flex opacity-0 ease-in-out duration-200 hover:bg-hover hover:text-product-bg',
+                    {
+                      'opacity-100': onMouseOver
+                    }
+                  )}
+                >
+                  <FavoriteBorderOutlined />
+                  {/* <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    strokeWidth={1.5}
+                    stroke='currentColor'
+                    className='w-6 h-6'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z'
+                    />
+                  </svg> */}
+                </button>
+              </Tooltip>
             </div>
             <div className={classNames('opacity-0 ease-in-out duration-200', { 'opacity-100': onMouseOver })}>
               <button
@@ -114,13 +148,13 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
               <div className='top-5 absolute left-5 '>
                 <span className='bg-hover text-product-bg py-1 px-2 rounded text-sm'>-20%</span>
               </div>
-              <div
-                className={classNames('top-5 absolute right-5', {
-                  'opacity-100': onMouseOver,
-                  'opacity-70': !onMouseOver
-                })}
-              >
-                <span className='bg-white text-main-text py-1 px-2 rounded text-sm'>
+              <div className={'top-5 absolute right-5'}>
+                <div
+                  className={classNames('bg-white text-main-text py-1 px-2 rounded text-sm', {
+                    'opacity-100': onMouseOver,
+                    'opacity-70': !onMouseOver
+                  })}
+                >
                   <div className='inline-flex gap-1 items-center'>
                     {product.rating.rate}{' '}
                     <div className='inline-block text-yellow-500'>
@@ -138,7 +172,25 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
                       </svg>
                     </div>
                   </div>
-                </span>
+                </div>
+                <Tooltip
+                  title={<p className='text-sm tracking-wide'>Add to Wishlist</p>}
+                  placement='left'
+                  TransitionComponent={Fade}
+                  arrow
+                >
+                  <button
+                    onClick={(event) => event.preventDefault()}
+                    className={classNames(
+                      'bg-white text-main-text w-full py-2 mt-2 rounded-md items-center justify-center flex opacity-0 ease-in-out duration-200 hover:bg-hover hover:text-product-bg',
+                      {
+                        'opacity-100': onMouseOver
+                      }
+                    )}
+                  >
+                    <FavoriteBorderOutlined />
+                  </button>
+                </Tooltip>
               </div>
               <div className={classNames('opacity-0 ease-in-out duration-200', { 'opacity-100': onMouseOver })}>
                 <button

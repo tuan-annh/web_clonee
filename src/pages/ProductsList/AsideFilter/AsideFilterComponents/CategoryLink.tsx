@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { NavLink, useLocation } from 'react-router-dom'
-import path from '../../../constants/path'
-import { capitalizeFirstLetter, encodeSpaces } from '../../../utils/utils'
+import path from '../../../../constants/path'
+import { capitalizeFirstLetter, encodeSpaces } from '../../../../utils/utils'
 
 function CategoryLink({ category }: { category: string }) {
   const isAllCategories = category === 'products'

@@ -13,7 +13,7 @@ import { filterAfterFetch } from '../../utils/ProductFilter.util'
 import { CircularProgress } from '@mui/material'
 import { AxiosResponse } from 'axios'
 import { FiltersType } from '../../types/Filters.type'
-import { createPortal } from 'react-dom'
+import AsideModal from './AsideFilter/AsideFilterComponents/AsideModal'
 
 interface ParamsInterface {
   category: string
@@ -32,7 +32,7 @@ function ProductsList() {
   const [productView, setProductView] = useState<ProductViewType>('grid')
   const [productsData, setProductsData] = useState({} as ProductsListType)
   const [filters, setFilters] = useState({} as FiltersType)
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
   const { data: categoriesData, isInitialLoading: isFirstAsideLD } = useQuery({
     queryKey: ['categories'],
@@ -44,7 +44,6 @@ function ProductsList() {
     queryFn: () => productApi.getProducts(params.category, filters.queryParams ? filters.queryParams : undefined),
     onSuccess: ({ data }) => {
       setProductsData(filterAfterFetch(data, filters))
-      console.log(params)
     },
     keepPreviousData: true
   })
@@ -77,30 +76,12 @@ function ProductsList() {
           <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
         </div>
       ) : (
-        <div className='min-h-screen grid grid-cols-6 px-4 py-16'>
-          <div className='hidden lg:block lg:col-span-1'>
+        <div className='flex px-4 py-16'>
+          <div className='hidden lg:block sticky top-0 min-w-[240px]'>
             <AsideFilter />
           </div>
-          {showModal &&
-            createPortal(
-              <div className='fixed top-0 z-50 h-screen w-screen bg-main/50 grid grid-cols-6'>
-                <div className='bg-white col-span-4 sm:col-span-3 md:col-span-2 overflow-y-scroll'>
-                  <div className='text-product-bg bg-main px-6 flex justify-between items-center'>
-                    <p className='text-sm font-semibold'>Filters</p>
-                    <button className='p-4 cursor-pointer' onClick={() => setShowModal(false)}>
-                      <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-5 h-5'>
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
-                      </svg>
-                    </button>
-                  </div>
-                  <div className='p-4'>
-                    <AsideFilter />
-                  </div>
-                </div>
-              </div>,
-              document.body
-            )}
-          <div className='col-span-6 lg:col-span-5'>
+          <AsideModal showModal={showModal} setShowModal={setShowModal} />
+          <div className=''>
             <div className='text-main flex items-center justify-between mb-5 px-4'>
               <div className='lg:hidden text-main flex gap-3'>
                 <button className='flex' onClick={() => setShowModal(true)}>
@@ -168,22 +149,30 @@ function ProductsList() {
               </div>
               <SortFilter />
             </div>
-            <div className={classNames('ease-in-out duration-200', { 'opacity-40': isFetching })}>
-              {productView === productViewList.grid ? (
-                <div className='grid 2xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pb-20'>
-                  {productsData[0] &&
-                    productsData?.map((product, index) => (
-                      <ProductComponent product={product} key={index} type='grid' />
-                    ))}
-                </div>
-              ) : (
-                <div className='pb-5'>
-                  {productsData[0] &&
-                    productsData?.map((product, index) => (
-                      <ProductComponent product={product} key={index} type='list' />
-                    ))}
-                </div>
+            <div className='relative'>
+              {isFetching && (
+                <CircularProgress
+                  style={{ color: '#c7ab62' }}
+                  className='absolute z-10  top-40 left-1/2 -translate-x-1/2'
+                />
               )}
+              <div className={classNames('ease-in-out duration-500', { 'opacity-0 translate-y-5': isFetching })}>
+                {productView === productViewList.grid ? (
+                  <div className='grid 2xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pb-20'>
+                    {productsData[0] &&
+                      productsData?.map((product, index) => (
+                        <ProductComponent product={product} key={index} type='grid' />
+                      ))}
+                  </div>
+                ) : (
+                  <div className='pb-5'>
+                    {productsData[0] &&
+                      productsData?.map((product, index) => (
+                        <ProductComponent product={product} key={index} type='list' />
+                      ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

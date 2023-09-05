@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import CategoryLink from './CategoryLink'
-import PriceRangeComponent from './PriceRangeComponent'
+import CategoryLink from './AsideFilterComponents/CategoryLink'
+import PriceRangeComponent from './AsideFilterComponents/PriceRangeComponent'
 import { ProductsContext } from '../ProductsList'
-import RatingStars from './RatingStars'
+import RatingStars from './AsideFilterComponents/RatingStars'
 import { FiltersType } from '../../../types/Filters.type'
 
 function AsideFilter() {

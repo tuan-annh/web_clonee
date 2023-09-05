@@ -1,8 +1,7 @@
 import classNames from 'classnames'
-// import { priceRangeFilter } from '../../../utils/ProductFilter.util'
 import { useContext } from 'react'
-import { ProductsContext } from '../ProductsList'
-import { priceRanges } from '../../../constants/productListConst.enum'
+import { ProductsContext } from '../../ProductsList'
+import { priceRanges } from '../../../../constants/productListConst.enum'
 
 interface PriceRangeProps {
   priceRange: keyof typeof priceRanges
