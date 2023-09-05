@@ -7,6 +7,7 @@ export const userApi = {
     return http.get<User[]>('users')
   },
   getUserData(id?: number | string) {
+    // Vì useQuery không chấp nhận queryFn trả về undefined nên phải để thế này
     return id ? http.get<User>(`users/${id}`) : ({} as Promise<AxiosResponse<User, unknown>>)
   },
   // getUserCart(id?: number | string) {

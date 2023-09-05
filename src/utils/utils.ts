@@ -1,3 +1,4 @@
+// Function in hoa chữ cái đầu của một cụm từ
 const capitalizeFirstLetter = (input: string) => {
   if (typeof input !== 'string' || input.length === 0) {
     return input
@@ -5,6 +6,7 @@ const capitalizeFirstLetter = (input: string) => {
   return input.charAt(0).toUpperCase() + input.slice(1)
 }
 
+// Function để chuyển các category có dấu cách thành dạng có %20 thay cho dấu cách như trên thanh url
 const encodeSpaces = (input: string) => {
   if (typeof input !== 'string') {
     return input
@@ -13,6 +15,7 @@ const encodeSpaces = (input: string) => {
   return input.replace(/ /g, '%20')
 }
 
+// Function gọi ngày
 const getTodayDate = () => {
   const timeZoneOffset = 7 // GMT+7
   const now = new Date()

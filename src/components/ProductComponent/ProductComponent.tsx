@@ -28,7 +28,9 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
   }
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault()
+    event.preventDefault() // Ngăn chặn nổi bọt gây ra việc tự nhảy vào chi tiết sản phẩm khi ấn add product to cart
+
+    // Trường hợp khi product có trong cart rồi
     if (cartData.products.some((productCart) => productCart.productId === product.id)) {
       setCartData((prev) => ({
         ...prev,
@@ -40,6 +42,8 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
       }))
       return
     }
+
+    // Trường hợp khi product chưa trong cart
     setCartData((prev) => ({
       ...prev,
       products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
