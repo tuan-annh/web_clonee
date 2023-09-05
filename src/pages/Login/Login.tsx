@@ -42,7 +42,6 @@ function Login() {
 
     try {
       const response = await authApi.loginAccount({ username, password })
-
       if (response.status === 200) {
         // Assuming the response includes authentication data
 

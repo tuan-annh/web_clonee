@@ -81,7 +81,7 @@ function ProductsList() {
             <AsideFilter />
           </div>
           <AsideModal showModal={showModal} setShowModal={setShowModal} />
-          <div className=''>
+          <div className='flex-grow'>
             <div className='text-main flex items-center justify-between mb-5 px-4'>
               <div className='lg:hidden text-main flex gap-3'>
                 <button className='flex' onClick={() => setShowModal(true)}>
@@ -94,7 +94,7 @@ function ProductsList() {
                   </svg>
                   <p className='font-semibold mx-2'>Filters</p>
                 </button>
-                <div>
+                <div className='hidden md:block'>
                   Showing <span className='font-semibold'>1 - {productsData.length} </span>
                   of <span className='font-semibold'>{productsData.length}</span> results
                 </div>
@@ -151,10 +151,9 @@ function ProductsList() {
             </div>
             <div className='relative'>
               {isFetching && (
-                <CircularProgress
-                  style={{ color: '#c7ab62' }}
-                  className='absolute z-10  top-40 left-1/2 -translate-x-1/2'
-                />
+                <div className='absolute z-10 top-40 flex justify-center w-full'>
+                  <CircularProgress style={{ color: '#c7ab62' }} />
+                </div>
               )}
               <div className={classNames('ease-in-out duration-500', { 'opacity-0 translate-y-5': isFetching })}>
                 {productView === productViewList.grid ? (

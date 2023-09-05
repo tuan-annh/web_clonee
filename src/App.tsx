@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import './App.css'
-import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import { AppContext } from './contexts/HighApp.context'
 import path from './constants/path'
 import MainLayout from './layouts/MainLayout/MainLayout'
@@ -10,6 +9,7 @@ import ProductsList from './pages/ProductsList/ProductsList'
 import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
+import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)

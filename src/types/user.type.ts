@@ -18,3 +18,22 @@ export interface User {
   }
   phone: string
 }
+
+export interface CartInterface {
+  id?: number
+  userId: number
+  date: string
+  products: CartProduct[]
+  __v?: number
+}
+
+export interface CartInterfaceForPost extends Omit<CartInterface, 'products'> {
+  products: Omit<CartProduct, 'title' | 'price'>[]
+}
+
+export interface CartProduct {
+  productId: number
+  quantity: number
+  title: string
+  price: number
+}

@@ -1,11 +1,12 @@
 import classNames from 'classnames'
 import { Product } from '../../types/product.type'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductViewType, productViewList } from '../../constants/productListConst.enum'
 import path from '../../constants/path'
 import { Fade, Tooltip } from '@mui/material'
 import { FavoriteBorderOutlined } from '@mui/icons-material'
+import { AppContext } from '../../contexts/HighApp.context'
 
 interface ProductComponentInteface {
   product: Product
@@ -15,6 +16,7 @@ interface ProductComponentInteface {
 // CHÚ Ý: Chỉ có mỗi trang ProductList dùng đến kiểu list thôi nên các phần khác mn auto cho nó kiểu Grid (Như trang home hay chi tiết sp)
 
 function ProductComponent({ product, type }: ProductComponentInteface) {
+  const { setCartData, cartData } = useContext(AppContext)
   const [onMouseOver, setOnMouveOver] = useState(false)
 
   const onMouseOverHandler = () => {
@@ -27,6 +29,21 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
+    if (cartData.products.some((productCart) => productCart.productId === product.id)) {
+      setCartData((prev) => ({
+        ...prev,
+        products: [...prev.products].map((productCart) => {
+          if (productCart.productId === product.id)
+            return { ...productCart, quantity: productCart.quantity + 1, price: product.price, title: product.title }
+          return productCart
+        })
+      }))
+      return
+    }
+    setCartData((prev) => ({
+      ...prev,
+      products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
+    }))
   }
 
   return (
@@ -129,11 +146,14 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
       )}
       {type == productViewList.list && (
         <div
-          className='mx-1 mb-6 p-3 grid grid-cols-4'
+          className='mx-1 mb-6 p-3 grid grid-cols-12 gap-5'
           onMouseOver={onMouseOverHandler}
           onMouseLeave={onMouseLeaveHandler}
         >
-          <Link to={`${path.products}/${product.category}/${product.id}`} className='overflow-hidden col-span-1 pr-3'>
+          <Link
+            to={`${path.products}/${product.category}/${product.id}`}
+            className='overflow-hidden col-span-12 sm:col-span-4 xl:col-span-3 pr-3'
+          >
             <div className='w-full relative pt-[100%] bg-product-bg'>
               <img
                 src={product.image}
@@ -204,7 +224,7 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
               </div>
             </div>
           </Link>
-          <div className='col-span-3 flex items-center pl-5 pr-3'>
+          <div className='col-span-12 sm:col-span-8 xl:col-span-9 text-center sm:text-left flex items-center pr-3'>
             <div>
               <Link
                 to={`${product.category}/${product.id}`}
