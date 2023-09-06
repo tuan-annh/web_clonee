@@ -4,17 +4,17 @@ import { NavLink } from 'react-router-dom'
 import path from '../../constants/path'
 
 function Header() {
-  //   const { setisAuthenticated } = useContext(AppContext)
+  //  const { setisAuthenticated } = useContext(AppContext)
   return (
-    <header className='bg-white-800 text-black border-b h-24'>
+    <header className='bg-white-800 text-black border-b h-24 w-screen'>
       <div className='fixed container grid grid-cols-8 items-center mx-auto px-7 py-6 z-10 bg-white'>
         <div className='col-span-1 bg-white font-bold'>High Ecommerce</div>
         <div className='col-span-7 flex justify-between items-center'>
           <div className='flex gap-6'>
             <NavLink to={path.home}>Home</NavLink>
             <NavLink to={path.products}>Products</NavLink>
-            <NavLink to={'*'}>About</NavLink>
-            <NavLink to={'*'}>Contact Us</NavLink>
+            <NavLink to={path.about}>About</NavLink>
+            <NavLink to={path.contact}>Contact Us</NavLink>
           </div>
           <div className='grid grid-cols-4 gap-3 items-center'>
             <div className='mx-auto max-w-md'>
@@ -35,9 +35,7 @@ function Header() {
                 </svg>
               </form>
             </div>
-            {/* <NavLink className='' to={path.register}>
-              Register
-            </NavLink> */}
+
             <div className='flex items-center gap-1'>
               <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
                 <path d='M144 144c0-44.2 35.8-80 80-80c31.9 0 59.4 18.6 72.3 45.7c7.6 16 26.7 22.8 42.6 15.2s22.8-26.7 15.2-42.6C331 33.7 281.5 0 224 0C144.5 0 80 64.5 80 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H144V144z' />
