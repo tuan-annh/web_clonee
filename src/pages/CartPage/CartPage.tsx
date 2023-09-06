@@ -1,22 +1,22 @@
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { allCard, increaseCard, reduceCard, removeCard, toggleCheckbox } from '../../redux/allCard'
+import { allCard, increaseCart, reduceCart, removeCart, toggleCheckbox } from '../../redux/allCart'
 
-export default function BuyCard() {
+export default function CartPage() {
   const allListCard = useAppSelector(allCard)
   const dispatch = useAppDispatch()
   console.log(allListCard)
-  const handleRemoveCard = (index: number) => {
-    dispatch(removeCard(index))
+  const handleRemoveCart = (index: number) => {
+    dispatch(removeCart(index))
   }
 
   const handleReduceProduct = (id: number | string, index: number, count: number) => {
-    if (count === 1) dispatch(removeCard(index))
-    dispatch(reduceCard(id))
+    if (count === 1) dispatch(removeCart(index))
+    dispatch(reduceCart(id))
   }
   const handleIncreaseProduct = (id: number | string) => {
-    dispatch(increaseCard(id))
+    dispatch(increaseCart(id))
   }
 
   return (
@@ -47,7 +47,7 @@ export default function BuyCard() {
                   +
                 </button>
               </div>
-              <button className='text-red-600' onClick={() => handleRemoveCard(index)}>
+              <button className='text-red-600' onClick={() => handleRemoveCart(index)}>
                 Remove
               </button>
             </div>

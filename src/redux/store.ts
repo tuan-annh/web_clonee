@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { allPayCard } from './allCard'
+import { allPayCart } from './allCart'
 // ...
 
 export const store = configureStore({
   reducer: {
-    allPayCard: allPayCard.reducer
+    allPayCart: allPayCart.reducer
   }
 })
 

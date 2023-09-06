@@ -3,7 +3,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import path from '../../constants/path'
 import { useSelector } from 'react-redux'
-import { allCard } from '../../redux/allCard'
+import { allCard } from '../../redux/allCart'
 
 function Header() {
   const naivgate = useNavigate()

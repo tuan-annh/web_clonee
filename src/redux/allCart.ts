@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from './store'
 
 // Define a type for the slice state
-interface Card {
+interface Cart {
   id: string | number
   title: string
   price: string | number
@@ -14,14 +14,14 @@ interface Card {
 }
 
 // Define the initial state using that type
-const initialState: Array<Card> = []
+const initialState: Array<Cart> = []
 
-export const allPayCard = createSlice({
-  name: 'card',
+export const allPayCart = createSlice({
+  name: 'cart',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addCard: (state, action: PayloadAction<Card>) => {
+    addCart: (state, action: PayloadAction<Cart>) => {
       const existingProduct = state.find((product) => product.id === action.payload.id)
       if (existingProduct) {
         existingProduct.count += 1
@@ -30,28 +30,28 @@ export const allPayCard = createSlice({
       }
     },
     toggleCheckbox: (state, action: PayloadAction<number | string>) => {
-      const card = state.find((item) => item.id === action.payload)
-      if (card) {
-        card.checkbox = !card.checkbox
+      const cart = state.find((item) => item.id === action.payload)
+      if (cart) {
+        cart.checkbox = !cart.checkbox
       }
     },
-    removeCard: (state, action: PayloadAction<number>) => {
+    removeCart: (state, action: PayloadAction<number>) => {
       state.splice(action.payload, 1)
     },
-    increaseCard: (state, action: PayloadAction<string | number>) => {
+    increaseCart: (state, action: PayloadAction<string | number>) => {
       const existingProduct = state.find((product) => product.id === action.payload)
       if (existingProduct) existingProduct.count += 1
     },
-    reduceCard: (state, action: PayloadAction<string | number>) => {
+    reduceCart: (state, action: PayloadAction<string | number>) => {
       const existingProduct = state.find((product) => product.id === action.payload)
       if (existingProduct) existingProduct.count -= 1
     }
   }
 })
 
-export const { addCard, toggleCheckbox, removeCard, increaseCard, reduceCard } = allPayCard.actions
+export const { addCart, toggleCheckbox, removeCart, increaseCart, reduceCart } = allPayCart.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const allCard = (state: RootState) => state.allPayCard
+export const allCard = (state: RootState) => state.allPayCart
 
-export default allPayCard
+export default allPayCart

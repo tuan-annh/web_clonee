@@ -8,7 +8,7 @@ import { Fade, Tooltip } from '@mui/material'
 import { FavoriteBorderOutlined } from '@mui/icons-material'
 import { AppContext } from '../../contexts/HighApp.context'
 import { useAppDispatch } from '../../redux/hooks'
-import { addCard } from '../../redux/allCard'
+import { addCart } from '../../redux/allCart'
 
 interface ProductComponentInteface {
   product: Product
@@ -52,7 +52,7 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
     //   products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
     // }))
     dispatch(
-      addCard({
+      addCart({
         id: product.id,
         title: product.title,
         price: product.price,

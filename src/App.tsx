@@ -10,7 +10,7 @@ import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-import BuyCard from './pages/Pay/Pay'
+import CartPage from './pages/CartPage/CartPage'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -65,7 +65,7 @@ function App() {
           path: path.paycard,
           element: (
             <MainLayout>
-              <BuyCard />
+              <CartPage />
             </MainLayout>
           )
         }
