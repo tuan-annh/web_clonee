@@ -6,7 +6,7 @@ import path from '../../constants/path'
 function Header() {
   //   const { setisAuthenticated } = useContext(AppContext)
   return (
-    <header className=' bg-white-800 text-black border-b h-24'>
+    <header className='bg-white-800 text-black border-b h-24'>
       <div className='fixed container grid grid-cols-8 items-center mx-auto px-7 py-6 z-10 bg-white'>
         <div className='col-span-1 bg-white font-bold'>High Ecommerce</div>
         <div className='col-span-7 flex justify-between items-center'>
