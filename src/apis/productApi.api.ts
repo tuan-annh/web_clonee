@@ -17,7 +17,9 @@ export const productApi = {
   getProductDetail(id: string | number) {
     return http.get<Product>(`products/${id}`)
   },
+
   getCategories() {
     return http.get<string[]>('products/categories')
+
   }
 }
