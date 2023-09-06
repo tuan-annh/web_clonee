@@ -1,5 +1,5 @@
 // ProductDetail.tsx
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { productApi } from '../../apis/productApi.api'
 import { Button } from '@mui/base/Button'
@@ -63,7 +63,7 @@ function ProductDetail() {
           <div className='text-lg mt-5'>
             {/* Display the discount message */}
             <span className='text-current-product font-bold mr-2'>${discountedPrice}</span>
-            <span className='mt-4 text-name-product line-through font-semibold'>
+            <span className='mt-4 text-name-product line-through font-semibold '>
               ${originalPrice} ({discountPercentage}%)
             </span>
           </div>
@@ -106,24 +106,31 @@ function ProductDetail() {
             <Button className='bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md grow'>Buy it now</Button>
           </div>
 
-          <div>
-            <p className='text-gray-600'>Category: {productDetail.data.category}</p>
-          </div>
           {/* Display similar products */}
           <div className='mt-6'>
             <h3 className='text-xl font-semibold mb-3'>Similar Products</h3>
             <div className='flex flex-wrap'>
               {Array.isArray(limitedSimilarProducts) && limitedSimilarProducts.length > 0 ? (
                 limitedSimilarProducts.map((product) => (
-                  <div key={product.id} className='w-1/4 p-4'>
+                  <Link
+                    to={`/products/${productDetail.data.category}/${product.id}`}
+                    key={product.id}
+                    className='w-1/4 p-4'
+                  >
                     <div className='bg-white rounded-lg shadow-md p-3 h-full'>
                       <div className='aspect-w-1 aspect-h-1'>
                         <img src={product.image} alt={product.title} className='object-cover w-full h-full' />
                       </div>
-                      <h4 className='text-lg font-semibold mt-2'>{product.title}</h4>
-                      <p className='text-gray-600'>${product.price}</p>
+                      <h4 className=' font-semibold mt-2'>{product.title}</h4>
+                      <div className='text-lg mt-5'>
+                        {/* Display the discount message */}
+                        <span className='text-current-product font-bold mr-2'>${discountedPrice}</span>
+                        <span className='mt-4 text-name-product line-through font-semibold block'>
+                          ${originalPrice}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))
               ) : (
                 <div>No similar products found.</div>
