@@ -17,11 +17,9 @@ export const productApi = {
   getProductDetail(id: string | number) {
     return http.get<Product>(`products/${id}`)
   },
-
   getCategories() {
     return http.get<string[]>('products/categories')
   },
-
   getProductsByCategory(category: string) {
     // Assuming you have a route or API endpoint that supports filtering products by category
     return http.get<ProductsListType>(`products?category=${category}`)
