@@ -6,10 +6,12 @@ import MainLayout from './layouts/MainLayout/MainLayout'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import ProductsList from './pages/ProductsList/ProductsList'
-import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
+import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
+import MyAcount from './pages/Profile/MyAcount'
+import ChangePassword from './pages/Profile/ChangePassword'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -56,7 +58,19 @@ function App() {
           path: path.profile,
           element: (
             <MainLayout>
-              <Profile />
+              <ProfileLayout>
+                <MyAcount />
+              </ProfileLayout>
+            </MainLayout>
+          )
+        },
+        {
+          path: path.changePassword,
+          element: (
+            <MainLayout>
+              <ProfileLayout>
+                <ChangePassword />
+              </ProfileLayout>
             </MainLayout>
           )
         }
