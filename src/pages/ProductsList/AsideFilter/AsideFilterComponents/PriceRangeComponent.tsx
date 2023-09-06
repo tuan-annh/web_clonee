@@ -24,15 +24,15 @@ function PriceRangeComponent(props: PriceRangeProps) {
   return (
     <button
       onClick={handleOnClick}
-      className={classNames('w-full flex justify-between items-center py-2 hover:text-hover', {
+      className={classNames('flex w-full items-center justify-between py-2 hover:text-hover', {
         'text-hover': filters.priceRange === priceRange
       })}
       onMouseOver={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
     >
-      <div className='flex gap-3 items-center'>
+      <div className='flex items-center gap-3'>
         <div
-          className={classNames('w-4 h-4 rounded-full border border-hover', {
+          className={classNames('h-4 w-4 rounded-full border border-hover', {
             'bg-hover': filters.priceRange === priceRange
           })}
         >
@@ -47,7 +47,7 @@ function PriceRangeComponent(props: PriceRangeProps) {
           'opacity-100': onHover && filters.priceRange === priceRange
         })}
       >
-        <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-5 h-5'>
+        <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='h-5 w-5'>
           <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
         </svg>
       </div>

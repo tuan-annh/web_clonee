@@ -27,8 +27,8 @@ function AsideFilter() {
     <>
       <div>
         <div className='flex'>
-          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Categories</h3>
-          <div className='border-b border-name-product/20 flex-grow'></div>
+          <h3 className='border-b border-name-product pb-3 text-lg font-semibold text-main'>Categories</h3>
+          <div className='flex-grow border-b border-name-product/20'></div>
         </div>
         <div className='py-5 text-main-text'>
           <CategoryLink category='products' />
@@ -37,8 +37,8 @@ function AsideFilter() {
       </div>
       <div>
         <div className='flex'>
-          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Filter By Price</h3>
-          <div className='border-b border-name-product/20 flex-grow'></div>
+          <h3 className='border-b border-name-product pb-3 text-lg font-semibold text-main'>Filter By Price</h3>
+          <div className='flex-grow border-b border-name-product/20'></div>
         </div>
         <div className='py-5 text-main-text'>
           <PriceRangeComponent priceRange='first_range' textContent='$0 - $50' />
@@ -48,22 +48,22 @@ function AsideFilter() {
       </div>
       <div>
         <div className='flex'>
-          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Products Limit</h3>
-          <div className='border-b border-name-product/20 flex-grow'></div>
+          <h3 className='border-b border-name-product pb-3 text-lg font-semibold text-main'>Products Limit</h3>
+          <div className='flex-grow border-b border-name-product/20'></div>
         </div>
         <div className='py-5 text-main-text'>
           <input
             type='text'
             placeholder='type your limit'
-            className='w-11/12 rounded outline-none border-name-product/40 px-3 py-2 border'
+            className='w-11/12 rounded border border-name-product/40 px-3 py-2 outline-none'
             onChange={handleProductLimit}
           />
         </div>
       </div>
       <div>
         <div className='flex'>
-          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Filter By Rating</h3>
-          <div className='border-b border-name-product/20 flex-grow'></div>
+          <h3 className='border-b border-name-product pb-3 text-lg font-semibold text-main'>Filter By Rating</h3>
+          <div className='flex-grow border-b border-name-product/20'></div>
         </div>
         <div className='py-5 text-main-text'>
           <RatingStars star={1} />
@@ -75,7 +75,7 @@ function AsideFilter() {
       </div>
       <button
         onClick={clearAllFilter}
-        className='w-full py-2 border border-main bg-main text-product-bg hover:bg-white hover:text-main ease-in-out duration-300 rounded'
+        className='w-full rounded border border-main bg-main py-2 text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main'
       >
         Clear All Filters
       </button>

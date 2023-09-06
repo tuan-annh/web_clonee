@@ -10,14 +10,14 @@ function CategoryLink({ category }: { category: string }) {
   return (
     <NavLink
       className={({ isActive }) =>
-        classNames('my-2 flex gap-3 items-center py-2 hover:font-bold', {
+        classNames('my-2 flex items-center gap-3 py-2 hover:font-bold', {
           'font-bold': isAllCategories ? urlPath.pathname === path.products : isActive
         })
       }
       to={category === 'products' ? path.products : `${path.products}/${category}`}
     >
       <div
-        className={classNames('w-4 h-4 rounded-full border border-hover', {
+        className={classNames('h-4 w-4 rounded-full border border-hover', {
           'bg-hover': isAllCategories
             ? urlPath.pathname === path.products
             : urlPath.pathname === `/products/${encodeSpaces(category)}`
