@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 import './App.css'
 import { AppContext } from './contexts/HighApp.context'
 import path from './constants/path'
@@ -11,7 +12,7 @@ import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import CartPage from './pages/CartPage/CartPage'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -59,6 +60,14 @@ function App() {
           element: (
             <MainLayout>
               <Profile />
+            </MainLayout>
+          )
+        },
+        {
+          path: path.paycard,
+          element: (
+            <MainLayout>
+              <CartPage />
             </MainLayout>
           )
         }

@@ -1,17 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Grid,
-  List,
-  Toolbar,
-  Typography,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Button,
-  Input,
-  TextField
-} from '@mui/material'
+import { Grid, List, ListItem, ListItemButton, ListItemText, Button, Input, TextField } from '@mui/material'
 import Table from '@mui/material/Table'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
@@ -30,16 +17,7 @@ function Profile() {
   }
 
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-              Personal Information
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
+    <div className='h-screen-70'>
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <nav aria-label='main mailbox folders' className='mt-20'>

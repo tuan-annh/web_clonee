@@ -1,13 +1,14 @@
 import classNames from 'classnames'
 import { Product } from '../../types/product.type'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductViewType, productViewList } from '../../constants/productListConst.enum'
 import path from '../../constants/path'
 import { Fade, Tooltip } from '@mui/material'
 import { FavoriteBorderOutlined } from '@mui/icons-material'
-import { AppContext } from '../../contexts/HighApp.context'
-import { toast } from 'react-toastify'
+// import { AppContext } from '../../contexts/HighApp.context'
+import { useAppDispatch } from '../../redux/hooks'
+import { addCart } from '../../redux/allCart'
 
 interface ProductComponentInteface {
   product: Product
@@ -17,8 +18,9 @@ interface ProductComponentInteface {
 // CHÚ Ý: Chỉ có mỗi trang ProductList dùng đến kiểu list thôi nên các phần khác mn auto cho nó kiểu Grid (Như trang home hay chi tiết sp)
 
 function ProductComponent({ product, type }: ProductComponentInteface) {
-  const { setCartData, cartData } = useContext(AppContext)
+  // const { setCartData, cartData } = useContext(AppContext)
   const [onMouseOver, setOnMouveOver] = useState(false)
+  const dispatch = useAppDispatch()
 
   const onMouseOverHandler = () => {
     setOnMouveOver(true)
@@ -32,26 +34,34 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
     event.preventDefault() // Ngăn chặn nổi bọt gây ra việc tự nhảy vào chi tiết sản phẩm khi ấn add product to cart
 
     // Trường hợp khi product có trong cart rồi
-    if (cartData.products.some((productCart) => productCart.productId === product.id)) {
-      setCartData((prev) => ({
-        ...prev,
-        products: [...prev.products].map((productCart) => {
-          if (productCart.productId === product.id)
-            return { ...productCart, quantity: productCart.quantity + 1, price: product.price, title: product.title }
-          return productCart
-        })
-      }))
-      toast.success(`Thêm sản phẩm thành công`)
-      return
-    }
+    // if (cartData.products.some((productCart) => productCart.productId === product.id)) {
+    //   setCartData((prev) => ({
+    //     ...prev,
+    //     products: [...prev.products].map((productCart) => {
+    //       if (productCart.productId === product.id)
+    //         return { ...productCart, quantity: productCart.quantity + 1, price: product.price, title: product.title }
+    //       return productCart
+    //     })
+    //   }))
+    //   return
+    // }
 
-    // Trường hợp khi product chưa trong cart
-    setCartData((prev) => ({
-      ...prev,
-      products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
-    }))
-
-    toast.success(`Thêm sản phẩm thành công`)
+    // // Trường hợp khi product chưa trong cart
+    // setCartData((prev) => ({
+    //   ...prev,
+    //   products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
+    // }))
+    dispatch(
+      addCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        category: product.category,
+        image: product.image,
+        count: 1,
+        checkbox: false
+      })
+    )
   }
 
   return (
