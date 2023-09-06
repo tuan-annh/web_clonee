@@ -37,7 +37,15 @@ function App() {
           )
         },
         {
-          path: `${path.products}/:id`, // Example: /products/123
+          path: `${path.products}/:category`,
+          element: (
+            <MainLayout>
+              <ProductsList />
+            </MainLayout>
+          )
+        },
+        {
+          path: `${path.products}/:category/:id`,
           element: (
             <MainLayout>
               <ProductDetail />

@@ -1,28 +1,16 @@
 import { NavLink } from 'react-router-dom'
-
 import path from '../../constants/path'
-
 import { Button, TextField, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
-
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-
 import { SetStateAction, useContext, useState } from 'react'
-
 import { AppContext } from '../../contexts/HighApp.context'
-
 import { authApi } from '../../apis/auth.api'
-
-// import { offlineHttp } from '../../apis/http'
 
 function Login() {
   const { setisAuthenticated } = useContext(AppContext)
-
   const [username, setUsername] = useState('')
-
   const [password, setPassword] = useState('')
-
   const [loginError, setLoginError] = useState('')
-
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const handleUsernameChange = (event: { target: { value: SetStateAction<string> } }) => {
@@ -54,7 +42,6 @@ function Login() {
 
     try {
       const response = await authApi.loginAccount({ username, password })
-
       if (response.status === 200) {
         // Assuming the response includes authentication data
 
@@ -74,8 +61,6 @@ function Login() {
   }
 
   return (
-    
-
     <div
       className=' h-screen w-screen pt-32 bg-no-repeat bg-cover'
       style={{
