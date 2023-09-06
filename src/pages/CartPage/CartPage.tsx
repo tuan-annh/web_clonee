@@ -21,7 +21,7 @@ export default function CartPage() {
 
   return (
     <div className='w-screen h-screen'>
-      <h1 className='w-11/12 mx-auto text-start font-semibold text-4xl mb-7'>Shopping Card</h1>
+      <h1 className='w-11/12 mx-auto text-start font-semibold text-4xl mb-7'>Shopping Cart</h1>
       <div className='w-11/12 flex mx-auto h-5/6 gap-10'>
         <div className='w-2/3 h-full overflow-auto'>
           {allListCard.map((item, index) => (
@@ -87,12 +87,6 @@ export default function CartPage() {
           <Button variant='contained' className='w-full'>
             Checkout
           </Button>
-          <span className='pt-5'>
-            or{' '}
-            <Link to={''} className='text-blue-600'>
-              Continue Shopping
-            </Link>
-          </span>
         </div>
       </div>
     </div>
