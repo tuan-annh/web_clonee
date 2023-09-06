@@ -62,13 +62,13 @@ function Login() {
 
   return (
     <div
-      className=' h-screen w-screen pt-32 bg-no-repeat bg-cover'
+      className=' h-screen w-screen bg-cover bg-no-repeat pt-32'
       style={{
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className=' w-1/3 m-auto  p-8 rounded-xl shadow-box-1 bg-white'>
-        <div className='flex flex-col items-center mb-12  '>
+      <div className=' m-auto w-1/3  rounded-xl bg-white p-8 shadow-box-1'>
+        <div className='mb-12 flex flex-col items-center  '>
           <div
             style={{
               backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/logo_130x@2x.png?v=1630570943)',
@@ -126,7 +126,7 @@ function Login() {
               Log in
             </Button>
 
-            <NavLink to={path.register} className='text-right underline pr-2'>
+            <NavLink to={path.register} className='pr-2 text-right underline'>
               Go to Register
             </NavLink>
           </form>

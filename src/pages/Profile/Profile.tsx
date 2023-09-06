@@ -70,7 +70,7 @@ function Profile() {
         <Grid item xs={10} className='text-center'>
           {selected ? (
             <>
-              <TableContainer component={Paper} className='mt-20 mx-auto' style={{ width: '70%' }}>
+              <TableContainer component={Paper} className='mx-auto mt-20' style={{ width: '70%' }}>
                 <Table aria-label='simple table'>
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} className='h-20'>
                     <TableCell component='th' scope='row'>
@@ -111,7 +111,7 @@ function Profile() {
               </Button>
             </>
           ) : (
-            <form className='mt-20 mx-auto flex flex-col items-center gap-5' onSubmit={handleSubmit(onSavePassword)}>
+            <form className='mx-auto mt-20 flex flex-col items-center gap-5' onSubmit={handleSubmit(onSavePassword)}>
               <TextField label='Old password' className='w-1/2' {...register('old_password')} />
               <TextField label='New password' className='w-1/2' {...register('new_password')} />
               <Button variant='outlined' type='submit'>

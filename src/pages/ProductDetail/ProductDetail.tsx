@@ -8,7 +8,6 @@ import { useState } from 'react'
 function ProductDetail() {
   // Define a state variable to keep track of the quantity
   const [quantity, setQuantity] = useState(1)
-
   // Function to handle quantity increase
   const increaseQuantity = () => {
     setQuantity(quantity + 1)
@@ -44,10 +43,10 @@ function ProductDetail() {
   const limitedSimilarProducts = similarProducts?.data?.slice(0, 4)
 
   return (
-    <div className='w-full mx-auto p-6 px-[60px]'>
-      <div className='bg-white rounded-lg shadow-md p-6 flex'>
+    <div className='mx-auto w-full p-6 px-[60px]'>
+      <div className='flex rounded-lg bg-white p-6 shadow-md'>
         {/* Image on the left */}
-        <div className='bg-product-bg w-1/2 flex justify-center' style={{ height: '700px' }}>
+        <div className='flex w-1/2 justify-center bg-product-bg' style={{ height: '700px' }}>
           <img
             src={productDetail.data.image}
             className=' h-full w-auto  '
@@ -58,16 +57,16 @@ function ProductDetail() {
 
         {/* Product details on the right */}
         <div className='w-1/2 pl-6'>
-          <h2 className='text-2xl font-semibold mb-4'>{productDetail.data.title}</h2>
+          <h2 className='mb-4 text-2xl font-semibold'>{productDetail.data.title}</h2>
 
-          <div className='text-lg mt-5'>
+          <div className='mt-5 text-lg'>
             {/* Display the discount message */}
-            <span className='text-current-product font-bold mr-2'>${discountedPrice}</span>
-            <span className='mt-4 text-name-product line-through font-semibold '>
+            <span className='mr-2 font-bold text-current-product'>${discountedPrice}</span>
+            <span className='mt-4 font-semibold text-name-product line-through '>
               ${originalPrice} ({discountPercentage}%)
             </span>
           </div>
-          <div className='text-lg mt-5'>
+          <div className='mt-5 text-lg'>
             <p className='text-gray-600'>{productDetail.data.description}</p>
           </div>
           <br />
@@ -77,38 +76,38 @@ function ProductDetail() {
             <div className='text-lg'>Quantity:</div>
             <div className='flex items-center'>
               <button
-                className='bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-1 rounded-md'
+                className='rounded-md bg-gray-300 px-3 py-1 text-gray-800 hover:bg-gray-400'
                 onClick={decreaseQuantity}
               >
                 -
               </button>
               <div className='mx-2'>{quantity}</div>
               <button
-                className='bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-1 rounded-md'
+                className='rounded-md bg-gray-300 px-3 py-1 text-gray-800 hover:bg-gray-400'
                 onClick={increaseQuantity}
               >
                 +
               </button>
             </div>
           </div>
-          <hr className='border-b border-gray-300 my-4' />
+          <hr className='my-4 border-b border-gray-300' />
           {/* Buttons for actions */}
           <div className='mt-6 flex gap-3'>
-            <button className='bg-blue-500 hover:bg-hover text-white px-4 py-2 rounded-md basis-2/3'>
+            <button className='basis-2/3 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-hover'>
               Add to Cart
             </button>
-            <button className='bg-gray-300 hover:bg-hover text-gray-800 px-4 py-2 rounded-md basis-1/3'>
+            <button className='basis-1/3 rounded-md bg-gray-300 px-4 py-2 text-gray-800 hover:bg-hover'>
               Add to Wishlist
             </button>
           </div>
-          <hr className='border-b border-gray-300 my-4' />
+          <hr className='my-4 border-b border-gray-300' />
           <div className='mt-6 flex'>
-            <Button className='bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md grow'>Buy it now</Button>
+            <Button className='grow rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600'>Buy it now</Button>
           </div>
 
           {/* Display similar products */}
           <div className='mt-6'>
-            <h3 className='text-xl font-semibold mb-3'>Similar Products</h3>
+            <h3 className='mb-3 text-xl font-semibold'>Similar Products</h3>
             <div className='flex flex-wrap'>
               {Array.isArray(limitedSimilarProducts) && limitedSimilarProducts.length > 0 ? (
                 limitedSimilarProducts.map((product) => (
@@ -117,15 +116,15 @@ function ProductDetail() {
                     key={product.id}
                     className='w-1/4 p-4'
                   >
-                    <div className='bg-white rounded-lg shadow-md p-3 h-full'>
+                    <div className='h-full rounded-lg bg-white p-3 shadow-md'>
                       <div className='aspect-w-1 aspect-h-1'>
-                        <img src={product.image} alt={product.title} className='object-cover w-full h-full' />
+                        <img src={product.image} alt={product.title} className='h-full w-full object-cover' />
                       </div>
-                      <h4 className=' font-semibold mt-2'>{product.title}</h4>
-                      <div className='text-lg mt-5'>
+                      <h4 className=' mt-2 font-semibold'>{product.title}</h4>
+                      <div className='mt-5 text-lg'>
                         {/* Display the discount message */}
-                        <span className='text-current-product font-bold mr-2'>${discountedPrice}</span>
-                        <span className='mt-4 text-name-product line-through font-semibold block'>
+                        <span className='mr-2 font-bold text-current-product'>${discountedPrice}</span>
+                        <span className='mt-4 block font-semibold text-name-product line-through'>
                           ${originalPrice}
                         </span>
                       </div>
