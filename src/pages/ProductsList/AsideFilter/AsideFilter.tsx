@@ -73,18 +73,12 @@ function AsideFilter() {
           <RatingStars star={5} />
         </div>
       </div>
-      <div>
-        {/* <div className='flex'>
-          <h3 className='font-semibold text-lg text-main pb-3 border-b border-name-product'>Clear All Filters</h3>
-          <div className='border-b border-name-product/20 flex-grow'></div>
-        </div> */}
-        <button
-          onClick={clearAllFilter}
-          className='w-full py-2 border border-main bg-main text-product-bg hover:bg-white hover:text-main ease-in-out duration-300 rounded'
-        >
-          Clear All Filters
-        </button>
-      </div>
+      <button
+        onClick={clearAllFilter}
+        className='w-full py-2 border border-main bg-main text-product-bg hover:bg-white hover:text-main ease-in-out duration-300 rounded'
+      >
+        Clear All Filters
+      </button>
     </>
   )
 }

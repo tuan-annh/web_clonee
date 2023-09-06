@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
