@@ -6,7 +6,8 @@ const path = {
   products: '/products',
   about: '/about',
   contact: '/contact',
-  paycard: '/paycard'
+  paycard: '/paycard',
+  changePassword: '/changepassword'
 } as const
 
 export default path
