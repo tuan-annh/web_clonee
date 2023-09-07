@@ -67,7 +67,7 @@ function Register() {
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className=' m-auto w-1/3 rounded-xl bg-white p-8 shadow-box-1'>
+      <div className=' m-auto max-w-2xl rounded-xl bg-white p-8 shadow-box-1 lg:max-w-3xl'>
         <h1 className=' pb-5 text-center uppercase'>Register</h1>
         <form action='' className='flex flex-col ' onSubmit={handleSubmit(handleRegister)}>
           <TextField
@@ -96,7 +96,7 @@ function Register() {
                     onMouseDown={handleMouseDownPassword}
                     edge='end'
                   >
-                    {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }

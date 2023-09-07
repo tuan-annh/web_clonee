@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <header className='bg-white-800 h-24 border-b text-black'>
-      <div className='fixed z-10 mx-auto grid w-screen grid-cols-8 items-center bg-white px-7 py-6'>
+      <div className='fixed z-10 mx-auto grid w-screen grid-cols-8 items-center bg-white px-7 py-6 shadow-md'>
         <div className='col-span-1 bg-white font-bold'>High Ecommerce</div>
         <div className='col-span-7 flex items-center justify-between'>
           <div className='flex gap-6'>
