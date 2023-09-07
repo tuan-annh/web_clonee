@@ -55,14 +55,14 @@ function ProductsList() {
   return (
     <ProductsContext.Provider value={{ filters, setFilters, categoriesData }}>
       <div
-        className='min-h-screen bg-slate-300 flex items-center justify-center'
+        className='flex min-h-screen items-center justify-center bg-slate-300'
         style={{
           backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/bg-breadcrumb_1920x.jpg?v=1632273468)'
         }}
       >
         <div>
           <h1 className='text-6xl font-semibold text-main'>Products</h1>
-          <div className='text-center mt-5'>
+          <div className='mt-5 text-center'>
             <Link to={path.home} className='text-main-text'>
               Home
             </Link>
@@ -72,40 +72,40 @@ function ProductsList() {
         </div>
       </div>
       {isFirstAsideLD && isFirstProductsLD ? (
-        <div className='h-screen relative text-center'>
+        <div className='relative h-screen text-center'>
           <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
         </div>
       ) : (
         <div className='flex px-4 py-16'>
-          <div className='hidden lg:block sticky top-0 min-w-[240px]'>
+          <div className='sticky top-0 hidden min-w-[240px] lg:block'>
             <AsideFilter />
           </div>
           <AsideModal showModal={showModal} setShowModal={setShowModal} />
           <div className='flex-grow'>
-            <div className='text-main flex items-center justify-between mb-5 px-4'>
-              <div className='lg:hidden text-main flex gap-3'>
+            <div className='mb-5 flex items-center justify-between px-4 text-main'>
+              <div className='flex gap-3 text-main lg:hidden'>
                 <button className='flex' onClick={() => setShowModal(true)}>
-                  <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6'>
+                  <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='h-6 w-6'>
                     <path
                       strokeLinecap='round'
                       strokeLinejoin='round'
                       d='M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z'
                     />
                   </svg>
-                  <p className='font-semibold mx-2'>Filters</p>
+                  <p className='mx-2 font-semibold'>Filters</p>
                 </button>
                 <div className='hidden md:block'>
                   Showing <span className='font-semibold'>1 - {productsData.length} </span>
                   of <span className='font-semibold'>{productsData.length}</span> results
                 </div>
               </div>
-              <div className='hidden lg:block w-[210px]'>
+              <div className='hidden w-[210px] lg:block'>
                 Showing <span className='font-semibold'>1 - {productsData.length} </span>
                 of <span className='font-semibold'>{productsData.length}</span> results
               </div>
-              <div className='hidden lg:flex items-center gap-3 flex-grow-1'>
+              <div className='flex-grow-1 hidden items-center gap-3 lg:flex'>
                 <div
-                  className={classNames('transition-all duration-500 text-main', {
+                  className={classNames('text-main transition-all duration-500', {
                     'opacity-100': productView === productViewList.grid,
                     'opacity-50 hover:opacity-100': productView !== productViewList.grid
                   })}
@@ -116,7 +116,7 @@ function ProductsList() {
                     viewBox='0 0 24 24'
                     strokeWidth={1.5}
                     stroke='currentColor'
-                    className='w-7 h-7 cursor-pointer '
+                    className='h-7 w-7 cursor-pointer '
                   >
                     <path
                       strokeLinecap='round'
@@ -126,7 +126,7 @@ function ProductsList() {
                   </svg>
                 </div>
                 <div
-                  className={classNames('transition-all duration-500 text-main', {
+                  className={classNames('text-main transition-all duration-500', {
                     'opacity-100': productView === productViewList.list,
                     'opacity-50 hover:opacity-100': productView !== productViewList.list
                   })}
@@ -137,7 +137,7 @@ function ProductsList() {
                     viewBox='0 0 24 24'
                     strokeWidth={1.5}
                     stroke='currentColor'
-                    className='w-8 h-8 cursor-pointer '
+                    className='h-8 w-8 cursor-pointer '
                   >
                     <path
                       strokeLinecap='round'
@@ -151,13 +151,13 @@ function ProductsList() {
             </div>
             <div className='relative'>
               {isFetching && (
-                <div className='absolute z-10 top-40 flex justify-center w-full'>
+                <div className='absolute top-40 z-10 flex w-full justify-center'>
                   <CircularProgress style={{ color: '#c7ab62' }} />
                 </div>
               )}
-              <div className={classNames('ease-in-out duration-500', { 'opacity-0 translate-y-5': isFetching })}>
+              <div className={classNames('duration-500 ease-in-out', { 'translate-y-5 opacity-0': isFetching })}>
                 {productView === productViewList.grid ? (
-                  <div className='grid 2xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pb-20'>
+                  <div className='grid pb-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5'>
                     {productsData[0] &&
                       productsData?.map((product, index) => (
                         <ProductComponent product={product} key={index} type='grid' />

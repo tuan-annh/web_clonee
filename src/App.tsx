@@ -1,4 +1,6 @@
 import { useContext } from 'react'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 import './App.css'
 import { AppContext } from './contexts/HighApp.context'
 import path from './constants/path'
@@ -6,10 +8,12 @@ import MainLayout from './layouts/MainLayout/MainLayout'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import ProductsList from './pages/ProductsList/ProductsList'
-import Profile from './pages/Profile/Profile'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
+import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
+import MyAcount from './pages/Profile/MyAcount'
+import ChangePassword from './pages/Profile/ChangePassword'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -56,7 +60,27 @@ function App() {
           path: path.profile,
           element: (
             <MainLayout>
-              <Profile />
+              <ProfileLayout>
+                <MyAcount />
+              </ProfileLayout>
+            </MainLayout>
+          )
+        },
+        {
+          path: path.changePassword,
+          element: (
+            <MainLayout>
+              <ProfileLayout>
+                <ChangePassword />
+              </ProfileLayout>
+            </MainLayout>
+          )
+        },
+        {
+          path: path.paycard,
+          element: (
+            <MainLayout>
+              <CartPage />
             </MainLayout>
           )
         }
@@ -76,7 +100,19 @@ function App() {
     }
   ])
 
-  return <div>{elements}</div>
+  return (
+    <>
+      {elements}
+      <ToastContainer
+        autoClose={1000}
+        // hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss={false}
+        theme='colored'
+      />
+    </>
+  )
 }
 
 export default App

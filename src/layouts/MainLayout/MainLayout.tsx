@@ -5,9 +5,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Header />
-
       {children}
-      {/* <div className='h-screen bg-gray-200'></div> */}
       <Footer />
     </div>
   )
