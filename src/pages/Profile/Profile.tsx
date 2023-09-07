@@ -1,17 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Grid,
-  List,
-  Toolbar,
-  Typography,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Button,
-  Input,
-  TextField
-} from '@mui/material'
+import { Grid, List, ListItem, ListItemButton, ListItemText, Button, Input, TextField } from '@mui/material'
 import Table from '@mui/material/Table'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
@@ -30,16 +17,7 @@ function Profile() {
   }
 
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-              Personal Information
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
+    <div className='h-screen-70'>
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <nav aria-label='main mailbox folders' className='mt-20'>
@@ -70,7 +48,7 @@ function Profile() {
         <Grid item xs={10} className='text-center'>
           {selected ? (
             <>
-              <TableContainer component={Paper} className='mt-20 mx-auto' style={{ width: '70%' }}>
+              <TableContainer component={Paper} className='mx-auto mt-20' style={{ width: '70%' }}>
                 <Table aria-label='simple table'>
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} className='h-20'>
                     <TableCell component='th' scope='row'>
@@ -111,7 +89,7 @@ function Profile() {
               </Button>
             </>
           ) : (
-            <form className='mt-20 mx-auto flex flex-col items-center gap-5' onSubmit={handleSubmit(onSavePassword)}>
+            <form className='mx-auto mt-20 flex flex-col items-center gap-5' onSubmit={handleSubmit(onSavePassword)}>
               <TextField label='Old password' className='w-1/2' {...register('old_password')} />
               <TextField label='New password' className='w-1/2' {...register('new_password')} />
               <Button variant='outlined' type='submit'>

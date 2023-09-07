@@ -33,20 +33,20 @@ function AsideModal({ showModal, setShowModal }: Props) {
     showModal &&
     createPortal(
       <div
-        className={classNames('fixed top-0 z-50 h-screen w-screen bg-main/50 grid-cols-6 grid')}
+        className={classNames('fixed top-0 z-50 grid h-screen w-screen grid-cols-6 bg-main/50')}
         onClick={handleCloseButton}
       >
         <div
           ref={asideRef}
           onClick={(event) => event.stopPropagation()}
           className={classNames(
-            'bg-white col-span-4 sm:col-span-3 md:col-span-2 overflow-y-scroll -translate-x-full transition-transform duration-300 ease-in-out'
+            'col-span-4 -translate-x-full overflow-y-scroll bg-white transition-transform duration-300 ease-in-out sm:col-span-3 md:col-span-2'
           )}
         >
-          <div className='text-product-bg bg-main px-6 flex justify-between items-center'>
+          <div className='flex items-center justify-between bg-main px-6 text-product-bg'>
             <p className='text-sm font-semibold'>Filters</p>
-            <button className='p-4 cursor-pointer' onClick={handleCloseButton}>
-              <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-5 h-5'>
+            <button className='cursor-pointer p-4' onClick={handleCloseButton}>
+              <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='h-5 w-5'>
                 <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
               </svg>
             </button>
