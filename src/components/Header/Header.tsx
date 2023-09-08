@@ -1,18 +1,18 @@
-// import { useContext } from 'react'
-// import { AppContext } from '../../contexts/HighApp.context'
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/HighApp.context'
 import { NavLink, useNavigate } from 'react-router-dom'
 import path from '../../constants/path'
 import { useSelector } from 'react-redux'
 import { allCard } from '../../redux/allCart'
 
 function Header() {
-  const naivgate = useNavigate()
+  const navigate = useNavigate()
   const allListCard = useSelector(allCard)
-  //   const { setisAuthenticated } = useContext(AppContext)
+  const { isAuthenticated } = useContext(AppContext)
 
   return (
     <header className='bg-white-800 h-24 border-b text-black'>
-      <div className='fixed z-10 mx-auto grid w-screen grid-cols-8 items-center bg-white px-7 py-6 shadow-md'>
+      <div className='z-10 mx-auto grid grid-cols-8 items-center bg-white px-7 py-6 shadow-md'>
         <div className='col-span-1 bg-white font-bold'>High Ecommerce</div>
         <div className='col-span-7 flex items-center justify-between'>
           <div className='flex gap-6'>
@@ -30,8 +30,8 @@ function Header() {
             </div>
           </div>
 
-          <div className='grid grid-cols-4 items-center gap-3'>
-            <div className='mx-auto max-w-md'>
+          <div className='flex justify-end gap-3'>
+            <div className=' mx-auto flex max-w-md justify-end'>
               <form action='' className='relative mx-auto w-max'>
                 <input
                   type='search'
@@ -50,17 +50,50 @@ function Header() {
               </form>
             </div>
 
-            <div className='flex items-center gap-1'>
-              <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
-                <path d='M144 144c0-44.2 35.8-80 80-80c31.9 0 59.4 18.6 72.3 45.7c7.6 16 26.7 22.8 42.6 15.2s22.8-26.7 15.2-42.6C331 33.7 281.5 0 224 0C144.5 0 80 64.5 80 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H144V144z' />
-              </svg>
-              <NavLink to={path.login}>Login</NavLink>
-            </div>
-            <div className='flex items-center gap-0.5' onClick={() => naivgate('/paycard')}>
-              <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 576 512'>
+            {isAuthenticated ? (
+              <div className='flex items-center gap-1 hover:text-hover'>
+                {/* <svg
+                  fill='currentColor'
+                  className='hover:text:hover'
+                  xmlns='http://www.w3.org/2000/svg'
+                  height='1em'
+                  viewBox='0 0 448 512'
+                ></svg> */}
+                {/* <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div> */}
+                <NavLink to={path.profile}>My Account</NavLink>
+              </div>
+            ) : (
+              <div className='flex items-center gap-1 hover:text-hover'>
+                <svg
+                  fill='currentColor'
+                  className='hover:text:hover'
+                  xmlns='http://www.w3.org/2000/svg'
+                  height='1em'
+                  viewBox='0 0 448 512'
+                >
+                  <path d='M144 144c0-44.2 35.8-80 80-80c31.9 0 59.4 18.6 72.3 45.7c7.6 16 26.7 22.8 42.6 15.2s22.8-26.7 15.2-42.6C331 33.7 281.5 0 224 0C144.5 0 80 64.5 80 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H144V144z' />
+                </svg>
+                <NavLink to={path.login}>Login</NavLink>
+              </div>
+            )}
+            <div className='flex items-center gap-0.5 hover:text-hover'>
+              <svg
+                fill='currentColor'
+                className='hover:text:hover'
+                xmlns='http://www.w3.org/2000/svg'
+                height='1em'
+                viewBox='0 0 576 512'
+              >
                 <path d='M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z' />
               </svg>
-              <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>
+              <div
+                className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'
+                onClick={() =>
+                  navigate({
+                    pathname: path.paycard
+                  })
+                }
+              >
                 {allListCard.reduce((acc, cur) => acc + cur.count, 0)}
               </div>
             </div>
@@ -76,24 +109,11 @@ function Header() {
               </svg>
               <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div>
             </div>
-            {/* <NavLink to={''}>3</NavLink> */}
-            {/* <NavLink to={''}>4</NavLink> */}
-            {/* <button className='col-span-2 bg-orange-500' onClick={() => setisAuthenticated(false)}>
-                  Log out
-                </button> */}
           </div>
         </div>
         <div />
       </div>
     </header>
-    //  <div>
-    //    <NavLink to={path.products}>Products</NavLink>
-    //    <NavLink to={path.profile}>Profile</NavLink>
-    //    <Button variant='contained' onClick={() => setisAuthenticated(false)}>
-    //      Log out
-    //    </Button>
-    //    <Nav></Nav>
-    //  </div>
   )
 }
 
