@@ -29,7 +29,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
   return (
     <div className='h-screen-80 w-screen'>
       <div className='mx-auto mt-32 flex h-4/5 w-5/6 gap-10 pb-7'>
-        <div className='shadow-box-2 w-1/4 rounded'>
+        <div className='w-1/4 rounded shadow-box-2'>
           <div className='p-5 text-center'>
             <img
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrnx8jZxJ64bQwalnLcwgHsMvrv0CxbotThd3XEiqm41DICu9sOP7EApjE7AEzQRiK44&usqp=CAU'
@@ -76,7 +76,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
             </NavLink>
           </div>
         </div>
-        <div className='shadow-box-2 w-3/4 rounded bg-slate-50'>{children}</div>
+        <div className='w-3/4 rounded bg-slate-50 shadow-box-2'>{children}</div>
       </div>
     </div>
   )

@@ -14,6 +14,7 @@ import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
 import MyAcount from './pages/Profile/MyAcount'
 import ChangePassword from './pages/Profile/ChangePassword'
+import CartPage from './pages/CartPage/CartPage'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)

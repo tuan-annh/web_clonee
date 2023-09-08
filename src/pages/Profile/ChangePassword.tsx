@@ -38,7 +38,7 @@ export default function ChangePassword() {
 
   return (
     <div>
-      <form action='' onSubmit={handleSubmit(handleSavePassword)} className='flex flex-col p-5 gap-5'>
+      <form action='' onSubmit={handleSubmit(handleSavePassword)} className='flex flex-col gap-5 p-5'>
         <h1 className='text-center text-2xl'>Updated PassWord</h1>
         <TextField label='Old Password' {...register('old_password')} />
         <TextField label='New Password' {...register('new_password')} />

@@ -33,7 +33,7 @@ function MyAcount() {
 
   return (
     <div>
-      <form action='' className='flex flex-col p-5 gap-5' onSubmit={handleSubmit(handleSaveChange)}>
+      <form action='' className='flex flex-col gap-5 p-5' onSubmit={handleSubmit(handleSaveChange)}>
         <h1 className='text-center text-2xl'>Thông tin cá nhân</h1>
         <TextField disabled label='username' value={user.username} />
         <div className='flex gap-4'>
