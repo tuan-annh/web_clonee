@@ -42,17 +42,26 @@ function Login() {
 
     try {
       const response = await authApi.loginAccount({ username, password })
-      if (response.status === 200) {
-        // Assuming the response includes authentication data
+      console.log('Res', response)
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          username: username,
+          password: password
+        })
+      )
 
-        // const data = response.data;
+      // if (response.status === 200) {
+      //   // Assuming the response includes authentication data
 
-        // Update the authentication status using the context
+      //   // const data = response.data;
 
-        setisAuthenticated(true) // Update this based on your API response
-      } else {
-        // Handle authentication error here
-      }
+      //   // Update the authentication status using the context
+
+      setisAuthenticated(true) // Update this based on your API response
+      // } else {
+      //   // Handle authentication error here
+      // }
     } catch (error) {
       setLoginError('Wrong username or password.')
 
