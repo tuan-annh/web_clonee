@@ -12,14 +12,11 @@ import ProductsList from './pages/ProductsList/ProductsList'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-<<<<<<< HEAD
-import ContactUs from './pages/Contact/ContactUs'
-=======
 import CartPage from './pages/CartPage/CartPage'
 import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
 import MyAcount from './pages/Profile/MyAcount'
 import ChangePassword from './pages/Profile/ChangePassword'
->>>>>>> development
+import ContactUs from './pages/Contact/ContactUs'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
