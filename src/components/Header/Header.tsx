@@ -50,14 +50,14 @@ function Header() {
             </div>
             {isAuthenticated ? (
               <div className='flex items-center gap-1 hover:text-hover'>
-                <svg
+                {/* <svg
                   fill='currentColor'
                   className='hover:text:hover'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 448 512'
-                ></svg>
-                <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div>
+                ></svg> */}
+                {/* <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div> */}
                 <NavLink to={path.profile}>My Account</NavLink>
               </div>
             ) : (

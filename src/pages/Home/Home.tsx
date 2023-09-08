@@ -103,7 +103,7 @@ function Home() {
         <h2 className='mx-auto pt-10 text-center text-[32px] font-bold'>Feature Products</h2>
         <div className='mx-8 my-10 grid grid-cols-2 gap-16'>
           <div
-            className='no-repeat relative h-screen bg-auto'
+            className='no-repeat relative h-screen bg-cover'
             style={{
               backgroundImage:
                 'url("https://ohey-demo.myshopify.com/cdn/shop/files/8_d5267630-2b25-4dd2-991d-b51da396701f_900x.jpg?v=1634280975")'
@@ -116,7 +116,7 @@ function Home() {
             </div>
           </div>
           <div
-            className='no-repeat relative h-screen bg-auto'
+            className='no-repeat relative h-screen bg-cover'
             style={{
               backgroundImage: 'url("https://ohey-demo.myshopify.com/cdn/shop/files/9_900x.jpg?v=1634280810")'
             }}
