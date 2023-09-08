@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import path from '../../constants/path'
-import { Button, TextField, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
+import { TextField, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Box } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { SetStateAction, useContext, useState } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
 import { authApi } from '../../apis/auth.api'
+import { toast } from 'react-toastify'
 
 function Login() {
   const { setisAuthenticated } = useContext(AppContext)
@@ -57,12 +58,13 @@ function Login() {
       //   // const data = response.data;
 
       //   // Update the authentication status using the context
-
+      toast.success('Login successful!')
       setisAuthenticated(true) // Update this based on your API response
       // } else {
       //   // Handle authentication error here
       // }
     } catch (error) {
+      toast.error('Wrong username or password.')
       setLoginError('Wrong username or password.')
 
       // Handle network error
@@ -76,7 +78,7 @@ function Login() {
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className=' m-auto w-1/3  rounded-xl bg-white p-8 shadow-box-1'>
+      <div className='m-auto w-5/6 rounded-xl bg-white px-8 pb-8 pt-16 shadow-box-1 md:w-1/2 lg:w-1/3 xl:w-1/4 '>
         <div className='mb-12 flex flex-col items-center  '>
           <div
             style={{
@@ -89,12 +91,11 @@ function Login() {
               width: '100px'
             }}
           ></div>
-
           <h2>Sign in to your account</h2>
         </div>
 
         <div>
-          <form className='flex flex-col gap-4 ' onSubmit={handleSubmit}>
+          <form className='flex flex-col gap-1 ' onSubmit={handleSubmit}>
             <TextField
               label='username'
               name='username'
@@ -104,6 +105,7 @@ function Login() {
               value={username}
               onChange={handleUsernameChange}
             />
+            <Box className=' h-5'></Box>
 
             <FormControl sx={{ width: '100%' }} variant='outlined'>
               <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
@@ -128,14 +130,16 @@ function Login() {
                 onChange={handlePasswordChange}
               />
             </FormControl>
+            <div className='mb-1 h-[24px]'>{loginError && <p className='text-red-500 '>{loginError}</p>}</div>
 
-            {loginError && <p className='text-red-500'>{loginError}</p>}
-
-            <Button type='submit' variant='outlined'>
+            <button
+              type='submit'
+              className='w-full rounded border border-main bg-main py-3 text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main'
+            >
               Log in
-            </Button>
+            </button>
 
-            <NavLink to={path.register} className='pr-2 text-right underline'>
+            <NavLink to={path.register} className='mt-4 pr-2 text-right underline hover:text-hover '>
               Go to Register
             </NavLink>
           </form>

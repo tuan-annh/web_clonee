@@ -12,10 +12,6 @@ import ProductsList from './pages/ProductsList/ProductsList'
 import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-<<<<<<< HEAD
-
-=======
->>>>>>> development
 import CartPage from './pages/CartPage/CartPage'
 import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
 import MyAcount from './pages/Profile/MyAcount'
