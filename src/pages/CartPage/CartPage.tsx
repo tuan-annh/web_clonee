@@ -46,7 +46,7 @@ export default function CartPage() {
                     checked={item.checkbox}
                     onChange={() => dispatch(toggleCheckbox(item.id))}
                   />
-                  <img src={item.image} alt='' className='w-1/6' />
+                  <img src={item.image} alt='' className='h-56 w-56 object-contain' />
                   <div className='w-2/5 text-start'>
                     <h4 className='font-semibold'>{item.title}</h4>
                     <p>Price: ${item.price}</p>
@@ -54,18 +54,27 @@ export default function CartPage() {
                   </div>
                   <div className='h-max rounded border-2 border-slate-300 hover:border-slate-500'>
                     <button
-                      className='border-r border-slate-300 px-2 '
+                      className='border-r border-slate-300 px-1 lg:px-2 '
                       onClick={() => handleReduceProduct(item.id, index, item.count)}
                     >
                       -
                     </button>
-                    <span className='px-3'>{item.count}</span>
-                    <button className='border-l border-slate-300 px-2' onClick={() => handleIncreaseProduct(item.id)}>
+                    <span className='px-1 lg:px-3'>{item.count}</span>
+                    <button
+                      className='border-l border-slate-300 px-1 lg:px-2'
+                      onClick={() => handleIncreaseProduct(item.id)}
+                    >
                       +
                     </button>
                   </div>
-                  <button className='text-red-600' onClick={() => handleRemoveCart(index)}>
+                  <button className='hidden text-red-600 lg:block' onClick={() => handleRemoveCart(index)}>
                     Remove
+                  </button>
+                  <button
+                    className='block text-lg uppercase text-red-600 lg:hidden'
+                    onClick={() => handleRemoveCart(index)}
+                  >
+                    x
                   </button>
                 </div>
               ))}
@@ -136,7 +145,7 @@ export default function CartPage() {
                 </Button>
               </div>
             ) : (
-              <div className='hidden lg:block lg:w-1/3'></div>
+              <div className='hidden md:block md:w-1/3'></div>
             )}
           </div>
         </div>
