@@ -50,7 +50,7 @@ function Home() {
       </div>
       <h2 className='text-center text-[32px] font-bold my-4'>Top Trending</h2>
       <div className='grid grid-cols-5 items-center mx-8'>
-        <div className='col-span-2'>
+        <div className='col-span-2 '>
           {ProductsData?.data
             .slice(18, 19)
             .map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
