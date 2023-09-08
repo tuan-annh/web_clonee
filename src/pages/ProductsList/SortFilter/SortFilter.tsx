@@ -15,9 +15,9 @@ function SortFilter() {
       <label htmlFor='sortby' className='text-sm'>
         Sort by:{' '}
       </label>
-      <select className='active:outline-none outline-none px-3' onChange={sortByHandle}>
+      <select className='px-3 outline-none active:outline-none' onChange={sortByHandle}>
         {Object.values(customSortList).map((sort, index) => (
-          <option className='py-6 whitespace-normal text-sm' value={sort} key={index}>
+          <option className='whitespace-normal py-6 text-sm' value={sort} key={index}>
             {sortNamesList[sort]}
           </option>
         ))}

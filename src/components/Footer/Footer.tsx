@@ -6,18 +6,18 @@ function Footer() {
     <footer className='bg-main text-white'>
       <div className='container mx-auto px-9 pb-8 pt-11'>
         <div className='flex flex-wrap'>
-          <div className='w-full sm:w-1/3 px-4'>
-            <h2 className='text-lg font-bold mb-2'>High Ecommerce</h2>
-            <p className='text-white/50 my-7'>
+          <div className='w-full px-4 sm:w-1/3'>
+            <h2 className='mb-2 text-lg font-bold'>High Ecommerce</h2>
+            <p className='my-7 text-white/50'>
               Since 2013 we have been creating industrial design, residential architecture, commercial interiors. Chase
               mice attack feet but rub face on everything cepteur sint occaecat cupidatat proident.
             </p>
-            <h3 className='font-bold my-7'>Follow Us</h3>
+            <h3 className='my-7 font-bold'>Follow Us</h3>
             <div className='flex gap-5'>
               <Link className='' to={''}>
                 <svg
                   fill='currentColor'
-                  className='text-white w-7 h-7'
+                  className='h-7 w-7 text-white'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 512 512'
@@ -28,7 +28,7 @@ function Footer() {
               <Link className='px-' to={''}>
                 <svg
                   fill='currentColor'
-                  className='text-white w-7 h-7'
+                  className='h-7 w-7 text-white'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 512 512'
@@ -39,7 +39,7 @@ function Footer() {
               <Link className='px-' to={''}>
                 <svg
                   fill='currentColor'
-                  className='text-white w-7 h-7'
+                  className='h-7 w-7 text-white'
                   xmlns='http://www.w3.org/2000/svg'
                   height='1em'
                   viewBox='0 0 448 512'
@@ -49,15 +49,15 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className='w-full sm:w-1/3 px-4'>
-            <h3 className=' font-bold mb-2'>HERE TO HELP</h3>
+          <div className='w-full px-4 sm:w-1/3'>
+            <h3 className=' mb-2 font-bold'>HERE TO HELP</h3>
             <p className='text-white/50'>
               Have a question? You may find an answer in our FAQs. But you can also contact us:
             </p>
             <div className='py-3'>
               <h3 className='font-bold'>Order by Phone</h3>
               <p className='text-white/50'>Available everyday</p>
-              <p className='text-white/50 text-sm underline'>
+              <p className='text-sm text-white/50 underline'>
                 <a className='link-underline-opacity-50-hover ' href='0333344444'>
                   0333344444
                 </a>
@@ -66,72 +66,72 @@ function Footer() {
             <div className='py-3'>
               <h3 className='font-bold'>Email Us</h3>
               <p className='text-white/50'>Get in touch by email</p>
-              <p className='text-white/50 text-sm underline'>
+              <p className='text-sm text-white/50 underline'>
                 <a href='mailto:example@example.com'>example@example.com</a>
               </p>
             </div>
           </div>
-          <div className='w-full sm:w-1/3 sm:flex sm:justify-between px-4 mt-4 sm:mt-0'>
+          <div className='mt-4 w-full px-4 sm:mt-0 sm:flex sm:w-1/3 sm:justify-between'>
             <div className='w-1/2'>
-              <h3 className=' font-bold mb-2'>CUSTOMER SERVICE</h3>
-              <Link className='text-white/50 block py-2' to={''}>
+              <h3 className=' mb-2 font-bold'>CUSTOMER SERVICE</h3>
+              <Link className='block py-2 text-white/50' to={''}>
                 Help & Constact Us
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 COVID-19 Information
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Orders & Shipping
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Payment& Pricing
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Returns & Refund
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 FAQs
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Terms & Conditions
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Privacy Policy
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Accessibillity
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Documentations
               </Link>
             </div>
             <div className='w-1/2'>
-              <h3 className='font-bold mb-2'>ABOUT OHEY</h3>
-              <Link className='text-white/50 block py-2' to={''}>
+              <h3 className='mb-2 font-bold'>ABOUT OHEY</h3>
+              <Link className='block py-2 text-white/50' to={''}>
                 My Account
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Investors
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Boutique Partners
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Affiliate Programme
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Careers
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Customer Promise
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Ohey App
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Site Map
               </Link>
-              <Link className='text-white/50 block py-2' to={''}>
+              <Link className='block py-2 text-white/50' to={''}>
                 Positively Ohey
               </Link>
             </div>
@@ -140,10 +140,10 @@ function Footer() {
       </div>
       <div className='container mx-auto px-4 py-6'>
         <div className='flex flex-wrap'>
-          <div className='w-full sm:w-1/2 px-4'>
+          <div className='w-full px-4 sm:w-1/2'>
             <p className='text-white/50'>© Copyright 2023 Ohey Limited. All Rights Reserved. Design By Bily</p>
           </div>
-          <div className='w-full sm:w-1/2 sm:flex sm:justify-evenly sm:items-center px-4 mt-4 sm:mt-0 gap-0 flex-nowrap'>
+          <div className='mt-4 w-full flex-nowrap gap-0 px-4 sm:mt-0 sm:flex sm:w-1/2 sm:items-center sm:justify-evenly'>
             <h3>SECURE PAYMENTS </h3>
             <div className=''>
               <img src='//ohey-demo.myshopify.com/cdn/shop/files/payment_429x36.png?v=1630860014' alt='Payment'></img>

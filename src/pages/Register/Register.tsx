@@ -62,13 +62,13 @@ function Register() {
 
   return (
     <div
-      className=' h-screen w-screen pt-20 bg-no-repeat bg-cover'
+      className=' h-screen w-screen bg-cover bg-no-repeat pt-20'
       style={{
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className=' w-1/3 m-auto p-8 rounded-xl shadow-box-1 bg-white'>
-        <h1 className=' text-center uppercase pb-5'>Register</h1>
+      <div className=' m-auto max-w-2xl rounded-xl bg-white p-8 shadow-box-1 lg:max-w-3xl'>
+        <h1 className=' pb-5 text-center uppercase'>Register</h1>
         <form action='' className='flex flex-col ' onSubmit={handleSubmit(handleRegister)}>
           <TextField
             label='UserName'
@@ -81,7 +81,7 @@ function Register() {
               }
             })}
           />
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.username?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.username?.message}</Box>
 
           <FormControl sx={{ width: '100%' }} variant='outlined'>
             <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
@@ -96,7 +96,7 @@ function Register() {
                     onMouseDown={handleMouseDownPassword}
                     edge='end'
                   >
-                    {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }
@@ -107,7 +107,7 @@ function Register() {
               })}
             />
           </FormControl>
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.password?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.password?.message}</Box>
 
           <FormControl sx={{ width: '100%' }} variant='outlined'>
             <InputLabel htmlFor='outlined-adornment-password'>Confirm Password</InputLabel>
@@ -137,7 +137,7 @@ function Register() {
               })}
             />
           </FormControl>
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.confirm_password?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.confirm_password?.message}</Box>
 
           <TextField
             label='FirstName'
@@ -146,7 +146,7 @@ function Register() {
               required: { value: true, message: 'FirstName là bắt buộc' }
             })}
           />
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.firstname?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.firstname?.message}</Box>
 
           <TextField
             label='LastName'
@@ -155,7 +155,7 @@ function Register() {
               required: { value: true, message: 'LastName là bắt buộc' }
             })}
           />
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.lastname?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.lastname?.message}</Box>
 
           <TextField
             label='Email'
@@ -168,7 +168,7 @@ function Register() {
               }
             })}
           />
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.email?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.email?.message}</Box>
 
           <TextField
             label='Phone'
@@ -181,13 +181,13 @@ function Register() {
               }
             })}
           />
-          <Box className='h-5 text-left text-red-900 mb-3'>{errors.phone?.message}</Box>
+          <Box className='mb-3 h-5 text-left text-red-900'>{errors.phone?.message}</Box>
 
           <Button variant='outlined' type='submit'>
             Register
           </Button>
 
-          <NavLink to={path.login} className='text-right underline pt-5'>
+          <NavLink to={path.login} className='pt-5 text-right underline'>
             Go to Login
           </NavLink>
           <p className='h-8 text-center text-red-600'>{errorMessage}</p>
