@@ -6,10 +6,19 @@ import App from './App'
 import AppProvider from './contexts/HighApp.context'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
+import { ThemeProvider, createTheme } from '@mui/material'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false // Tránh render lại khi của sổ trang web tại trình duyệt chuyển từ unfocus sang focus
+    }
+  }
+})
+
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#c7ab62'
     }
   }
 })
@@ -20,7 +29,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <AppProvider>
-          <App />
+          <ThemeProvider theme={customTheme}>
+            <App />
+          </ThemeProvider>
         </AppProvider>
       </QueryClientProvider>
     </BrowserRouter>

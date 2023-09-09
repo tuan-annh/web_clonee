@@ -27,20 +27,20 @@ const user = {
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='h-screen-80 w-screen'>
-      <div className='mx-auto mt-32 flex h-4/5 w-5/6 gap-10 pb-7'>
-        <div className='w-1/4 rounded shadow-box-2'>
-          <div className='p-5 text-center'>
+    <div className='h-max lg:h-screen-80'>
+      <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>
+        <div className='rounded shadow-box-2 lg:w-1/4'>
+          <div className='text-center lg:p-5'>
             <img
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrnx8jZxJ64bQwalnLcwgHsMvrv0CxbotThd3XEiqm41DICu9sOP7EApjE7AEzQRiK44&usqp=CAU'
               alt=''
-              className='mx-auto w-1/4'
+              className='mx-auto w-1/6 lg:w-1/4'
             />
-            <p className='mt-3 font-semibold tracking-widest'>
+            <p className='font-semibold tracking-widest lg:mt-3'>
               {user.name.firstname} {user.name.lastname}
             </p>
           </div>
-          <div className='mt-10 flex flex-col'>
+          <div className='mt-2 flex flex-col lg:mt-10'>
             <NavLink
               to={'/profile'}
               style={({ isActive }) => {
@@ -76,7 +76,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
             </NavLink>
           </div>
         </div>
-        <div className='w-3/4 rounded bg-slate-50 shadow-box-2'>{children}</div>
+        <div className='rounded bg-slate-50 shadow-box-2 lg:w-3/4'>{children}</div>
       </div>
     </div>
   )

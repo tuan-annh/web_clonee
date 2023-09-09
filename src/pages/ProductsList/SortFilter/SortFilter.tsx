@@ -3,7 +3,7 @@ import { customSortList, sortNamesList } from '../../../constants/productListCon
 import { ProductsContext } from '../ProductsList'
 
 function SortFilter() {
-  const { setFilters } = useContext(ProductsContext)
+  const { setFilters, filters } = useContext(ProductsContext)
   const sortByHandle = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectValue = event.target.value as keyof typeof customSortList
     console.log(selectValue)
@@ -15,7 +15,7 @@ function SortFilter() {
       <label htmlFor='sortby' className='text-sm'>
         Sort by:{' '}
       </label>
-      <select className='px-3 outline-none active:outline-none' onChange={sortByHandle}>
+      <select className='px-3 outline-none active:outline-none' onChange={sortByHandle} value={filters.sortType}>
         {Object.values(customSortList).map((sort, index) => (
           <option className='whitespace-normal py-6 text-sm' value={sort} key={index}>
             {sortNamesList[sort]}

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import './App.css'
 import { AppContext } from './contexts/HighApp.context'
 import path from './constants/path'
+import About from './pages/About/About'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
@@ -14,7 +15,7 @@ import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
 import MyAcount from './pages/Profile/MyAcount'
 import ChangePassword from './pages/Profile/ChangePassword'
-import CartPage from './pages/CartPage/CartPage'
+import ContactUs from './pages/Contact/ContactUs'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -78,10 +79,18 @@ function App() {
           )
         },
         {
-          path: path.paycard,
+          path: path.about,
           element: (
             <MainLayout>
-              <CartPage />
+              <About />
+            </MainLayout>
+          )
+        },
+        {
+          path: path.contact,
+          element: (
+            <MainLayout>
+              <ContactUs />
             </MainLayout>
           )
         }
