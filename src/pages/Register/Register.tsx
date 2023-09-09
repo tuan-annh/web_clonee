@@ -1,16 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import path from '../../constants/path'
 import { authApi } from '../../apis/auth.api'
-import {
-  Button,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-  Box
-} from '@mui/material'
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Box } from '@mui/material'
 import { useState } from 'react'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useForm } from 'react-hook-form'
@@ -62,12 +53,12 @@ function Register() {
 
   return (
     <div
-      className=' h-screen w-screen bg-cover bg-no-repeat pt-20'
+      className=' h-screen w-screen bg-cover bg-no-repeat md:pt-20'
       style={{
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className=' m-auto max-w-2xl rounded-xl bg-white p-8 shadow-box-1 lg:max-w-3xl'>
+      <div className='h-full w-full bg-white p-8 shadow-box-1 md:m-auto md:h-max md:max-w-3xl md:rounded-xl'>
         <h1 className=' pb-5 text-center uppercase'>Register</h1>
         <form action='' className='flex flex-col ' onSubmit={handleSubmit(handleRegister)}>
           <TextField
@@ -183,11 +174,14 @@ function Register() {
           />
           <Box className='mb-3 h-5 text-left text-red-900'>{errors.phone?.message}</Box>
 
-          <Button variant='outlined' type='submit'>
+          <button
+            type='submit'
+            className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
+          >
             Register
-          </Button>
+          </button>
 
-          <NavLink to={path.login} className='pt-5 text-right underline'>
+          <NavLink to={path.login} className='hover:text-red pt-5 text-right underline'>
             Go to Login
           </NavLink>
           <p className='h-8 text-center text-red-600'>{errorMessage}</p>

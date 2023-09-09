@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 const user = {
@@ -42,9 +42,12 @@ export default function ChangePassword() {
         <h1 className='text-center text-2xl'>Updated PassWord</h1>
         <TextField label='Old Password' {...register('old_password')} />
         <TextField label='New Password' {...register('new_password')} />
-        <Button variant='outlined' type='submit'>
-          Save PassWord
-        </Button>
+        <button
+          type='submit'
+          className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
+        >
+          Save Password
+        </button>
       </form>
     </div>
   )

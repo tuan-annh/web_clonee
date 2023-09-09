@@ -61,12 +61,14 @@ function App() {
         },
         {
           path: path.profile,
-          element: (
+          element: isAuthenticated ? (
             <MainLayout>
               <ProfileLayout>
                 <MyAcount />
               </ProfileLayout>
             </MainLayout>
+          ) : (
+            <Navigate to={path.home} />
           )
         },
         {

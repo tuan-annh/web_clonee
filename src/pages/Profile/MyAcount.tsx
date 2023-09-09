@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { User } from '../../types/user.type'
 
@@ -33,8 +33,8 @@ function MyAcount() {
 
   return (
     <div>
-      <form action='' className='flex flex-col gap-5 p-5' onSubmit={handleSubmit(handleSaveChange)}>
-        <h1 className='text-center text-2xl'>Thông tin cá nhân</h1>
+      <form action='' className='flex flex-col gap-5 p-5 text-[16px]' onSubmit={handleSubmit(handleSaveChange)}>
+        <h1 className='text-center text-2xl'>Personal Information</h1>
         <TextField disabled label='username' value={user.username} />
         <div className='flex gap-4'>
           <TextField
@@ -53,9 +53,12 @@ function MyAcount() {
         <TextField label='phone' defaultValue={user.phone} {...register('phone')} />
         <TextField label='email' defaultValue={user.email} {...register('email')} />
         <TextField label='city' defaultValue={user.address.city} {...register('address.city')} />
-        <Button variant='outlined' type='submit'>
-          Save Changes
-        </Button>
+        <button
+          type='submit'
+          className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
+        >
+          Save
+        </button>
       </form>
     </div>
   )

@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
 import LogoutIcon from '@mui/icons-material/Logout'
 import LockIcon from '@mui/icons-material/Lock'
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/HighApp.context'
 const user = {
   address: {
     geolocation: {
@@ -26,8 +28,9 @@ const user = {
 }
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
+  const { setisAuthenticated } = useContext(AppContext)
   return (
-    <div className='h-max w-screen lg:h-screen-80'>
+    <div className='h-max lg:h-screen-80'>
       <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>
         <div className='rounded shadow-box-2 lg:w-1/4'>
           <div className='text-center lg:p-5'>
@@ -50,7 +53,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
               }}
               className='p-5'
             >
-              <AccountBoxIcon className='align-text-bottom' /> Thông tin cá nhân
+              <AccountBoxIcon className='align-text-bottom' /> Personal information
             </NavLink>
             <NavLink
               to={'/changepassword'}
@@ -61,7 +64,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
               }}
               className='p-5'
             >
-              <LockIcon className='align-text-bottom' /> Đổi mật khẩu
+              <LockIcon className='align-text-bottom' /> Change Password
             </NavLink>
             <NavLink
               to={'/'}
@@ -71,8 +74,9 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
                   backgroundColor: isActive ? '#edf1f5' : ''
                 }
               }}
+              onClick={() => setisAuthenticated(false)}
             >
-              <LogoutIcon className='align-text-bottom' /> Đăng xuất
+              <LogoutIcon className='align-text-bottom' /> Log out
             </NavLink>
           </div>
         </div>
