@@ -20,7 +20,7 @@ function AsideFilter() {
   }
 
   const clearAllFilter = () => {
-    setFilters({} as FiltersType)
+    setFilters({ sortType: 'none' } as FiltersType)
   }
 
   return (
