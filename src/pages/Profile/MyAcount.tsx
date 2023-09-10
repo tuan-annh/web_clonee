@@ -53,10 +53,7 @@ function MyAcount() {
         <TextField label='phone' defaultValue={user.phone} {...register('phone')} />
         <TextField label='email' defaultValue={user.email} {...register('email')} />
         <TextField label='city' defaultValue={user.address.city} {...register('address.city')} />
-        <button
-          type='submit'
-          className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
-        >
+        <button type='submit' className='rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'>
           Save
         </button>
       </form>

@@ -5,6 +5,8 @@ import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Tex
 import { useState } from 'react'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useForm } from 'react-hook-form'
+import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
 
 interface RegisterFormData {
   username: string
@@ -19,7 +21,6 @@ interface RegisterFormData {
 function Register() {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
-  const [errorMessage, setErrorMessage] = useState<string>('')
   const {
     register,
     handleSubmit,
@@ -42,9 +43,9 @@ function Register() {
         phone: data.phone
       })
       if (responsive.status === 200) {
-        setErrorMessage('Sign Up Success')
+        toast.success('Registration successful.')
       } else {
-        setErrorMessage('Registration Failed')
+        toast.error('Registration failed.')
       }
     } catch (error) {
       console.log(error)
@@ -59,16 +60,16 @@ function Register() {
       }}
     >
       <div className='h-full w-full bg-white p-8 shadow-box-1 md:m-auto md:h-max md:max-w-3xl md:rounded-xl'>
-        <h1 className=' pb-5 text-center uppercase'>Register</h1>
+        <h1 className=' pb-5 text-center text-xl uppercase'>Register an account</h1>
         <form action='' className='flex flex-col ' onSubmit={handleSubmit(handleRegister)}>
           <TextField
             label='UserName'
             type='text'
             {...register('username', {
-              required: { value: true, message: 'UserName là bắt buộc' },
+              required: { value: true, message: 'UserName is required.' },
               minLength: {
                 value: 4,
-                message: 'UserName phải có ít nhất 4 kí tự'
+                message: 'UserName must have at least 4 characters.'
               }
             })}
           />
@@ -94,7 +95,7 @@ function Register() {
               label='Password'
               autoComplete='on'
               {...register('password', {
-                required: { value: true, message: 'Password là bắt buộc' }
+                required: { value: true, message: 'Password is required.' }
               })}
             />
           </FormControl>
@@ -122,9 +123,9 @@ function Register() {
               {...register('confirm_password', {
                 required: {
                   value: true,
-                  message: 'Nhập lại password là bắt buộc'
+                  message: 'Re-entering the password is required.'
                 },
-                validate: (value) => value === getValues('password') || 'Nhập lại password không khớp'
+                validate: (value) => value === getValues('password') || 'The re-entered password does not match.'
               })}
             />
           </FormControl>
@@ -134,7 +135,7 @@ function Register() {
             label='FirstName'
             type='text'
             {...register('firstname', {
-              required: { value: true, message: 'FirstName là bắt buộc' }
+              required: { value: true, message: 'FirstName is required.' }
             })}
           />
           <Box className='mb-3 h-5 text-left text-red-900'>{errors.firstname?.message}</Box>
@@ -143,7 +144,7 @@ function Register() {
             label='LastName'
             type='text'
             {...register('lastname', {
-              required: { value: true, message: 'LastName là bắt buộc' }
+              required: { value: true, message: 'LastName is required.' }
             })}
           />
           <Box className='mb-3 h-5 text-left text-red-900'>{errors.lastname?.message}</Box>
@@ -152,10 +153,10 @@ function Register() {
             label='Email'
             type='email'
             {...register('email', {
-              required: { value: true, message: 'Email là bắt buộc' },
+              required: { value: true, message: 'Email is required.' },
               pattern: {
                 value: /^\S+@\S+\.\S+$/,
-                message: 'Email không đúng định dạng'
+                message: 'The email is not in the correct format.'
               }
             })}
           />
@@ -165,10 +166,10 @@ function Register() {
             label='Phone'
             type='tel'
             {...register('phone', {
-              required: { value: true, message: 'Phone là bắt buộc' },
+              required: { value: true, message: 'Phone is required.' },
               pattern: {
                 value: /^\+?[0-9][0-9]{9,10}$/,
-                message: 'Chưa đúng định dạng'
+                message: 'The phone number is not correct.'
               }
             })}
           />
@@ -181,10 +182,12 @@ function Register() {
             Register
           </button>
 
-          <NavLink to={path.login} className='hover:text-red pt-5 text-right underline'>
-            Go to Login
-          </NavLink>
-          <p className='h-8 text-center text-red-600'>{errorMessage}</p>
+          <div className='mt-2 text-center'>
+            <span className='opacity-60'>Do you already have an account?</span>{' '}
+            <NavLink to={path.login} className='pt-5 text-right hover:text-hover'>
+              Login.
+            </NavLink>
+          </div>
         </form>
       </div>
     </div>
