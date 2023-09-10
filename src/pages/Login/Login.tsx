@@ -8,6 +8,7 @@ import { authApi } from '../../apis/auth.api'
 import { toast } from 'react-toastify'
 import { useQuery } from '@tanstack/react-query'
 import { userApi } from '../../apis/user.api'
+import { setProfileToLS } from '../../utils/auth.util'
 
 function Login() {
   const { setisAuthenticated, setUserId } = useContext(AppContext)
@@ -57,6 +58,9 @@ function Login() {
         console.log('User', loginUser)
 
         setisAuthenticated(true)
+
+        const profileData = { username, password }
+        setProfileToLS(profileData)
       }
       //   // Assuming the response includes authentication data
 
