@@ -8,6 +8,7 @@ import ProductComponent from '../../components/ProductComponent/ProductComponent
 import { useAppDispatch } from '../../redux/hooks' // Import the Redux dispatch function
 import { addCart } from '../../redux/allCart'
 import { capitalizeFirstLetter } from '../../utils/utils'
+import { CircularProgress } from '@mui/material'
 
 function ProductDetail() {
   // Define a state variable to keep track of the quantity
@@ -27,12 +28,12 @@ function ProductDetail() {
   const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
 
-  const { data: productDetail } = useQuery(['productDetail', id], () => {
+  const { data: productDetail, isFetching } = useQuery(['productDetail', id], () => {
     if (id) return productApi.getProductDetail(id)
   })
 
   // Fetch similar products
-  const { data: similarProducts, isFetching } = useQuery(['similarProducts', productDetail?.data?.category], () => {
+  const { data: similarProducts } = useQuery(['similarProducts', productDetail?.data?.category], () => {
     return productDetail ? productApi.getProductsByCategory(productDetail.data.category) : null
   })
 
@@ -63,7 +64,9 @@ function ProductDetail() {
   }
 
   return isFetching ? (
-    <div className='h-screen'>Loading...</div>
+    <div className='relative h-screen text-center'>
+      <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
+    </div>
   ) : (
     productDetail && (
       <div className='mx-auto w-full p-6 px-[60px]'>
