@@ -29,6 +29,7 @@ function Header() {
               <NavLink to={path.contact}>Contact Us</NavLink>
             </div>
           </div>
+
           <div className='flex justify-end gap-3'>
             <div className=' mx-auto flex max-w-md justify-end'>
               <form action='' className='relative mx-auto w-max'>
@@ -48,6 +49,7 @@ function Header() {
                 </svg>
               </form>
             </div>
+
             {isAuthenticated ? (
               <div className='flex items-center gap-1 hover:text-hover'>
                 {/* <svg
