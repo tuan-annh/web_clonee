@@ -30,7 +30,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
     queryFn: () => userApi.getUserData(userId || undefined)
   })
 
-  console.log(cartData)
+  // console.log(cartData)
 
   const appContextValues = { isAuthenticated, setisAuthenticated, userData, cartData, setUserId, setCartData }
 

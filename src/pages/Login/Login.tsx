@@ -55,14 +55,8 @@ function Login() {
       // if (response.status === 200) {
       //   // Assuming the response includes authentication data
 
-      //   // const data = response.data;
-
-      //   // Update the authentication status using the context
-      toast.success('Login successful!')
+      // Update the authentication status using the context
       setisAuthenticated(true) // Update this based on your API response
-      // } else {
-      //   // Handle authentication error here
-      // }
     } catch (error) {
       toast.error('Wrong username or password.')
       setLoginError('Wrong username or password.')

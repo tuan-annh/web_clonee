@@ -27,7 +27,7 @@ const user = {
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='h-max w-screen lg:h-screen-80'>
+    <div className='h-max lg:h-screen-80'>
       <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>
         <div className='rounded shadow-box-2 lg:w-1/4'>
           <div className='text-center lg:p-5'>
