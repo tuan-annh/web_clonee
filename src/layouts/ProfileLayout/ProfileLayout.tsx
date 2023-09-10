@@ -1,31 +1,32 @@
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
-const user = {
-  address: {
-    geolocation: {
-      lat: '-37.3159',
-      long: '81.1496'
-    },
-    city: 'kilcoole',
-    street: 'new road',
-    number: 7682,
-    zipcode: '12926-3874'
-  },
-  id: 1,
-  email: 'john@gmail.com',
-  username: 'johnd',
-  password: 'm38rmF$',
-  name: {
-    firstname: 'john',
-    lastname: 'doe'
-  },
-  phone: '1-570-236-7033',
-  __v: 0
-}
+// const user = {
+//   address: {
+//     geolocation: {
+//       lat: '-37.3159',
+//       long: '81.1496'
+//     },
+//     city: 'kilcoole',
+//     street: 'new road',
+//     number: 7682,
+//     zipcode: '12926-3874'
+//   },
+//   id: 1,
+//   email: 'john@gmail.com',
+//   username: 'johnd',
+//   password: 'm38rmF$',
+//   name: {
+//     firstname: 'john',
+//     lastname: 'doe'
+//   },
+//   phone: '1-570-236-7033',
+//   __v: 0
+// }
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
-  const { setisAuthenticated } = useContext(AppContext)
+  const { setisAuthenticated, userData } = useContext(AppContext)
+  // console.log(userData)
   return (
     <div className='h-max lg:h-screen-80'>
       <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>
@@ -37,7 +38,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
               className='mx-auto w-1/6 lg:w-1/4'
             />
             <p className='font-semibold capitalize tracking-widest lg:mt-3'>
-              {user.name.firstname} {user.name.lastname}
+              {userData?.data.name.firstname} {userData?.data.name.lastname}
             </p>
           </div>
           <div className='mt-2 flex flex-col lg:mt-10'>

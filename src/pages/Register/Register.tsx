@@ -40,7 +40,8 @@ function Register() {
         password: data.password,
         name: { firstname: data.firstname, lastname: data.lastname },
         email: data.email,
-        phone: data.phone
+        phone: data.phone,
+        id: Math.random()
       })
       if (responsive.status === 200) {
         toast.success('Registration successful.')
