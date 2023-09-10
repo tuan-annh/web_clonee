@@ -70,16 +70,18 @@ function ProductDetail() {
         <div>
           <section className='body-font bg-white text-gray-700'>
             <div className='mx-auto max-w-6xl px-5 py-12 sm:py-24 md:py-32 lg:py-48 xl:py-52'>
-              <div className='mx-auto md:flex   '>
-                <div className='relative flex w-1/2 items-center justify-center bg-product-bg'>
-                  <img
-                    style={{ mixBlendMode: 'multiply' }}
-                    alt={productDetail.data.title}
-                    className='scale-50'
-                    src={productDetail.data.image}
-                  />
+              <div className='mx-auto md:flex '>
+                <div className='md:w-1/2'>
+                  <div className='relative w-full rounded bg-product-bg pt-[100%]'>
+                    <img
+                      style={{ mixBlendMode: 'multiply' }}
+                      alt={productDetail.data.title}
+                      className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50'
+                      src={productDetail.data.image}
+                    />
+                  </div>
                 </div>
-                <div className='mt- w-1/2 md:pl-10'>
+                <div className='mt- md:w-1/2 md:pl-10'>
                   <h2 className='title-font my-2 text-sm tracking-widest text-gray-500'>
                     Home / {capitalizeFirstLetter(productDetail.data.category)}
                   </h2>
