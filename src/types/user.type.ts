@@ -6,6 +6,7 @@ export interface User {
     firstname: string
     lastname: string
   }
+  id: number
   address?: {
     city: string
     street: string

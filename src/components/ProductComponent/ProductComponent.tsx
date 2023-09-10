@@ -12,7 +12,8 @@ import { addCart } from '../../redux/allCart'
 
 interface ProductComponentInteface {
   product: Product
-  type: ProductViewType //type ở đây là kiểu component cho grid hay list
+  type: ProductViewType
+  //type ở đây là kiểu component cho grid hay list
 }
 
 // CHÚ Ý: Chỉ có mỗi trang ProductList dùng đến kiểu list thôi nên các phần khác mn auto cho nó kiểu Grid (Như trang home hay chi tiết sp)
