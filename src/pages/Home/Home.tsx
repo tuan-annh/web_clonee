@@ -3,6 +3,8 @@ import ProductComponent from '../../components/ProductComponent/ProductComponent
 import { productApi } from '../../apis/productApi.api'
 import { NavLink } from 'react-router-dom'
 import path from '../../constants/path'
+import LabelBenefits from '../../components/LabelBenefits/LabelBenefits'
+import Subcribe from '../../components/Subcribe/Subcribe'
 
 function Home() {
   const { data: ProductsData } = useQuery({
@@ -42,7 +44,12 @@ function Home() {
           }}
         ></div>
       </div>
-      <div className='mx-8 grid grid-cols-3 py-7'>
+      {/* <div className='mx-8 grid grid-cols-1 py-7 sm:grid-cols-3'>
+        {ProductsData?.data
+          .slice(0, 3)
+          .map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
+      </div> */}
+      <div className='mx-8 grid grid-cols-1 py-7 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {ProductsData?.data
           .slice(0, 3)
           .map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
@@ -92,7 +99,7 @@ function Home() {
           </NavLink>
         </div>
         <div
-          className='flex  h-screen items-center justify-center bg-cover bg-no-repeat'
+          className='flex h-screen items-center justify-center bg-cover bg-no-repeat'
           style={{
             backgroundImage:
               'url("https://ohey-demo.myshopify.com/cdn/shop/files/1_ad0200aa-5c69-4e02-88a6-a32072ef20b2_1080x.jpg?v=1635404887")'
@@ -103,7 +110,7 @@ function Home() {
         <h2 className='mx-auto pt-10 text-center text-[32px] font-bold'>Feature Products</h2>
         <div className='mx-8 my-10 grid grid-cols-2 gap-16'>
           <div
-            className='no-repeat relative h-screen bg-cover'
+            className='relative h-screen bg-cover bg-no-repeat '
             style={{
               backgroundImage:
                 'url("https://ohey-demo.myshopify.com/cdn/shop/files/8_d5267630-2b25-4dd2-991d-b51da396701f_900x.jpg?v=1634280975")'
@@ -116,7 +123,7 @@ function Home() {
             </div>
           </div>
           <div
-            className='no-repeat relative h-screen bg-cover'
+            className='relative h-screen bg-cover bg-no-repeat'
             style={{
               backgroundImage: 'url("https://ohey-demo.myshopify.com/cdn/shop/files/9_900x.jpg?v=1634280810")'
             }}
@@ -141,7 +148,7 @@ function Home() {
         <p className='mt-1 font-bold'>Jason</p>
         <p className='text-center text-sm font-bold'></p>
       </div>
-      <div className='grid grid-cols-3 px-7 pt-10'>
+      {/* <div className='grid grid-cols-3 px-7 pt-10'>
         <div className='my-5 flex-col items-center text-center'>
           <div className='flex justify-center'>
             <svg className='h-9 w-9' xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'>
@@ -169,11 +176,10 @@ function Home() {
           <p className='my-5 font-bold'>30 Days Return</p>
           <p className=''>Return it within 20 day for an exchange</p>
         </div>
-      </div>
-      <div className='grid grid-cols-6'>
-        <div className=''></div>
-      </div>
-      <div className='m-auto my-7 text-center'>
+      </div> */}
+      <LabelBenefits />
+
+      {/* <div className='m-auto my-7 text-center'>
         <div className='my-4'>
           <h2 className='mx-auto pt-10 text-center text-[32px] font-bold'>Let's Stay In Touch</h2>
           <p className='my-10'>
@@ -198,7 +204,8 @@ function Home() {
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
+      <Subcribe />
     </main>
   )
 }
