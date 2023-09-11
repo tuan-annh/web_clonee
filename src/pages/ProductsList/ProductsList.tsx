@@ -31,7 +31,7 @@ function ProductsList() {
   const params = useParams() as unknown as ParamsInterface
   const [productView, setProductView] = useState<ProductViewType>('grid')
   const [productsData, setProductsData] = useState({} as ProductsListType)
-  const [filters, setFilters] = useState({} as FiltersType)
+  const [filters, setFilters] = useState({ sortType: 'none' } as FiltersType)
   const [showModal, setShowModal] = useState(false)
 
   const { data: categoriesData, isInitialLoading: isFirstAsideLD } = useQuery({
@@ -55,7 +55,7 @@ function ProductsList() {
   return (
     <ProductsContext.Provider value={{ filters, setFilters, categoriesData }}>
       <div
-        className='flex min-h-screen items-center justify-center bg-slate-300'
+        className='flex min-h-screen w-screen items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
         style={{
           backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/bg-breadcrumb_1920x.jpg?v=1632273468)'
         }}
@@ -76,7 +76,7 @@ function ProductsList() {
           <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
         </div>
       ) : (
-        <div className='flex px-4 py-16'>
+        <div className='flex min-h-screen px-4 py-16'>
           <div className='sticky top-0 hidden min-w-[240px] lg:block'>
             <AsideFilter />
           </div>
@@ -157,7 +157,7 @@ function ProductsList() {
               )}
               <div className={classNames('duration-500 ease-in-out', { 'translate-y-5 opacity-0': isFetching })}>
                 {productView === productViewList.grid ? (
-                  <div className='grid pb-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5'>
+                  <div className='grid grid-cols-1 pb-20 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5'>
                     {productsData[0] &&
                       productsData?.map((product, index) => (
                         <ProductComponent product={product} key={index} type='grid' />
