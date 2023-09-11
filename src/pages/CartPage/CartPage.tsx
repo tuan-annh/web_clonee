@@ -41,14 +41,17 @@ export default function CartPage() {
                 <div
                   key={index}
                   className='lg:gap-18 mr-2 flex items-center justify-between rounded border-b-2 border-slate-200 py-5'
-                  style={{ backgroundColor: item.checkbox ? '#ccc' : 'transparent' }}
                 >
-                  <input
-                    type='checkbox'
-                    className='cursor-pointer self-center p-5'
-                    checked={item.checkbox}
-                    onChange={() => dispatch(toggleCheckbox(item.id))}
-                  />
+                  <div
+                    className='flex h-4 w-4 cursor-pointer items-center justify-center rounded border border-main text-white lg:h-6 lg:w-6'
+                    onClick={() => dispatch(toggleCheckbox(item.id))}
+                    style={{ backgroundColor: item.checkbox ? '#c7ab62' : 'transparent' }}
+                  >
+                    <svg fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='h-5 w-5'>
+                      <path strokeLinecap='round' strokeLinejoin='round' d='M4.5 12.75l6 6 9-13.5' />
+                    </svg>
+                  </div>
+
                   <img src={item.image} alt='' className='h-36 w-36 object-contain' />
                   <div className='w-2/5 text-start'>
                     <h4 className='font-semibold'>{item.title}</h4>
@@ -78,7 +81,7 @@ export default function CartPage() {
                         <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 12h-15' />
                       </svg>
                     </button>
-                    <span className='w-10 rounded border-2 border-main px-2 text-center'>{item.count}</span>
+                    <span className='w-10 rounded border-2 border-slate-300 px-2 text-center'>{item.count}</span>
                     <button className='hover:text-hover' onClick={() => handleIncreaseProduct(item.id)}>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -130,122 +133,91 @@ export default function CartPage() {
               ))}
             </div>
 
-            {allListCard.filter((item) => item.checkbox === true).length ? (
-              <div className='fixed bottom-0 left-0 right-0 h-max rounded bg-slate-100 p-8 lg:static lg:w-1/3'>
-                <h3 className='border-b-2 border-main pb-2 text-start text-2xl font-bold'>Order Summary</h3>
+            <div className='fixed bottom-0 left-0 right-0 h-max rounded bg-slate-100 p-8 lg:static lg:w-1/3'>
+              <h3 className='border-b-2 border-main pb-2 text-start text-2xl font-bold'>Order Summary</h3>
 
-                {/* <table className='my-4 w-full table-auto'>
-                  <thead className=''>
-                    <th className='w-2/3 text-start'>Product's name</th>
-                    <th className='w-1/6'>Quantity</th>
-                    <th className='w-1/6'>Price</th>
-                  </thead>
-                  <tbody>
-                    {allListCard
-                      .filter((item) => item.checkbox === true)
-                      .map((item, index) => (
-                        <tr key={index} className='border-b-2 border-slate-300'>
-                          <td className='w-2/3 text-start'>{item.title}</td>
-                          <td className='w-1/6 text-center'>{item.count}</td>
-                          <td className='w-1/6 text-center'>{(Number(item.price) * 0.8).toFixed(2)}</td>
-                        </tr>
-                      ))}
-                    <tr>
-                      <td className='w-2/3 text-start'>Order Total</td>
-                      <td className='w-1/6'></td>
-                      <td className='w-1/6 text-center'>
-                        {allListCard
-                          .filter((item) => item.checkbox === true)
-                          .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
-                          .toFixed(2)}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table> */}
-                <div className='my-3 flex justify-between'>
-                  <span className='font-semibold uppercase'>
-                    Items{' '}
-                    {allListCard.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
-                  </span>
-                  <span>
-                    ${' '}
-                    {allListCard
-                      .filter((item) => item.checkbox === true)
-                      .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
-                      .toFixed(2)}
-                  </span>
-                </div>
+              <div className='my-3 flex justify-between'>
+                <span className='font-semibold uppercase'>
+                  Items {allListCard.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
+                </span>
+                <span>
+                  ${' '}
+                  {allListCard
+                    .filter((item) => item.checkbox === true)
+                    .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
+                    .toFixed(2)}
+                </span>
+              </div>
 
-                <div className='flex items-center justify-between lg:flex-col lg:items-start lg:gap-2'>
-                  <span className='font-semibold uppercase'>Shipping</span>
-                  <select
-                    name=''
-                    id=''
-                    value={ship}
-                    onChange={(e) => setShip(e.target.value)}
-                    className='cursor-pointer p-2 focus:border-main lg:w-full'
-                  >
-                    <option value='2'>Economy delivery $2</option>
-                    <option value='5'>Urgent delivery $5</option>
-                  </select>
-                </div>
-
-                <div className='my-3 flex flex-wrap lg:flex-col lg:gap-2'>
-                  <span className='basis-full font-semibold uppercase'>promo code</span>
-                  <input className='basis-2/3 p-2' type='text' placeholder='Enter your code' />
-                  <button className='basis-1/3 rounded bg-main p-2 uppercase text-white hover:bg-hover lg:w-1/4'>
-                    Apply
-                  </button>
-                </div>
-
-                <div className='my-5'>
-                  <p className='font-semibold'>Select a payment method</p>
-                  <div>
-                    <input type='radio' id='1' name='pay' />
-                    <label htmlFor='1' className='ml-2 cursor-pointer'>
-                      Payment upon delivery (COD)
-                    </label>
-                  </div>
-                  <div>
-                    <input type='radio' id='2' name='pay' />
-                    <label htmlFor='2' className='ml-2 cursor-pointer'>
-                      Payment by transfer via QR Code
-                    </label>
-                  </div>
-                  <div>
-                    <input type='radio' id='3' name='pay' />
-                    <label htmlFor='3' className='ml-2 cursor-pointer'>
-                      Pay by ATM/NAPAS card
-                    </label>
-                  </div>
-                </div>
-
-                <div className='flex justify-between border-t-2 border-main py-2'>
-                  <span className='font-semibold uppercase'>total cost</span>
-                  <span>
-                    ${' '}
-                    {Number(
-                      allListCard
-                        .filter((item) => item.checkbox === true)
-                        .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
-                        .toFixed(2)
-                    ) + Number(ship)}
-                  </span>
-                </div>
-
-                <button
-                  type='submit'
-                  className='w-full rounded bg-main py-4 text-white shadow-md duration-200 ease-in-out hover:bg-hover '
-                  onClick={() => {
-                    toast.success('Order Success')
-                  }}
+              <div className='flex items-center justify-between lg:flex-col lg:items-start lg:gap-2'>
+                <span className='font-semibold uppercase'>Shipping</span>
+                <select
+                  name=''
+                  id=''
+                  value={ship}
+                  onChange={(e) => setShip(e.target.value)}
+                  className='cursor-pointer p-2 focus:border-main lg:w-full'
                 >
-                  Order
+                  <option value='2'>Economy delivery $2</option>
+                  <option value='5'>Urgent delivery $5</option>
+                </select>
+              </div>
+
+              <div className='my-3 flex flex-wrap lg:flex-col lg:gap-2'>
+                <span className='basis-full font-semibold uppercase'>promo code</span>
+                <input className='basis-2/3 p-2' type='text' placeholder='Enter your code' />
+                <button className='basis-1/3 rounded bg-main p-2 uppercase text-white hover:bg-hover lg:w-1/4'>
+                  Apply
                 </button>
               </div>
-            ) : (
-              <div className='hidden md:block md:w-1/3'></div>
-            )}
+
+              <div className='my-5'>
+                <p className='font-semibold'>Select a payment method</p>
+                <div>
+                  <input type='radio' id='1' name='pay' />
+                  <label htmlFor='1' className='ml-2 cursor-pointer'>
+                    Payment upon delivery (COD)
+                  </label>
+                </div>
+                <div>
+                  <input type='radio' id='2' name='pay' />
+                  <label htmlFor='2' className='ml-2 cursor-pointer'>
+                    Payment by transfer via QR Code
+                  </label>
+                </div>
+                <div>
+                  <input type='radio' id='3' name='pay' />
+                  <label htmlFor='3' className='ml-2 cursor-pointer'>
+                    Pay by ATM/NAPAS card
+                  </label>
+                </div>
+              </div>
+
+              <div className='flex justify-between border-t-2 border-main py-2'>
+                <span className='font-semibold uppercase'>total cost</span>
+                <span>
+                  ${' '}
+                  {allListCard.filter((item) => item.checkbox === true).length
+                    ? Number(
+                        allListCard
+                          .filter((item) => item.checkbox === true)
+                          .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
+                          .toFixed(2)
+                      ) + Number(ship)
+                    : 0}
+                </span>
+              </div>
+
+              <button
+                type='submit'
+                className='w-full rounded bg-main py-4 text-white shadow-md duration-200 ease-in-out hover:bg-hover '
+                onClick={() => {
+                  toast.success('Order Success')
+                }}
+              >
+                Order
+              </button>
+            </div>
           </div>
         </div>
       ) : (

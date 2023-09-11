@@ -25,7 +25,7 @@ export const allPayCart = createSlice({
     addCart: (state, action: PayloadAction<Cart>) => {
       const existingProduct = state.find((product) => product.id === action.payload.id)
       if (existingProduct) {
-        existingProduct.count += 1
+        existingProduct.count += action.payload.count
       } else {
         state.push(action.payload)
       }
