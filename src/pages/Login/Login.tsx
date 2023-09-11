@@ -6,13 +6,21 @@ import { SetStateAction, useContext, useState } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
 import { authApi } from '../../apis/auth.api'
 import { toast } from 'react-toastify'
+import { useQuery } from '@tanstack/react-query'
+import { userApi } from '../../apis/user.api'
+import { setProfileToLS } from '../../utils/auth.util'
 
 function Login() {
-  const { setisAuthenticated } = useContext(AppContext)
+  const { setisAuthenticated, setUserId } = useContext(AppContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
   const [showPassword, setShowPassword] = useState<boolean>(false)
+
+  const { data: usersData } = useQuery({
+    queryKey: ['users'],
+    queryFn: () => userApi.getAllUser()
+  })
 
   const handleUsernameChange = (event: { target: { value: SetStateAction<string> } }) => {
     setUsername(event.target.value)
@@ -43,20 +51,21 @@ function Login() {
 
     try {
       const response = await authApi.loginAccount({ username, password })
-      console.log('Res', response)
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          username: username,
-          password: password
-        })
-      )
 
-      // if (response.status === 200) {
+      if (response.status === 200) {
+        const loginUser = usersData?.data.find((user) => user.username === username)
+        setUserId(loginUser?.id)
+        console.log('User', loginUser)
+
+        setisAuthenticated(true)
+
+        const profileData = { username, password }
+        setProfileToLS(profileData)
+      }
       //   // Assuming the response includes authentication data
 
       // Update the authentication status using the context
-      setisAuthenticated(true) // Update this based on your API response
+      // Update this based on your API response
     } catch (error) {
       toast.error('Wrong username or password.')
       setLoginError('Wrong username or password.')
