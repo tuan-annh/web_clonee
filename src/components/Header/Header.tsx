@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <header className='bg-white-800 h-24 border-b text-black'>
-      <div className='z-10 mx-auto grid grid-cols-8 items-center bg-white px-7 py-6 shadow-md'>
+      <div className='z-10 mx-auto grid w-full grid-cols-8 items-center bg-white px-7 py-6 shadow-md'>
         <div className='col-span-1 bg-white font-bold'>High Ecommerce</div>
         <div className='col-span-7 flex items-center justify-between'>
           <div className='flex gap-6'>
@@ -50,14 +50,6 @@ function Header() {
             </div>
             {isAuthenticated ? (
               <div className='flex items-center gap-1 hover:text-hover'>
-                {/* <svg
-                  fill='currentColor'
-                  className='hover:text:hover'
-                  xmlns='http://www.w3.org/2000/svg'
-                  height='1em'
-                  viewBox='0 0 448 512'
-                ></svg> */}
-                {/* <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div> */}
                 <NavLink to={path.profile}>My Account</NavLink>
               </div>
             ) : (
@@ -74,7 +66,7 @@ function Header() {
                 <NavLink to={path.login}>Login</NavLink>
               </div>
             )}
-            <div className='flex items-center gap-0.5 hover:text-hover'>
+            <div className='flex cursor-pointer items-center gap-0.5 hover:text-hover'>
               <svg
                 fill='currentColor'
                 className='hover:text:hover'
@@ -95,7 +87,7 @@ function Header() {
                 {allListCard.reduce((acc, cur) => acc + cur.count, 0)}
               </div>
             </div>
-            <div className='flex items-center gap-0.5 hover:text-hover'>
+            <div className='flex cursor-pointer items-center gap-0.5 hover:text-hover'>
               <svg
                 fill='currentColor'
                 className='hover:text:hover'

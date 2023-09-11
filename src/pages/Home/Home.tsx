@@ -20,7 +20,7 @@ function Home() {
           <p className='mb-5 text-[44px] font-bold'>Soft And Cozy Sweater</p>
           <p className='mb-8 text-lg'>Holiday shopping with 3% back rewards</p>
           <NavLink className='flex items-center gap-4 hover:gap-8 hover:text-hover' to={path.products}>
-            <p> Expore Now</p>
+            <p>Expore Now</p>
             <span>
               <svg
                 fill='currentColor'
