@@ -58,9 +58,10 @@ function Login() {
         console.log('User', loginUser)
 
         setisAuthenticated(true)
-
-        const profileData = { username, password }
-        setProfileToLS(profileData)
+        if (loginUser) {
+          const profileData = { username, password, id: loginUser.id }
+          setProfileToLS(profileData)
+        }
       }
       //   // Assuming the response includes authentication data
 
