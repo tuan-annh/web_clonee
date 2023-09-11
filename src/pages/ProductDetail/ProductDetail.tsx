@@ -69,7 +69,7 @@ function ProductDetail() {
     </div>
   ) : (
     productDetail && (
-      <div className='mx-auto w-full p-6 px-[60px]'>
+      <div className='px-[60px]: mx-auto w-full p-6'>
         <div>
           <section className='body-font bg-white text-gray-700'>
             <div className='mx-auto max-w-6xl px-5 py-12 sm:py-24 md:py-32 lg:py-48 xl:py-52'>

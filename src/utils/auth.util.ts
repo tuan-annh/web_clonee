@@ -7,7 +7,7 @@ export const clearLS = () => {
   localStorage.removeItem('profile')
 }
 
-export const getProfileFromLS = () => {
+export const getProfileFromLS = (): { username: string; password: string } => {
   const result = localStorage.getItem('profile')
   return result ? JSON.parse(result) : null
 }

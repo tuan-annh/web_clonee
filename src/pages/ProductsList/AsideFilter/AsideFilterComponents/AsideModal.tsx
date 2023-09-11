@@ -39,9 +39,7 @@ function AsideModal({ showModal, setShowModal }: Props) {
         <div
           ref={asideRef}
           onClick={(event) => event.stopPropagation()}
-          className={classNames(
-            'col-span-4 -translate-x-full overflow-y-scroll bg-white transition-transform duration-300 ease-in-out sm:col-span-3 md:col-span-2'
-          )}
+          className='col-span-4 -translate-x-full overflow-y-scroll bg-white transition-transform duration-300 ease-in-out sm:col-span-3 md:col-span-2'
         >
           <div className='flex items-center justify-between bg-main px-6 text-product-bg'>
             <p className='text-sm font-semibold'>Filters</p>
