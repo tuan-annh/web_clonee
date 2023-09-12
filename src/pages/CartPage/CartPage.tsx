@@ -10,6 +10,7 @@ export default function CartPage() {
   const navigate = useNavigate()
   const allListCard = useAppSelector(allCard)
   const dispatch = useAppDispatch()
+
   // console.log(allListCard)
   const handleRemoveCart = (index: number) => {
     if (window.confirm('Do you want to remove this product from your shopping cart?') === true)
