@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import path from '../../constants/path'
 import { authApi } from '../../apis/auth.api'
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Box } from '@mui/material'
@@ -7,6 +7,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useForm } from 'react-hook-form'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
+import classNames from 'classnames'
+import { useQuery } from '@tanstack/react-query'
+import { userApi } from '../../apis/user.api'
 
 interface RegisterFormData {
   username: string
@@ -20,7 +23,9 @@ interface RegisterFormData {
 
 function Register() {
   const [showPassword, setShowPassword] = useState<boolean>(false)
+  const navigate = useNavigate()
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
+  const [debounce, setDebounce] = useState<boolean>(false)
   const {
     register,
     handleSubmit,
@@ -28,40 +33,54 @@ function Register() {
     getValues
   } = useForm<RegisterFormData>()
 
+  const { data: usersData } = useQuery({
+    queryKey: ['users'],
+    queryFn: () => userApi.getAllUser()
+  })
+
   const handleClickShowPassword = () => setShowPassword((show) => !show)
   const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show)
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
   }
   const handleRegister = async (data: RegisterFormData) => {
-    try {
-      const responsive = await authApi.registerAccount({
-        username: data.username,
-        password: data.password,
-        name: { firstname: data.firstname, lastname: data.lastname },
-        email: data.email,
-        phone: data.phone,
-        id: Math.random()
-      })
-      if (responsive.status === 200) {
-        toast.success('Registration successful.')
-      } else {
-        toast.error('Registration failed.')
+    const registerUser = usersData?.data.filter((user) => user.username === data.username)
+
+    if (registerUser && registerUser.length === 0) {
+      try {
+        setDebounce(true)
+        const responsive = await authApi.registerAccount({
+          username: data.username,
+          password: data.password,
+          name: { firstname: data.firstname, lastname: data.lastname },
+          email: data.email,
+          phone: data.phone,
+          id: Math.random()
+        })
+        if (responsive.status === 200) {
+          toast.success('Registration successful.')
+          navigate(path.login)
+        } else {
+          toast.error('Registration failed.')
+        }
+      } catch (error) {
+        console.log(error)
+        setDebounce(false)
       }
-    } catch (error) {
-      console.log(error)
+    } else {
+      toast.error('The account name already exists.')
     }
   }
 
   return (
     <div
-      className=' h-screen w-screen bg-cover bg-no-repeat md:pt-20'
+      className='h-full bg-cover bg-no-repeat md:h-screen md:pt-20'
       style={{
         backgroundImage: 'url(https://chichchoedesign.com/wp-content/uploads/2022/12/thiet-ke-shop-quan-ao-nu.jpg)'
       }}
     >
-      <div className='h-full w-full bg-white p-8 shadow-box-1 md:m-auto md:h-max md:max-w-3xl md:rounded-xl'>
-        <h1 className=' pb-5 text-center text-xl uppercase'>Register an account</h1>
+      <div className='h-full w-full bg-white p-8 md:m-auto md:h-max md:max-w-2xl md:rounded-xl md:shadow-box-1'>
+        <h1 className='pb-5 text-center text-xl uppercase'>Register an account</h1>
         <form action='' className='flex flex-col ' onSubmit={handleSubmit(handleRegister)}>
           <TextField
             label='UserName'
@@ -69,8 +88,8 @@ function Register() {
             {...register('username', {
               required: { value: true, message: 'UserName is required.' },
               minLength: {
-                value: 4,
-                message: 'UserName must have at least 4 characters.'
+                value: 5,
+                message: 'UserName must have at least 5 characters.'
               }
             })}
           />
@@ -105,7 +124,7 @@ function Register() {
           <FormControl sx={{ width: '100%' }} variant='outlined'>
             <InputLabel htmlFor='outlined-adornment-password'>Confirm Password</InputLabel>
             <OutlinedInput
-              id='outlined-adornment-password'
+              id='outlined-adornment-confirm-password'
               type={showConfirmPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position='end'>
@@ -178,7 +197,10 @@ function Register() {
 
           <button
             type='submit'
-            className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
+            disabled={debounce}
+            className={classNames('rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover', {
+              'cursor-not-allowed': debounce
+            })}
           >
             Register
           </button>

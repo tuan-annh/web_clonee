@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
+import { clearLS } from '../../utils/auth.util'
 // const user = {
 //   address: {
 //     geolocation: {
@@ -100,7 +101,10 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
                   backgroundColor: isActive ? '#edf1f5' : ''
                 }
               }}
-              onClick={() => setisAuthenticated(false)}
+              onClick={() => {
+                setisAuthenticated(false)
+                clearLS()
+              }}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
