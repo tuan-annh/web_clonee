@@ -47,13 +47,16 @@ export const allPayCart = createSlice({
     reduceCart: (state, action: PayloadAction<string | number>) => {
       const existingProduct = state.find((product) => product.id === action.payload)
       if (existingProduct) existingProduct.count -= 1
+    },
+    paymentCart: (state) => {
+      return [...state].filter((item) => !item.checkbox)
     }
   }
 })
 
-export const { addCart, toggleCheckbox, removeCart, increaseCart, reduceCart } = allPayCart.actions
+export const { addCart, toggleCheckbox, removeCart, increaseCart, reduceCart, paymentCart } = allPayCart.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const allCard = (state: RootState) => state.allPayCart
+export const allCart = (state: RootState) => state.allPayCart
 
 export default allPayCart
