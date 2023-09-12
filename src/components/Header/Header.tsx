@@ -3,17 +3,17 @@ import { AppContext } from '../../contexts/HighApp.context'
 import { NavLink, useNavigate } from 'react-router-dom'
 import path from '../../constants/path'
 import { useSelector } from 'react-redux'
-import { allCard } from '../../redux/allCart'
 import CartIcon from '../Icons/CartIcon'
 
 import SearchBar from './SearchBar/SearchBar'
 import HeaderMobile from './HeaderMobile/HeaderMobile'
 import ProfileIcon from '../Icons/ProfileIcon'
 import HeartIcon from '../Icons/HeartIcon'
+import { allCart } from '../../redux/allCart'
 
 function Header() {
   const navigate = useNavigate()
-  const allListCard = useSelector(allCard)
+  const allListCart = useSelector(allCart)
   const { isAuthenticated } = useContext(AppContext)
 
   //   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -118,7 +118,7 @@ function Header() {
           >
             <CartIcon />
             <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>
-              {allListCard.reduce((acc, cur) => acc + cur.count, 0)}
+              {allListCart.reduce((acc, cur) => acc + cur.count, 0)}
             </div>
           </div>
           <div className='flex cursor-pointer items-center gap-0.5 hover:text-hover'>
