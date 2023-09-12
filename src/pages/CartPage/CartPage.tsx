@@ -1,17 +1,23 @@
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { allCard, increaseCart, reduceCart, removeCart, toggleCheckbox } from '../../redux/allCart'
+import { allCart, increaseCart, paymentCart, reduceCart, removeCart, toggleCheckbox } from '../../redux/allCart'
 import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { userApi } from '../../apis/user.api'
+import { AppContext } from '../../contexts/HighApp.context'
+import { getTodayDate } from '../../utils/utils'
+import { CartProduct } from '../../types/user.type'
 
 export default function CartPage() {
   const [ship, setShip] = useState<string>('2')
   const navigate = useNavigate()
-  const allListCard = useAppSelector(allCard)
+  const allListCart = useAppSelector(allCart)
+  const { userData } = useContext(AppContext)
   const dispatch = useAppDispatch()
 
-  // console.log(allListCard)
+  // console.log(allListCart)
+
   const handleRemoveCart = (index: number) => {
     if (window.confirm('Do you want to remove this product from your shopping cart?') === true)
       dispatch(removeCart(index))
@@ -31,14 +37,37 @@ export default function CartPage() {
     dispatch(increaseCart(id))
   }
 
+  const checkOut = () => {
+    const isCheckout = allListCart.find((item) => item.checkbox)
+    if (isCheckout) {
+      toast.success('Order Success')
+      if (userData) {
+        userApi.addUserCart({
+          date: getTodayDate(),
+          userId: userData.data.id,
+          products: allListCart.map((item) => {
+            if (item.checkbox) {
+              return {
+                productId: Number(item.id),
+                quantity: item.count
+              }
+            }
+            return [] as unknown as CartProduct
+          })
+        })
+      }
+      dispatch(paymentCart())
+    }
+  }
+
   return (
     <>
-      {allListCard.length ? (
+      {allListCart.length ? (
         <div className='mt-10 w-full text-sm lg:h-screen lg:text-base'>
           <h1 className='mb-3 text-center text-2xl font-bold md:text-4xl'>Shopping Cart</h1>
           <div className='mx-auto flex h-5/6 flex-col gap-3 lg:w-11/12 lg:flex-row lg:gap-8'>
             <div className='mx-auto h-full w-11/12 overflow-auto lg:w-2/3'>
-              {allListCard.map((item, index) => (
+              {allListCart.map((item, index) => (
                 <div
                   key={index}
                   className='lg:gap-18 mr-2 flex items-center justify-between rounded border-b-2 border-slate-200 py-5'
@@ -143,11 +172,11 @@ export default function CartPage() {
 
               <div className='flex justify-between md:my-3'>
                 <span className='font-semibold uppercase'>
-                  Items {allListCard.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
+                  Items {allListCart.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
                 </span>
                 <span>
                   ${' '}
-                  {allListCard
+                  {allListCart
                     .filter((item) => item.checkbox === true)
                     .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
                     .toFixed(2)}
@@ -202,9 +231,9 @@ export default function CartPage() {
                 <span className='font-semibold uppercase'>total cost</span>
                 <span>
                   ${' '}
-                  {allListCard.filter((item) => item.checkbox === true).length
+                  {allListCart.filter((item) => item.checkbox === true).length
                     ? Number(
-                        allListCard
+                        allListCart
                           .filter((item) => item.checkbox === true)
                           .reduce((acc, cur) => acc + cur.count * Number(cur.price) * 0.8, 0)
                           .toFixed(2)
@@ -216,9 +245,7 @@ export default function CartPage() {
               <button
                 type='submit'
                 className='w-full rounded bg-main py-4 text-white shadow-md duration-200 ease-in-out hover:bg-hover '
-                onClick={() => {
-                  toast.success('Order Success')
-                }}
+                onClick={checkOut}
               >
                 Order
               </button>
