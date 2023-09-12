@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { CartInterfaceForPost, User } from '../types/user.type'
+import { CartInterface, User } from '../types/user.type'
 import { http } from './http'
 
 export const userApi = {
@@ -13,7 +13,7 @@ export const userApi = {
   // getUserCart(id?: number | string) {
   //   return id ? http.get(`/carts/user/${id}`) : undefined
   // },
-  addUserCart(body: CartInterfaceForPost) {
+  addUserCart(body: CartInterface) {
     return http.post('carts', body)
   }
 }
