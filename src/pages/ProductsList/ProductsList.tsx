@@ -76,7 +76,7 @@ function ProductsList() {
           <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
         </div>
       ) : (
-        <div className='flex min-h-screen px-4 py-16'>
+        <div className='mx-auto flex min-h-screen max-w-screen-2xl px-4 py-16'>
           <div className='sticky top-0 hidden min-w-[240px] lg:block'>
             <AsideFilter />
           </div>

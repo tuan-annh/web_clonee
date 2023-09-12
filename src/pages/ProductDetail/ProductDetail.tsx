@@ -28,12 +28,12 @@ function ProductDetail() {
   const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
 
-  const { data: productDetail, isFetching } = useQuery(['productDetail', id], () => {
+  const { data: productDetail } = useQuery(['productDetail', id], () => {
     if (id) return productApi.getProductDetail(id)
   })
 
   // Fetch similar products
-  const { data: similarProducts } = useQuery(['similarProducts', productDetail?.data?.category], () => {
+  const { data: similarProducts, isFetching } = useQuery(['similarProducts', productDetail?.data?.category], () => {
     return productDetail ? productApi.getProductsByCategory(productDetail.data.category) : null
   })
 
@@ -69,11 +69,11 @@ function ProductDetail() {
     </div>
   ) : (
     productDetail && (
-      <div className='px-[60px]: mx-auto w-full p-6'>
+      <div className='mx-auto w-full'>
         <div>
           <section className='body-font bg-white text-gray-700'>
-            <div className='mx-auto max-w-6xl px-5 py-12 sm:py-24 md:py-32 lg:py-48 xl:py-52'>
-              <div className='mx-auto md:flex '>
+            <div className='mx-auto max-w-6xl px-5 py-7 sm:py-10 md:py-16 lg:py-20'>
+              <div className='mx-auto md:flex   '>
                 <div className='md:w-1/2'>
                   <div className='relative w-full rounded bg-product-bg pt-[100%]'>
                     <img
@@ -84,7 +84,7 @@ function ProductDetail() {
                     />
                   </div>
                 </div>
-                <div className='mt- md:w-1/2 md:pl-10'>
+                <div className='mt-6 md:w-1/2 md:pl-10'>
                   <h2 className='title-font my-2 text-sm tracking-widest text-gray-500'>
                     Home / {capitalizeFirstLetter(productDetail.data.category)}
                   </h2>
@@ -172,7 +172,7 @@ function ProductDetail() {
                     >
                       Add to Cart
                     </button>
-                    <button className='w-full basis-1/3 rounded border border-main bg-main py-3 text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main'>
+                    <button className='w-full basis-1/3 rounded border border-main  py-3 text-main duration-300 ease-in-out hover:bg-white hover:text-hover'>
                       Add to Wishlist
                     </button>
                   </div>
@@ -188,26 +188,30 @@ function ProductDetail() {
           </section>
 
           <section className='body-font overflow-hidden bg-white text-gray-700'>
-            <div className='container mx-auto flex flex-col items-center justify-center px-5 pb-24'>
+            <div className='container mx-auto flex max-w-5xl flex-col items-center justify-center px-5 pb-16  '>
               <h2 className='border-gray-200pb-5 title-font  mt-6  pb-5  text-center text-3xl font-medium text-gray-900'>
                 Description
               </h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, iusto voluptas! Repellat, beatae?
-                Dolore inventore nisi ut accusamus ea natus quia ratione facilis velit sunt. Iure labore illo,
-                architecto autem temporibus doloribus officia eius debitis quas, sed nam unde ipsam in amet aliquam
-                ducimus laboriosam velit repellat quod beatae repudiandae.
+              <p className='text-justify indent-3'>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt vero, nihil placeat nesciunt quas tempore
+                quia incidunt debitis officiis, minima harum? Ducimus, reprehenderit facilis! Ex a debitis molestiae
+                aperiam modi reiciendis numquam! Est itaque iusto molestiae eveniet praesentium vel, quisquam
+                consectetur officia fugit, at maxime animi voluptas minima corrupti laboriosam qui vitae ducimus labore
+                molestias natus id excepturi repudiandae ipsum quos. Fugit repudiandae quaerat suscipit nostrum soluta
+                aspernatur fugiat adipisci similique harum expedita, recusandae ipsam earum! Ipsum fugit quisquam amet a
+                aliquid distinctio beatae ea maxime tempora, alias aspernatur rerum id eligendi animi, doloremque non
+                accusamus optio ipsam? Error, ad!
               </p>
             </div>
           </section>
 
           <section className='body-font overflow-hidden bg-white text-gray-700'>
             {/* Display similar products */}
-            <div className='mt-6'>
+            <div className='my-6'>
               <h2 className='border-gray-200pb-5 title-font  mt-6  pb-5  text-center text-3xl font-medium text-gray-900'>
                 Similar Products
               </h2>
-              <div className='py-7" mx-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+              <div className='py-7" mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
                 {Array.isArray(limitedSimilarProducts) && limitedSimilarProducts.length > 0 ? (
                   limitedSimilarProducts.map((product) => (
                     <ProductComponent

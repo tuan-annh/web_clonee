@@ -3,11 +3,11 @@ import Header from '../../components/Header/Header'
 
 function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <>
       <Header />
-      {children}
+      <div className='min-h-screen'>{children}</div>
       <Footer />
-    </div>
+    </>
   )
 }
 
