@@ -1,4 +1,6 @@
-function LabelBenefits() {
+import React, { FC } from 'react'
+
+const LabelBenefits: FC = () => {
   return (
     <div className='flex flex-wrap justify-evenly pt-10'>
       <div className='my-5 w-full flex-col items-center text-center md:w-1/3'>
