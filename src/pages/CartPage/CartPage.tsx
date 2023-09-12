@@ -15,7 +15,9 @@ export default function CartPage() {
   const allListCart = useAppSelector(allCart)
   const { userData } = useContext(AppContext)
   const dispatch = useAppDispatch()
+
   // console.log(allListCart)
+
   const handleRemoveCart = (index: number) => {
     if (window.confirm('Do you want to remove this product from your shopping cart?') === true)
       dispatch(removeCart(index))

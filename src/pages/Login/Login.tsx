@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import { useQuery } from '@tanstack/react-query'
 import { userApi } from '../../apis/user.api'
 import { setProfileToLS } from '../../utils/auth.util'
+import Cookies from 'js-cookie'
 
 function Login() {
   const { setisAuthenticated, setUserId } = useContext(AppContext)
@@ -16,6 +17,7 @@ function Login() {
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
   const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [isLoggingIn, setIsLoggingIn] = useState(false) // Add a state for login status
 
   const { data: usersData } = useQuery({
     queryKey: ['users'],
@@ -48,6 +50,12 @@ function Login() {
 
       return
     }
+    if (isLoggingIn) {
+      // If already logging in, return to prevent multiple clicks
+      return
+    }
+
+    setIsLoggingIn(true) // Set the login status to true during login process
 
     try {
       const response = await authApi.loginAccount({ username, password })
@@ -55,7 +63,11 @@ function Login() {
       if (response.status === 200) {
         const loginUser = usersData?.data.find((user) => user.username === username)
         setUserId(loginUser?.id)
+        // Save access token in a cookie
+        Cookies.set('access_token', response.data.token, { expires: 7, secure: true, sameSite: 'strict' })
         console.log('User', loginUser)
+        console.log('API Response:', response.data)
+        toast.success('login successfully')
 
         setisAuthenticated(true)
         if (loginUser) {
@@ -72,6 +84,8 @@ function Login() {
       setLoginError('Wrong username or password.')
 
       // Handle network error
+    } finally {
+      setIsLoggingIn(false) // Reset login status when done
     }
   }
 
@@ -138,9 +152,12 @@ function Login() {
 
             <button
               type='submit'
-              className='w-full rounded border border-main bg-main py-3 text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main'
+              className={`w-full rounded border border-main bg-main py-3 text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main ${
+                isLoggingIn ? 'cursor-not-allowed opacity-60' : ''
+              }`}
+              disabled={isLoggingIn}
             >
-              Log in
+              {isLoggingIn ? 'Logging in...' : 'Log in'}
             </button>
 
             <NavLink to={path.register} className='mt-4 pr-2 text-right underline hover:text-hover '>
