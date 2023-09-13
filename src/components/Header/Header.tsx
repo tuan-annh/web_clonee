@@ -21,8 +21,8 @@ function Header() {
   //     setIsMenuOpen(!isMenuOpen)
   //   }
   return (
-    <header className='header header-sticky no-prepend-box-sticky  h-24  overflow-hidden border-b text-black'>
-      <div className=' z-10 mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 overflow-hidden bg-white px-7 py-6 lg:visible lg:flex'>
+    <header className='z-10 border-b-2 py-2 text-black shadow-md'>
+      <div className='mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 bg-white px-7 py-6 lg:visible lg:flex'>
         <div className=' bg-white  font-bold '>
           <NavLink to={path.home}>High Ecommerce</NavLink>
         </div>
@@ -48,16 +48,16 @@ function Header() {
                 </div>
               </div>
             )} */}
-          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover'>
             <NavLink to={path.home}>Home</NavLink>
           </div>
-          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
             <NavLink to={path.products}>Products</NavLink>
           </div>
-          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
             <NavLink to={path.about}>About</NavLink>
           </div>
-          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
             <NavLink to={path.contact}>Contact Us</NavLink>
           </div>
         </div>
@@ -80,9 +80,8 @@ function Header() {
             </svg>
           </form>
         </div> */}
-        <div className=' items-center justify-items-end gap-3 lg:flex'>
+        <div className='items-center justify-items-end gap-3 lg:flex'>
           <SearchBar />
-
           {isAuthenticated ? (
             <div className='relative'>
               <div className='flex w-full items-center gap-1 '>

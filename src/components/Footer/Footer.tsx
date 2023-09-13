@@ -4,7 +4,7 @@ import ChevronDownIcon from '../Icons/ChevronDownIcon'
 
 function Footer() {
   return (
-    <footer className='footer mt-4 bg-main text-white'>
+    <footer className='footer mt-16 bg-main text-white'>
       <div className='container mx-auto px-9 pb-8 pt-11'>
         <div className='flex flex-wrap'>
           <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>

@@ -19,7 +19,7 @@ function Home() {
       <Banner />
       <div className='w-ful mx-auto mt-10 grid grid-cols-1 gap-12 overflow-hidden px-8 lg:grid-cols-3'>
         <div
-          className='flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat '
+          className='flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat'
           style={{
             backgroundImage:
               'url("https://ohey-demo.myshopify.com/cdn/shop/files/7_8b4ef785-88c3-4bcb-a0b8-f24df4dc3145_540x.jpg?v=1634273714")'
