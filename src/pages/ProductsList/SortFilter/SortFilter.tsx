@@ -77,9 +77,9 @@ function SortFilter() {
         </button>
         <ul
           className={classNames(
-            'absolute top-16 z-10 hidden w-full border opacity-0 duration-300 ease-in-out md:block',
+            'pointer-events-none absolute top-16 z-10 hidden w-full border opacity-0 duration-300 ease-in-out md:block',
             {
-              'scale-100 opacity-100': onDrop,
+              'pointer-events-auto scale-100 opacity-100': onDrop,
               'scale-90': !onDrop
             }
           )}

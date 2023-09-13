@@ -101,11 +101,8 @@ function Login() {
           <div
             style={{
               backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/logo_130x@2x.png?v=1630570943)',
-
               backgroundRepeat: 'no-repeat',
-
               height: '40px',
-
               width: '100px'
             }}
           ></div>
