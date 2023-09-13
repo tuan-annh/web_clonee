@@ -6,6 +6,7 @@ import App from './App'
 import AppProvider from './contexts/HighApp.context'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
+import { ThemeProvider, createTheme } from '@mui/material'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,17 +15,27 @@ const queryClient = new QueryClient({
   }
 })
 
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#c7ab62'
+    }
+  }
+})
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
-  <Provider store={store}>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
         <AppProvider>
-          <App />
+          <ThemeProvider theme={customTheme}>
+            <App />
+          </ThemeProvider>
         </AppProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  </Provider>
+      </Provider>
+    </QueryClientProvider>
+  </BrowserRouter>
 
   // </React.StrictMode>,
 )

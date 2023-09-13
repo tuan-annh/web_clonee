@@ -1,19 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ChevronDownIcon from '../Icons/ChevronDownIcon'
 
 function Footer() {
   return (
-    <footer className='bg-black text-white'>
+    <footer className='bg-main text-white'>
       <div className='container mx-auto px-9 pb-8 pt-11'>
         <div className='flex flex-wrap'>
-          <div className='w-full px-4 sm:w-1/3'>
+          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
             <h2 className='mb-2 text-lg font-bold'>High Ecommerce</h2>
             <p className='my-7 text-white/50'>
               Since 2013 we have been creating industrial design, residential architecture, commercial interiors. Chase
               mice attack feet but rub face on everything cepteur sint occaecat cupidatat proident.
             </p>
             <h3 className='my-7 font-bold'>Follow Us</h3>
-            <div className='flex gap-5'>
+            <div className='hidden gap-5 md:flex'>
               <Link className='' to={''}>
                 <svg
                   fill='currentColor'
@@ -49,31 +50,36 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className='w-full px-4 sm:w-1/3'>
-            <h3 className=' mb-2 font-bold'>HERE TO HELP</h3>
-            <p className='text-white/50'>
-              Have a question? You may find an answer in our FAQs. But you can also contact us:
-            </p>
-            <div className='py-3'>
-              <h3 className='font-bold'>Order by Phone</h3>
-              <p className='text-white/50'>Available everyday</p>
-              <p className='text-sm text-white/50 underline'>
-                <a className='link-underline-opacity-50-hover ' href='0333344444'>
-                  0333344444
-                </a>
+          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
+            <h3 className=' mb-2 font-bold'>
+               <span>HERE TO HELP</span>
+            <ChevronDownIcon/>
+            </h3>
+            <div className='hidden md:block'>
+              <p className='text-white/50'>
+                Have a question? You may find an answer in our FAQs. But you can also contact us:
               </p>
-            </div>
-            <div className='py-3'>
-              <h3 className='font-bold'>Email Us</h3>
-              <p className='text-white/50'>Get in touch by email</p>
-              <p className='text-sm text-white/50 underline'>
-                <a href='mailto:example@example.com'>example@example.com</a>
-              </p>
+              <div className='py-3'>
+                <h3 className='font-bold'>Order by Phone</h3>
+                <p className='text-white/50'>Available everyday</p>
+                <p className='text-sm text-white/50 underline'>
+                  <a className='link-underline-opacity-50-hover ' href='0333344444'>
+                    0333344444
+                  </a>
+                </p>
+              </div>
+              <div className='py-3'>
+                <h3 className='font-bold'>Email Us</h3>
+                <p className='text-white/50'>Get in touch by email</p>
+                <p className='text-sm text-white/50 underline'>
+                  <a href='mailto:example@example.com'>example@example.com</a>
+                </p>
+              </div>
             </div>
           </div>
-          <div className='mt-4 w-full px-4 sm:mt-0 sm:flex sm:w-1/3 sm:justify-between'>
-            <div className='w-1/2'>
-              <h3 className=' mb-2 font-bold'>CUSTOMER SERVICE</h3>
+          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
+            <h3 className=' mb-2 font-bold'>CUSTOMER SERVICE</h3>
+            <ul className='hidden md:block'>
               <Link className='block py-2 text-white/50' to={''}>
                 Help & Constact Us
               </Link>
@@ -104,9 +110,11 @@ function Footer() {
               <Link className='block py-2 text-white/50' to={''}>
                 Documentations
               </Link>
-            </div>
-            <div className='w-1/2'>
-              <h3 className='mb-2 font-bold'>ABOUT OHEY</h3>
+            </ul>
+          </div>
+          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
+            <h3 className='mb-2 font-bold'>ABOUT OHEY</h3>
+            <ul className='hidden md:block'>
               <Link className='block py-2 text-white/50' to={''}>
                 My Account
               </Link>
@@ -132,19 +140,19 @@ function Footer() {
                 Site Map
               </Link>
               <Link className='block py-2 text-white/50' to={''}>
-                Positively Ohey
+                Positively Highteam
               </Link>
-            </div>
+            </ul>
           </div>
         </div>
       </div>
       <div className='container mx-auto px-4 py-6'>
         <div className='flex flex-wrap'>
-          <div className='w-full px-4 sm:w-1/2'>
-            <p className='text-white/50'>© Copyright 2023 Ohey Limited. All Rights Reserved. Design By Bily</p>
+          <div className='w-full px-4 py-4 md:w-1/2'>
+            <p className='m-auto text-white/50'>© Copyright 2023 Ohey Limited. All Rights Reserved. Design By Bily</p>
           </div>
-          <div className='mt-4 w-full flex-nowrap gap-0 px-4 sm:mt-0 sm:flex sm:w-1/2 sm:items-center sm:justify-evenly'>
-            <h3>SECURE PAYMENTS </h3>
+          <div className='m-auto mt-4 flex w-full flex-nowrap items-center justify-center gap-3 px-4 sm:mt-0 md:w-1/2'>
+            <h3 className=''>SECURE PAYMENTS</h3>
             <div className=''>
               <img src='//ohey-demo.myshopify.com/cdn/shop/files/payment_429x36.png?v=1630860014' alt='Payment'></img>
             </div>
