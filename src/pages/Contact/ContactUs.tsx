@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom'
 import path from '../../constants/path'
 import LabelBenefits from '../../components/LabelBenefits/LabelBenefits'
 import Subscribe from '../../components/Subscribe/Subscribe'
+import PhoneIcon from '../../components/Icons/PhoneIcon'
+import LocationIcon from '../../components/Icons/LocationIcon'
+import ClockIcon from '../../components/Icons/ClockIcon'
+import EmailIcon from '../../components/Icons/Emailicon'
 // import { useState } from 'react'
 
 function ContactUs() {
@@ -79,7 +83,25 @@ function ContactUs() {
         </div>
         <div className='w-1/3'>
           <h3>Contact Info</h3>
-          <div></div>
+          <div>
+            <ul>
+              <li className='flex'>
+                <LocationIcon />
+                <span>123 Street, City, Country</span>
+              </li>
+              <li className='flex'>
+                <PhoneIcon /> <span>123-456-7890</span>
+              </li>
+              <li className='flex'>
+                <EmailIcon />
+                <span>example@example.com</span>
+              </li>
+              <li className='flex'>
+                <ClockIcon />
+                <span>Mon - Fri: 9:00 AM - 5:00 PM</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
