@@ -48,16 +48,16 @@ function Header() {
                 </div>
               </div>
             )} */}
-          <div className='hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
             <NavLink to={path.home}>Home</NavLink>
           </div>
-          <div className='hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
             <NavLink to={path.products}>Products</NavLink>
           </div>
-          <div className='hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
             <NavLink to={path.about}>About</NavLink>
           </div>
-          <div className='hover:text-hover'>
+          <div className='border-b-[2px] border-b-transparent hover:border-b-hover hover:text-hover'>
             <NavLink to={path.contact}>Contact Us</NavLink>
           </div>
         </div>
