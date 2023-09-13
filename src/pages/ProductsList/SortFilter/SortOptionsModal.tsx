@@ -20,7 +20,7 @@ function SortOptionsModal({ onDrop, setOnDrop, sortFilterModalRef }: Props) {
 
   return createPortal(
     <ul
-      className={classNames('fixed bottom-0 w-full  border bg-white text-sm duration-700 ease-in-out md:hidden', {
+      className={classNames('fixed bottom-0 w-full border bg-white text-sm duration-700 ease-in-out md:hidden', {
         'translate-y-0 opacity-100': onDrop && window.innerHeight == 768,
         'translate-y-full': !onDrop
       })}
