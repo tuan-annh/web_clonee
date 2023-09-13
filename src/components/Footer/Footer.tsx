@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ChevronDownIcon from '../Icons/ChevronDownIcon'
 
 function Footer() {
   return (
@@ -50,7 +51,10 @@ function Footer() {
             </div>
           </div>
           <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
-            <h3 className=' mb-2 font-bold'>HERE TO HELP</h3>
+            <h3 className=' mb-2 font-bold'>
+               <span>HERE TO HELP</span>
+            <ChevronDownIcon/>
+            </h3>
             <div className='hidden md:block'>
               <p className='text-white/50'>
                 Have a question? You may find an answer in our FAQs. But you can also contact us:

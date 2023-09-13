@@ -1,3 +1,4 @@
+import BackToTop from '../../components/BackToTop/BackToTop'
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 
@@ -7,6 +8,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
       <Header />
       {children}
       <Footer />
+      <BackToTop />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import path from '../../../constants/path'
 import ArrowRightIcon from '../../../components/Icons/ArrowRightIcon'
@@ -32,6 +32,8 @@ const BANNERS = [
   }
 ]
 const Banner = () => {
+  const [isFirstSlide, setIsFirstSlide] = useState(true)
+  const [isLastSlide, setIsLastSlide] = useState(false)
   const pagination = {
     clickable: true,
     el: '#banner-pagination',
@@ -39,6 +41,12 @@ const Banner = () => {
       return `<div class="${className} rounded" style="width: 20px; height: 20px; background: black;"></div>`
     }
   }
+
+  const handleSlideChange = (swiper) => {
+    setIsFirstSlide(swiper.isBeginning)
+    setIsLastSlide(swiper.isEnd)
+  }
+
   return (
     <div className='hero-part relative'>
       <Swiper
@@ -48,6 +56,7 @@ const Banner = () => {
           nextEl: '#next-btn'
         }}
         pagination={pagination}
+        onSlideChange={handleSlideChange}
       >
         {BANNERS.map(({ url, title, description, discount }, index) => (
           <SwiperSlide key={index.toString()}>
@@ -80,7 +89,11 @@ const Banner = () => {
       </Swiper>
       <div
         id='prev-btn'
-        className='user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 opacity-20 hover:bg-hover'
+        //   className='user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 opacity-20 hover:bg-hover '
+
+        className={`user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 ${
+          isFirstSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
+        }`}
         style={{ background: '' }}
       >
         <svg
@@ -95,7 +108,10 @@ const Banner = () => {
       </div>
       <div
         id='next-btn'
-        className='user-select-none absolute right-4 top-[40%] z-20 bg-gray-400 opacity-20 hover:bg-hover'
+        //   className='user-select-none absolute right-4 top-[40%] z-20 bg-gray-400 opacity-20 hover:bg-hover'
+        className={`user-select-none absolute right-4 top-[40%] z-20 rounded bg-gray-400 ${
+          isLastSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
+        }`}
         style={{ background: '' }}
       >
         <svg

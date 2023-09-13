@@ -12,14 +12,14 @@ const Subscribe: FC = () => {
           <div className='my-4'>
             <h2 className='mx-auto pt-10 text-center text-[32px] font-bold'>Let's Stay In Touch</h2>
             <p className='my-10'>
-              Subscribe to the Gosto mailing list to receive updates on new arrivals & other discount information.
+              Subscribe to the auto mailing to receive updates on new arrivals & other discount information.
             </p>
           </div>
-          <div className='m-auto flex justify-center'>
-            <form className='w-1/2'>
-              <div className='flex items-center justify-center border-b border-b-black py-2'>
+          <div className='m-auto mx-8 flex justify-center'>
+            <form className='w-full md:w-2/3'>
+              <div className='flex flex-col justify-center py-2 md:flex-row md:items-center md:border-b md:border-b-black'>
                 <input
-                  className='mr-3 w-full appearance-none border-none bg-transparent px-2 py-1 leading-tight text-gray-700 focus:outline-none'
+                  className='my-3 mr-3 w-full appearance-none border-b border-b-black bg-transparent px-2 py-3 leading-tight text-gray-700 focus:outline-none md:w-3/4 md:border-none '
                   type='text'
                   placeholder='Your email address...'
                   aria-label='Full name'
@@ -27,7 +27,7 @@ const Subscribe: FC = () => {
                   onChange={(e) => setKey(e.target.value)}
                 />
                 <button
-                  className='flex-shrink-0 rounded border-4 bg-black px-4 py-3 text-sm text-white hover:bg-hover'
+                  className=' flex-shrink-0 rounded border-4 bg-black px-4 py-3 text-sm text-white hover:bg-hover'
                   type='button'
                   onClick={() => {
                     setIsSubscribed(true)
@@ -39,7 +39,7 @@ const Subscribe: FC = () => {
                   }}
                   disabled={!key.trim()}
                 >
-                  Subcribe
+                  Subscribe
                 </button>
               </div>
             </form>
