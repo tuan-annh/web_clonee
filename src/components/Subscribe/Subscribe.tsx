@@ -27,7 +27,7 @@ const Subscribe: FC = () => {
                   onChange={(e) => setKey(e.target.value)}
                 />
                 <button
-                  className=' flex-shrink-0 rounded border-4 bg-black px-4 py-3 text-sm text-white hover:bg-hover'
+                  className=' flex-shrink-0 cursor-pointer border-4 bg-black px-4 py-3 text-sm text-white hover:bg-hover'
                   type='button'
                   onClick={() => {
                     setIsSubscribed(true)

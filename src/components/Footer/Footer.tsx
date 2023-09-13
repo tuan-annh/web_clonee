@@ -4,7 +4,7 @@ import ChevronDownIcon from '../Icons/ChevronDownIcon'
 
 function Footer() {
   return (
-    <footer className='bg-main text-white'>
+    <footer className='footer mt-4 bg-main text-white'>
       <div className='container mx-auto px-9 pb-8 pt-11'>
         <div className='flex flex-wrap'>
           <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
@@ -13,7 +13,10 @@ function Footer() {
               Since 2013 we have been creating industrial design, residential architecture, commercial interiors. Chase
               mice attack feet but rub face on everything cepteur sint occaecat cupidatat proident.
             </p>
-            <h3 className='my-7 font-bold'>Follow Us</h3>
+            <h3 className='mb-2 flex items-center justify-between font-bold'>
+              <span>Follow Us</span>
+              <ChevronDownIcon />
+            </h3>
             <div className='hidden gap-5 md:flex'>
               <Link className='' to={''}>
                 <svg
@@ -50,10 +53,10 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
-            <h3 className=' mb-2 font-bold'>
-               <span>HERE TO HELP</span>
-            <ChevronDownIcon/>
+          <div className='here-to-help w-full px-4 py-4 md:w-1/2 lg:w-1/3'>
+            <h3 className='mb-2 flex items-center justify-between font-bold'>
+              <span>HERE TO HELP</span>
+              <ChevronDownIcon />
             </h3>
             <div className='hidden md:block'>
               <p className='text-white/50'>
@@ -77,8 +80,12 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
-            <h3 className=' mb-2 font-bold'>CUSTOMER SERVICE</h3>
+          <div className='customer-service w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
+            <h3 className=' mb-2 flex items-center justify-between font-bold'>
+              <span>CUSTOMER SERVICE</span>
+              <ChevronDownIcon />
+            </h3>
+
             <ul className='hidden md:block'>
               <Link className='block py-2 text-white/50' to={''}>
                 Help & Constact Us
@@ -105,15 +112,19 @@ function Footer() {
                 Privacy Policy
               </Link>
               <Link className='block py-2 text-white/50' to={''}>
-                Accessibillity
+                Accessibility
               </Link>
               <Link className='block py-2 text-white/50' to={''}>
                 Documentations
               </Link>
             </ul>
           </div>
-          <div className='w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
-            <h3 className='mb-2 font-bold'>ABOUT OHEY</h3>
+          <div className='about-footer w-full px-4 py-4 md:w-1/2 lg:w-1/6'>
+            <h3 className='mb-2 flex items-center justify-between font-bold'>
+              <span>ABOUT HIGH TEAM</span>
+              <ChevronDownIcon />
+            </h3>
+
             <ul className='hidden md:block'>
               <Link className='block py-2 text-white/50' to={''}>
                 My Account
@@ -149,7 +160,9 @@ function Footer() {
       <div className='container mx-auto px-4 py-6'>
         <div className='flex flex-wrap'>
           <div className='w-full px-4 py-4 md:w-1/2'>
-            <p className='m-auto text-white/50'>© Copyright 2023 Ohey Limited. All Rights Reserved. Design By Bily</p>
+            <p className='m-auto text-white/50'>
+              © Copyright 2023 High team Limited. All Rights Reserved. Design By High team
+            </p>
           </div>
           <div className='m-auto mt-4 flex w-full flex-nowrap items-center justify-center gap-3 px-4 sm:mt-0 md:w-1/2'>
             <h3 className=''>SECURE PAYMENTS</h3>

@@ -91,7 +91,7 @@ const Banner = () => {
         id='prev-btn'
         //   className='user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 opacity-20 hover:bg-hover '
 
-        className={`user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 ${
+        className={`user-select-none absolute left-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
           isFirstSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}
@@ -109,7 +109,7 @@ const Banner = () => {
       <div
         id='next-btn'
         //   className='user-select-none absolute right-4 top-[40%] z-20 bg-gray-400 opacity-20 hover:bg-hover'
-        className={`user-select-none absolute right-4 top-[40%] z-20 rounded bg-gray-400 ${
+        className={`user-select-none absolute right-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
           isLastSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}

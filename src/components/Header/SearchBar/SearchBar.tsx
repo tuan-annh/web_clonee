@@ -41,7 +41,7 @@ const SearchBar: FC = () => {
   }, [location.pathname])
 
   return (
-    <div className='relative mx-auto max-w-md'>
+    <div className=' mx-auto max-w-md'>
       <form action='' className='relative mx-auto w-max'>
         <input
           ref={inputRef}

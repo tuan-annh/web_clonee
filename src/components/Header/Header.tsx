@@ -22,7 +22,7 @@ function Header() {
   //   }
   return (
     <header className='header header-sticky no-prepend-box-sticky  h-24  overflow-hidden border-b text-black'>
-      <div className='z-10 mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 overflow-hidden bg-white px-7 py-6 lg:visible lg:flex'>
+      <div className=' z-10 mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 overflow-hidden bg-white px-7 py-6 lg:visible lg:flex'>
         <div className=' bg-white  font-bold '>
           <NavLink to={path.home}>High Ecommerce</NavLink>
         </div>
@@ -80,7 +80,7 @@ function Header() {
             </svg>
           </form>
         </div> */}
-        <div className='items-center justify-items-end gap-3 lg:flex'>
+        <div className=' items-center justify-items-end gap-3 lg:flex'>
           <SearchBar />
 
           {isAuthenticated ? (
