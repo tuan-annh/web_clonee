@@ -5,7 +5,7 @@ import Subscribe from '../../components/Subscribe/Subscribe'
 import PhoneIcon from '../../components/Icons/PhoneIcon'
 import LocationIcon from '../../components/Icons/LocationIcon'
 import ClockIcon from '../../components/Icons/ClockIcon'
-import EmailIcon from '../../components/Icons/Emailicon'
+import EmailIcon from '../../components/Icons/EmailIcon'
 // import { useState } from 'react'
 
 function ContactUs() {
@@ -30,9 +30,9 @@ function ContactUs() {
         </div>
       </div>
 
-      <div className='my-10 flex px-16'>
-        <div className='w-2/3'>
-          <h2>Get In Touch</h2>
+      <div className='my-10 flex flex-col gap-8 px-16 md:flex-row'>
+        <div className='w-full md:w-2/3'>
+          <h3 className='mb-5 w-fit  border-b-[4px] border-b-gray-600 text-[28px] font-bold'>Get In Touch</h3>
           <div className=''>
             <form className='mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md'>
               <div className='mb-4'>
@@ -81,22 +81,22 @@ function ContactUs() {
             </form>
           </div>
         </div>
-        <div className='w-1/3'>
-          <h3>Contact Info</h3>
+        <div className='w-full md:w-1/3'>
+          <h3 className='mb-5 w-fit border-b-[5px] border-b-gray-600 text-[28px] font-bold'>Contact Info</h3>
           <div>
             <ul>
-              <li className='flex'>
+              <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <LocationIcon />
                 <span>123 Street, City, Country</span>
               </li>
-              <li className='flex'>
+              <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <PhoneIcon /> <span>123-456-7890</span>
               </li>
-              <li className='flex'>
+              <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <EmailIcon />
                 <span>example@example.com</span>
               </li>
-              <li className='flex'>
+              <li className='my-4 flex h-12 items-center gap-7 '>
                 <ClockIcon />
                 <span>Mon - Fri: 9:00 AM - 5:00 PM</span>
               </li>
