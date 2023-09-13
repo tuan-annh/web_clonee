@@ -25,17 +25,17 @@ const customTheme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
-  <Provider store={store}>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
         <AppProvider>
           <ThemeProvider theme={customTheme}>
             <App />
           </ThemeProvider>
         </AppProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  </Provider>
+      </Provider>
+    </QueryClientProvider>
+  </BrowserRouter>
 
   // </React.StrictMode>,
 )
