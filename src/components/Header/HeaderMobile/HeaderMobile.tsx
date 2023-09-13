@@ -6,7 +6,7 @@ import MenuIcon from '../../Icons/MenuIcon'
 
 const HeaderMobile = () => {
   return (
-    <div className='mx-auto my-5 flex w-screen items-center justify-between gap-3 overflow-hidden px-4 lg:hidden'>
+    <div className='mx-auto flex items-center justify-between gap-3 px-4 lg:hidden'>
       <div className='menu'>
         <MenuIcon />
       </div>

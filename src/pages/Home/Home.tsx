@@ -19,7 +19,7 @@ function Home() {
       <Banner />
       <div className='w-ful mx-auto mt-10 grid grid-cols-1 gap-12 overflow-hidden px-8 lg:grid-cols-3'>
         <div
-          className='flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat '
+          className='flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat'
           style={{
             backgroundImage:
               'url("https://ohey-demo.myshopify.com/cdn/shop/files/7_8b4ef785-88c3-4bcb-a0b8-f24df4dc3145_540x.jpg?v=1634273714")'
@@ -27,24 +27,14 @@ function Home() {
         >
           <div className='flex-col items-center justify-center gap-1 text-center text-white'>
             <p className='my-6 text-white'>BE WELL DRESSED IN</p>
-            <h2 className='my-7 text-[40px] font-medium'>Flat 25% Off</h2>
-            <p className='pb-3 text-[20px] font-medium'>Midnight From 14.99$</p>
-            <p className='mx-auto w-1/2 bg-main px-3 py-2 text-center font-bold hover:text-hover'>Shop Now</p>
+            <h2 className='my-7 text-4xl font-medium'>Flat 25% Off</h2>
+            <p className='pb-3 text-2xl font-medium'>Midnight From 14.99$</p>
+            <p className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold hover:text-hover'>
+              Shop Now
+            </p>
           </div>
         </div>
-        {/* <div
-          className='  flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat'
-          style={{
-            backgroundImage: 'url("https://ohey-demo.myshopify.com/cdn/shop/files/8_540x.jpg?v=1634273850")'
-          }}
-        >
-          <div className='flex-col items-center justify-center gap-1 text-center text-white'>
-            <p className='my-6 text-white'>GET REWARDED</p>
-            <h2 className='my-7  text-[40px] font-medium'>Shoes & Bags</h2>
-            <p className='pb-3 text-[20px] font-medium'>Valid Online & In-store$</p>
-            <p className='mx-auto w-1/2 bg-main px-3 py-2 text-center font-bold hover:text-hover'>Shop Now</p>
-          </div>
-        </div> */}
+
         <div
           className='hover:bg-scale-105 flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300'
           style={{
@@ -55,7 +45,7 @@ function Home() {
             <p className='my-6 text-white'>GET REWARDED</p>
             <h2 className='my-7 text-4xl font-medium'>Shoes & Bags</h2>
             <p className='pb-3 text-2xl font-medium'>Valid Online & In-store$</p>
-            <p className='mx-auto w-1/2 bg-main px-3 py-2 text-center font-bold transition-colors duration-300 hover:text-hover'>
+            <p className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold hover:text-hover'>
               Shop Now
             </p>
           </div>
@@ -69,9 +59,11 @@ function Home() {
         >
           <div className=' flex-col items-center justify-center gap-1 text-center text-white'>
             <p className='my-6 text-white'>NEW ARRIVAL</p>
-            <h2 className='my-7  text-[40px] font-medium'>Up To 70%</h2>
-            <p className='pb-3 text-[20px] font-medium'>Just landed warm up styles</p>
-            <p className='mx-auto w-1/2 bg-main px-3 py-2 text-center font-bold hover:text-hover'>Shop Now</p>
+            <h2 className='my-7  text-4xl font-medium'>Up To 70%</h2>
+            <p className='pb-3 text-2xl font-medium'>Just landed warm up styles</p>
+            <p className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold hover:text-hover'>
+              Shop Now
+            </p>
           </div>
         </div>
       </div>
@@ -85,20 +77,6 @@ function Home() {
         </div>
       </section>
 
-      {/* <h2 className='my-4 text-center text-[32px] font-bold'>Top Trending</h2>
-      <div className='mx-8 grid grid-cols-5 items-center'>
-        <div className='col-span-2'>
-          {ProductsData?.data
-            .slice(18, 19)
-            .map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
-        </div>
-        <div className='col-span-3 grid grid-cols-3'>
-          {ProductsData?.data
-            .filter((product, index) => index % 3 === 0)
-            .slice(0, 6)
-            .map((product, index) => <ProductComponent product={product} key={index} type='grid' />)}
-        </div>
-      </div> */}
       <section className='top-trending'>
         <h2 className='my-4 text-center text-[32px] font-bold'>Top Trending</h2>
         <div className='mx-auto hidden grid-cols-5 px-14 lg:grid'>

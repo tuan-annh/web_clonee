@@ -41,7 +41,7 @@ const SearchBar: FC = () => {
   }, [location.pathname])
 
   return (
-    <div className='relative mx-auto max-w-md'>
+    <div className='relative max-w-md text-right'>
       <form action='' className='relative mx-auto w-max'>
         <input
           ref={inputRef}
@@ -53,17 +53,21 @@ const SearchBar: FC = () => {
         />
         <SearchIcon />
       </form>
-      {list.length > 0 && (
-        <div className='absolute right-0 top-20 z-30 h-48 w-[400px] bg-white'>
+      {list.length > 0 ? (
+        <div className='absolute right-0 top-20 z-50 mb-2 w-[400px] border bg-white p-5 shadow-lg'>
           {list.map((item) => (
-            <Link to={`/products/${item.category}/${item.id}`} key={item.id} className='mb-2 flex gap-2 border'>
+            <Link to={`/products/${item.category}/${item.id}`} key={item.id} className='mb-2 flex gap-2'>
               <div
                 style={{ background: `url("${item.image}")`, backgroundSize: 'cover' }}
                 className='h-[40px] w-[40px]'
               />
-              {item.title}
+              <p className='pl-3 text-left text-sm'>{item.title}</p>
             </Link>
           ))}
+        </div>
+      ) : (
+        <div className='absolute top-20 z-30 hidden h-48 w-[400px] bg-white'>
+          The product you are looking for does not exist.
         </div>
       )}
     </div>
