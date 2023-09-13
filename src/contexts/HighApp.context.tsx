@@ -40,7 +40,6 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       setisAuthenticated(true)
     }
   }, [lsData])
-
   // console.log(cartData)
 
   const appContextValues = { isAuthenticated, setisAuthenticated, userData, cartData, setUserId, setCartData }

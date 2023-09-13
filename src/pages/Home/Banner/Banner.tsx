@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import path from '../../../constants/path'
 import ArrowRightIcon from '../../../components/Icons/ArrowRightIcon'
-import { Swiper, SwiperSlide } from 'swiper/react'
+// eslint-disable-next-line import/no-unresolved
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react'
+// eslint-disable-next-line import/no-unresolved
 import 'swiper/css'
-
+// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/pagination'
+// eslint-disable-next-line import/no-unresolved
 import { Navigation, Pagination } from 'swiper/modules'
 
 const BANNERS = [
@@ -37,12 +40,12 @@ const Banner = () => {
   const pagination = {
     clickable: true,
     el: '#banner-pagination',
-    renderBullet: function (_, className) {
-      return `<div class="${className} rounded" style="width: 20px; height: 20px; background: black;"></div>`
+    renderBullet: function (_: number, className: string) {
+      return `<div class="${className} rounded" style="width: 16px; height: 16px; background: black;"></div>`
     }
   }
 
-  const handleSlideChange = (swiper) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsFirstSlide(swiper.isBeginning)
     setIsLastSlide(swiper.isEnd)
   }
@@ -91,7 +94,7 @@ const Banner = () => {
         id='prev-btn'
         //   className='user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 opacity-20 hover:bg-hover '
 
-        className={`user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 ${
+        className={`user-select-none absolute left-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
           isFirstSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}
@@ -109,7 +112,7 @@ const Banner = () => {
       <div
         id='next-btn'
         //   className='user-select-none absolute right-4 top-[40%] z-20 bg-gray-400 opacity-20 hover:bg-hover'
-        className={`user-select-none absolute right-4 top-[40%] z-20 rounded bg-gray-400 ${
+        className={`user-select-none absolute right-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
           isLastSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}
