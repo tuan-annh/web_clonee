@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import path from '../../constants/path'
 import LabelBenefits from '../../components/LabelBenefits/LabelBenefits'
-import Subcribe from '../../components/Subcribe/Subcribe'
+import Subscribe from '../../components/Subscribe/Subscribe'
 // import { useState } from 'react'
 
 function ContactUs() {
   return (
     <>
       <div
-        className='flex min-h-screen w-screen items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
+        className='flex min-h-screen w-full items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
         style={{
-          backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/bg-breadcrumb_1920x.jpg?v=1632273468)'
+          backgroundImage:
+            'url(https://ohey-demo.myshopify.com/cdn/shop/files/slide1_bd934178-052f-4c25-9f9a-850791039a3a_1950x.jpg?v=1631520338)'
         }}
       >
         <div>
@@ -83,7 +84,7 @@ function ContactUs() {
       </div>
 
       <LabelBenefits />
-      <Subcribe />
+      <Subscribe />
     </>
   )
 }

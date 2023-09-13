@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import path from '../../constants/path'
 import LabelBenefits from '../../components/LabelBenefits/LabelBenefits'
-import Subcribe from '../../components/Subcribe/Subcribe'
+import Subscribe from '../../components/Subscribe/Subscribe'
 
 function About() {
   return (
@@ -50,7 +50,7 @@ function About() {
         </div>
       </div>
       <LabelBenefits />
-      <Subcribe />
+      <Subscribe />
     </>
   )
 }
