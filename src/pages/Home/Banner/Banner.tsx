@@ -4,7 +4,6 @@ import path from '../../../constants/path'
 import ArrowRightIcon from '../../../components/Icons/ArrowRightIcon'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 
