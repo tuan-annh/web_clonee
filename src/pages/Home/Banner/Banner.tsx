@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import path from '../../../constants/path'
 import ArrowRightIcon from '../../../components/Icons/ArrowRightIcon'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 import 'swiper/css/pagination'
@@ -37,12 +37,12 @@ const Banner = () => {
   const pagination = {
     clickable: true,
     el: '#banner-pagination',
-    renderBullet: function (_, className) {
-      return `<div class="${className} rounded" style="width: 20px; height: 20px; background: black;"></div>`
+    renderBullet: function (_, className: string) {
+      return `<div class="${className} rounded" style="width: 16px; height: 16~px; background: black;"></div>`
     }
   }
 
-  const handleSlideChange = (swiper) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsFirstSlide(swiper.isBeginning)
     setIsLastSlide(swiper.isEnd)
   }
