@@ -1,9 +1,12 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosError, AxiosInstance } from 'axios'
+import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
 
 class Http {
   instance: AxiosInstance
-  // private accessToken: string
+  private accessToken: string | undefined
   constructor() {
+    this.accessToken = Cookies.get('access_token')
     this.instance = axios.create({
       baseURL: 'https://fakestoreapi.com/',
       timeout: 20000,
@@ -11,23 +14,30 @@ class Http {
         'Content-Type': 'application/json'
       }
     })
+
+    this.instance.interceptors.request.use(
+      (config) => {
+        if (this.accessToken && config.headers) {
+          config.headers.Authorization = this.accessToken
+          return config
+        }
+        return config
+      },
+      (error) => {
+        return Promise.reject(error)
+      }
+    )
+
+    this.instance.interceptors.response.use(
+      (response) => {
+        return response
+      },
+      (error: AxiosError) => {
+        toast.error(error.message)
+        return Promise.reject(error)
+      }
+    )
   }
 }
 
 export const http = new Http().instance
-
-class JSON_HTTP {
-  instance: AxiosInstance
-  // private accessToken: string
-  constructor() {
-    this.instance = axios.create({
-      baseURL: './src/assets/users.json'
-      // timeout: 20000,
-      // headers: {
-      //   'Content-Type': 'application/json'
-      // }
-    })
-  }
-}
-
-export const offlineHttp = new JSON_HTTP().instance

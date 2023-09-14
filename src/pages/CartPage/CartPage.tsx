@@ -37,12 +37,16 @@ export default function CartPage() {
     dispatch(increaseCart(id))
   }
 
-  const checkOut = () => {
+  const checkOut = async () => {
     const isCheckout = allListCart.find((item) => item.checkbox)
-    if (isCheckout) {
-      toast.success('Order Success')
-      if (userData) {
-        userApi.addUserCart({
+
+    if (!isCheckout) {
+      toast.info('Please select your items')
+    }
+
+    if (isCheckout && userData) {
+      try {
+        await userApi.addUserCart({
           date: getTodayDate(),
           userId: userData.data.id,
           products: allListCart.map((item) => {
@@ -55,8 +59,11 @@ export default function CartPage() {
             return [] as unknown as CartProduct
           })
         })
+        toast.success('Order Success')
+        dispatch(paymentCart())
+      } catch (error) {
+        return
       }
-      dispatch(paymentCart())
     }
   }
 
