@@ -10,76 +10,30 @@ import HeaderMobile from './HeaderMobile/HeaderMobile'
 import ProfileIcon from '../Icons/ProfileIcon'
 import HeartIcon from '../Icons/HeartIcon'
 import { allCart } from '../../redux/allCart'
+import { NAVIGATION } from '../../constants/common.constant'
 
 function Header() {
   const navigate = useNavigate()
   const allListCart = useSelector(allCart)
   const { isAuthenticated } = useContext(AppContext)
-
-  //   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  //   const toggleMenu = () => {
-  //     setIsMenuOpen(!isMenuOpen)
-  //   }
   return (
-    <header className='z-10 border-b-2 py-2 text-black shadow-md'>
+    <header className='z-10 h-[100vh-24px] border-b-2 py-2 text-black shadow-md'>
       <div className='mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 bg-white px-7 py-6 lg:visible lg:flex'>
         <div className=' bg-white  font-bold '>
           <NavLink to={path.home}>High Ecommerce</NavLink>
         </div>
-        {/* <div className='order-1 sm:block lg:hidden'>
-          <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
-            <path d='M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z' />
-          </svg>
-        </div> */}
-
         <div className='flex grow items-center gap-10'>
-          {/* <div className='' onClick={toggleMenu}>
-              <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
-                <path d='M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z' />
-              </svg>
-            </div> */}
-          {/* {isMenuOpen && (
-              <div className='absolute right-0 top-0 mr-4 mt-14 rounded-md bg-white text-black shadow-lg'>
-                <div className='flex flex-col gap-2 p-4 hover:text-hover'>
-                  <NavLink to={path.home}>Home</NavLink>
-                  <NavLink to={path.products}>Products</NavLink>
-                  <NavLink to={path.about}>About</NavLink>
-                  <NavLink to={path.contact}>Contact Us</NavLink>
-                </div>
-              </div>
-            )} */}
-          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover'>
-            <NavLink to={path.home}>Home</NavLink>
-          </div>
-          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
-            <NavLink to={path.products}>Products</NavLink>
-          </div>
-          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
-            <NavLink to={path.about}>About</NavLink>
-          </div>
-          <div className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover '>
-            <NavLink to={path.contact}>Contact Us</NavLink>
-          </div>
-        </div>
-
-        {/* <div className='relative order-3 mx-auto max-w-md sm:block md:hidden'>
-          <form action='' className='relative mx-auto w-max'>
-            <input
-              type='search'
-              className='peer relative z-10 h-12 w-12 cursor-pointer rounded-full border bg-transparent outline-none focus:w-full focus:cursor-text focus:border-gray-300 focus:pl-16 focus:pr-4'
-            />
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='peer-focus:border-black-300 peer-focus:black-lime-500 absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-              strokeWidth='2'
+          {NAVIGATION.map(({ key, title }) => (
+            <div
+              key={key}
+              className='border-b-[2px] border-b-transparent duration-300 hover:border-b-hover hover:text-hover'
             >
-              <path strokeLinecap='round' strokeLinejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' />
-            </svg>
-          </form>
-        </div> */}
+              <NavLink to={path[key]} className='capitalize'>
+                {title}
+              </NavLink>
+            </div>
+          ))}
+        </div>
         <div className='items-center justify-items-end gap-3 lg:flex'>
           <SearchBar />
           {isAuthenticated ? (
