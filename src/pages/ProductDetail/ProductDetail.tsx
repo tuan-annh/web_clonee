@@ -65,6 +65,24 @@ function ProductDetail() {
 
     // Optional: You can show a success message or trigger some other action here
   }
+  const handleBuyToCart = () => {
+    const productToAdd = productDetail && {
+      id: productDetail.data.id,
+      title: productDetail.data.title,
+      price: productDetail.data.price,
+      category: productDetail.data.category,
+      image: productDetail.data.image,
+      count: quantity, // Use the selected quantity
+      checkbox: true
+    }
+
+    // Dispatch the addCart action to add the product to the cart
+    if (productToAdd) dispatch(addCart(productToAdd))
+
+    // Navigate to the cart page ("/paycart")
+
+    // Optional: You can show a success message or trigger some other action here
+  }
 
   return isFetching ? (
     <div className='relative h-screen text-center'>
@@ -192,12 +210,10 @@ function ProductDetail() {
                       to={{
                         pathname: '/paycart'
                       }}
-                      onClick={handleAddToCart}
+                      onClick={handleBuyToCart}
                       className='w-full grow rounded border-main bg-main py-3 text-center font-semibold  text-white duration-300 ease-in-out hover:bg-hover '
                     >
-                      <button onClick={handleAddToCart} className='uppercase'>
-                        Buy it now
-                      </button>
+                      <button className='uppercase'>Buy it now</button>
                     </Link>
                   </div>
                 </div>
