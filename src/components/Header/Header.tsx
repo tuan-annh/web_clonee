@@ -21,7 +21,7 @@ function Header() {
   //     setIsMenuOpen(!isMenuOpen)
   //   }
   return (
-    <header className='z-10 border-b-2 py-2 text-black shadow-md'>
+    <header className='h-[100vh-24px] z-10 border-b-2 py-2 text-black shadow-md'>
       <div className='mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 bg-white px-7 py-6 lg:visible lg:flex'>
         <div className=' bg-white  font-bold '>
           <NavLink to={path.home}>High Ecommerce</NavLink>
