@@ -129,6 +129,7 @@ function App() {
         // hideProgressBar
         newestOnTop={false}
         closeOnClick
+        pauseOnHover={false}
         pauseOnFocusLoss={false}
         theme='colored'
       />
