@@ -13,7 +13,7 @@ export default function CartPage() {
   const [ship, setShip] = useState<string>('2')
   const navigate = useNavigate()
   const allListCart = useAppSelector(allCart)
-  const { userData } = useContext(AppContext)
+  const { userData, isAuthenticated } = useContext(AppContext)
   const dispatch = useAppDispatch()
 
   // console.log(allListCart)
@@ -38,32 +38,36 @@ export default function CartPage() {
   }
 
   const checkOut = async () => {
-    const isCheckout = allListCart.find((item) => item.checkbox)
+    if (isAuthenticated) {
+      const isCheckout = allListCart.find((item) => item.checkbox)
 
-    if (!isCheckout) {
-      toast.info('Please select your items')
-    }
-
-    if (isCheckout && userData) {
-      try {
-        await userApi.addUserCart({
-          date: getTodayDate(),
-          userId: userData.data.id,
-          products: allListCart.map((item) => {
-            if (item.checkbox) {
-              return {
-                productId: Number(item.id),
-                quantity: item.count
-              }
-            }
-            return [] as unknown as CartProduct
-          })
-        })
-        toast.success('Order Success')
-        dispatch(paymentCart())
-      } catch (error) {
-        return
+      if (!isCheckout) {
+        toast.info('Please select your items')
       }
+
+      if (isCheckout && userData) {
+        try {
+          await userApi.addUserCart({
+            date: getTodayDate(),
+            userId: userData.data.id,
+            products: allListCart.map((item) => {
+              if (item.checkbox) {
+                return {
+                  productId: Number(item.id),
+                  quantity: item.count
+                }
+              }
+              return [] as unknown as CartProduct
+            })
+          })
+          toast.success('Order Success')
+          dispatch(paymentCart())
+        } catch (error) {
+          toast.error('Payment unsuccessful.')
+        }
+      }
+    } else {
+      toast.error('You need to log in to make a payment!')
     }
   }
 
@@ -174,10 +178,10 @@ export default function CartPage() {
               ))}
             </div>
 
-            <div className='fixed bottom-0 left-0 right-0 h-max bg-hover/20 px-4 py-2 lg:static lg:w-1/3 lg:rounded lg:px-8 lg:pb-14 lg:pt-8'>
+            <div className='fixed bottom-0 left-0 right-0 h-max bg-[#f6f6f6] px-4 py-2 lg:static lg:w-1/3 lg:rounded lg:px-8 lg:pb-14 lg:pt-8'>
               <h3 className='border-b-2 border-main pb-2 text-start text-2xl font-bold'>Order Summary</h3>
 
-              <div className='flex justify-between md:my-3'>
+              <div className='my-1 flex justify-between md:my-3'>
                 <span className='font-semibold uppercase'>
                   Items {allListCart.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
                 </span>
@@ -204,7 +208,7 @@ export default function CartPage() {
                 </select>
               </div>
 
-              <div className='flex flex-wrap lg:my-3 lg:flex-col lg:gap-2'>
+              <div className='my-2 flex flex-wrap lg:my-3 lg:flex-col lg:gap-2'>
                 <span className='basis-full font-semibold uppercase'>promo code</span>
                 <input className='basis-2/3 p-2' type='text' placeholder='Enter your code' />
                 <button className='basis-1/3 rounded bg-main p-2 uppercase text-white hover:bg-hover lg:w-1/4'>
@@ -212,7 +216,7 @@ export default function CartPage() {
                 </button>
               </div>
 
-              <div className='md:my-3 lg:my-5'>
+              <div className='mb-2 md:my-3 lg:my-5'>
                 <p className='font-semibold'>Select a payment method</p>
                 <div>
                   <input type='radio' id='1' name='pay' />
