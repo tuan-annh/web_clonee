@@ -1,4 +1,4 @@
-const path = {
+const path: Record<string, string> = {
   home: '/',
   login: '/login',
   register: '/register',
