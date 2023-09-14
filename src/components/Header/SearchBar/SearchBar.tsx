@@ -30,7 +30,7 @@ const SearchBar: FC = () => {
     },
     [productsData?.data]
   )
-
+  console.log(list)
   useEffect(() => {
     if (location.pathname) {
       if (inputRef.current) {
