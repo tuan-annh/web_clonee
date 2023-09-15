@@ -4,16 +4,36 @@ import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/ma
 import { Link, useNavigate } from 'react-router-dom'
 import DeleteIcon from '../../components/Icons/DeleteIcon'
 import { removeProductFromWishList } from '../../redux/wishList'
+import CartIcon from '../../components/Icons/CartIcon'
+import { addCart } from '../../redux/allCart'
+import { Product } from '../../types/product.type'
 
 const WishList: FC = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const wishList = useAppSelector((state) => state.wishList.list)
-
+  console.log(wishList)
   const handleDelete = (id: number) => {
     dispatch(removeProductFromWishList(id))
   }
+
+  const handleAddCart = (item: Product) => {
+    console.log(item)
+    const productToAdd = item && {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      category: item.category,
+      image: item.image,
+      count: 1, // Use the selected quantity
+      checkbox: false
+    }
+
+    // Dispatch the addCart action to add the product to the cart
+    if (productToAdd) dispatch(addCart(productToAdd))
+  }
+
   return (
     <>
       {wishList.length ? (
@@ -29,6 +49,7 @@ const WishList: FC = () => {
                   <TableCell align='center'>
                     <p className='text-[18px] font-bold'>Price</p>
                   </TableCell>
+                  <TableCell />
                   <TableCell />
                 </TableRow>
               </TableHead>
@@ -47,6 +68,14 @@ const WishList: FC = () => {
                     </TableCell>
                     <TableCell align='center'>
                       <p className='text-[20px] font-bold'>${item.price}</p>
+                    </TableCell>
+                    <TableCell>
+                      <button
+                        className=' inline-block hover:text-hover hover:underline'
+                        onClick={() => handleAddCart(item)}
+                      >
+                        <CartIcon />
+                      </button>
                     </TableCell>
                     <TableCell>
                       <button
