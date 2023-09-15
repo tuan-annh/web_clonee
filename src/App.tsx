@@ -17,6 +17,7 @@ import MyAcount from './pages/Profile/MyAcount'
 import ChangePassword from './pages/Profile/ChangePassword'
 import ContactUs from './pages/Contact/ContactUs'
 import CartPage from './pages/CartPage/CartPage'
+import WishList from './pages/WishList/WishList'
 
 function App() {
   const { isAuthenticated } = useContext(AppContext)
@@ -102,6 +103,14 @@ function App() {
           element: (
             <MainLayout>
               <ContactUs />
+            </MainLayout>
+          )
+        },
+        {
+          path: path.wishList,
+          element: (
+            <MainLayout>
+              <WishList />
             </MainLayout>
           )
         }

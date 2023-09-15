@@ -5,21 +5,27 @@ import path from '../../constants/path'
 import { useSelector } from 'react-redux'
 import CartIcon from '../Icons/CartIcon'
 
-import SearchBar from './SearchBar/SearchBar'
 import HeaderMobile from './HeaderMobile/HeaderMobile'
 import ProfileIcon from '../Icons/ProfileIcon'
 import HeartIcon from '../Icons/HeartIcon'
 import { allCart } from '../../redux/allCart'
 import { NAVIGATION } from '../../constants/common.constant'
+import SearchBar from './SearchBar/SearchBar'
+import { useAppSelector } from '../../redux/hooks'
+import LogOutIcon from '../Icons/LogOutIcon'
+import { Tooltip } from '@mui/material'
+import { clearLS } from '../../utils/auth.util'
 
 function Header() {
   const navigate = useNavigate()
   const allListCart = useSelector(allCart)
-  const { isAuthenticated } = useContext(AppContext)
+  const wishList = useAppSelector((state) => state.wishList.list)
+  const { isAuthenticated, setisAuthenticated } = useContext(AppContext)
+
   return (
-    <header className='z-10 h-[100vh-24px] border-b-2 py-2 text-black shadow-md'>
-      <div className='mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 bg-white px-7 py-6 lg:visible lg:flex'>
-        <div className=' bg-white  font-bold '>
+    <header className='z-10 h-[100vh-24px] border-b-2 py-2 text-main shadow-md'>
+      <div className='mx-auto hidden w-full max-w-[1300px] items-center justify-between gap-40 bg-white px-7 py-4 lg:visible lg:flex'>
+        <div className=' bg-white text-xl font-bold '>
           <NavLink to={path.home}>High Ecommerce</NavLink>
         </div>
         <div className='flex grow items-center gap-10'>
@@ -36,48 +42,61 @@ function Header() {
         </div>
         <div className='items-center justify-items-end gap-3 lg:flex'>
           <SearchBar />
-          {isAuthenticated ? (
-            <div className='relative'>
-              <div className='flex w-full items-center gap-1 '>
-                <NavLink to={path.profile}>
-                  <ProfileIcon />
-                </NavLink>
-                <button>
-                  <svg
-                    fill='currentColor'
-                    className='hover:text-hover'
-                    xmlns='http://www.w3.org/2000/svg'
-                    height='1em'
-                    viewBox='0 0 448 512'
-                  >
-                    <path d='M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z' />
-                  </svg>
-                </button>
+
+          <Tooltip title='Shopping Cart'>
+            <div
+              className='flex cursor-pointer items-center gap-0.5 hover:text-hover'
+              onClick={() => navigate(path.paycart)}
+            >
+              <CartIcon />
+              <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>
+                {allListCart.reduce((acc, cur) => acc + cur.count, 0)}
               </div>
-              <div className='absolute right-0 z-10 mt-2 hidden w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                <div className='py-1' role='none'>
-                  <NavLink to={'/'}>Log out</NavLink>
+            </div>
+          </Tooltip>
+          <Tooltip title='Wish List'>
+            <div
+              className='flex cursor-pointer items-center gap-0.5 hover:text-hover'
+              onClick={() => navigate(path.wishList)}
+            >
+              <HeartIcon />
+              <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>{wishList.length}</div>
+            </div>
+          </Tooltip>
+          {isAuthenticated ? (
+            <Tooltip title='Profile'>
+              <div className='relative'>
+                <div className='flex w-full items-center gap-1 '>
+                  <NavLink to={path.profile}>
+                    <ProfileIcon />
+                  </NavLink>
                 </div>
               </div>
-            </div>
+            </Tooltip>
           ) : (
-            <div className='flex items-center gap-1 hover:text-hover'>
-              <NavLink to={path.login}>Login</NavLink>
-            </div>
+            <Tooltip title='Login'>
+              <div className='flex items-center gap-1 hover:text-hover'>
+                <NavLink to={path.login}>
+                  <LogOutIcon />
+                </NavLink>
+              </div>
+            </Tooltip>
           )}
-          <div
-            className='flex cursor-pointer items-center gap-0.5 hover:text-hover'
-            onClick={() => navigate(path.paycart)}
-          >
-            <CartIcon />
-            <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>
-              {allListCart.reduce((acc, cur) => acc + cur.count, 0)}
-            </div>
-          </div>
-          <div className='flex cursor-pointer items-center gap-0.5 hover:text-hover'>
-            <HeartIcon />
-            <div className='flex h-6 w-6 justify-center rounded-full bg-hover text-white'>0</div>
-          </div>
+          {isAuthenticated && (
+            <Tooltip title='Log Out'>
+              <button
+                className='rotate-180 hover:text-hover'
+                onClick={() => {
+                  clearLS()
+                  setTimeout(() => {
+                    setisAuthenticated(false)
+                  }, 500)
+                }}
+              >
+                <LogOutIcon />
+              </button>
+            </Tooltip>
+          )}
         </div>
       </div>
       <HeaderMobile />

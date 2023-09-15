@@ -16,7 +16,7 @@ function About() {
         <div className='absolute left-14'>
           <h2 className='text-6xl font-semibold text-white'>We're High team</h2>
           <p className='my-7 font-medium text-white'>Follow your passsion, and success will follow you</p>
-          <button className=' bg-hover px-4 py-3 font-bold text-white hover:text-black'>Contact Us</button>
+          <button className=' bg-hover px-4 py-3 font-bold text-white hover:text-main'>Contact Us</button>
         </div>
       </div>
       <div className='ml-14 mt-5'>

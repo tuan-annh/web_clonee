@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { allPayCart } from './allCart'
+import { wishListReducer } from './wishList'
 // ...
 
 export const store = configureStore({
   reducer: {
-    allPayCart: allPayCart.reducer
+    allPayCart: allPayCart.reducer,
+    wishList: wishListReducer
   }
 })
 

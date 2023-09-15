@@ -5,35 +5,36 @@ import CartIcon from '../../Icons/CartIcon'
 import HeartIcon from '../../Icons/HeartIcon'
 import ProfileIcon from '../../Icons/ProfileIcon'
 import { Link } from 'react-router-dom'
+import path from '../../../constants/path'
 
 const NAVIGATIONS: { icon: JSX.Element; link: string }[] = [
   {
     icon: <HomeIcon />,
-    link: '/'
+    link: path.home
   },
   {
     icon: <ProductIcon />,
-    link: '/products'
+    link: path.products
   },
   {
     icon: <CartIcon />,
-    link: '/paycart'
+    link: path.paycart
   },
   {
     icon: <HeartIcon />,
-    link: '/'
+    link: path.wishList
   },
   {
     icon: <ProfileIcon />,
-    link: '/profile'
+    link: path.profile
   }
 ]
 
 const HeaderMobileBottom: FC = () => {
   return (
-    <header className='fixed bottom-0 left-0 right-0 z-50 flex justify-around rounded-t-[20px] rounded-tr-[20px] bg-white px-[10px] pb-[14px] pt-[20px] shadow-[0_0_12px_#0000001f] lg:hidden'>
+    <header className='fixed bottom-0 left-0 right-0 z-50 flex justify-around rounded-t-[20px] rounded-tr-[20px] bg-white px-[10px] shadow-[0_0_12px_#0000001f] lg:hidden'>
       {NAVIGATIONS.map((item) => (
-        <Link key={item.link} to={item.link}>
+        <Link className='px-9 py-6 hover:bg-slate-100 hover:text-hover' key={item.link} to={item.link}>
           {item.icon}
         </Link>
       ))}

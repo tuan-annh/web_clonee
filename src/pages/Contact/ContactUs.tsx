@@ -12,7 +12,7 @@ function ContactUs() {
   return (
     <>
       <div
-        className='flex min-h-screen w-full items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
+        className='flex min-h-screen w-full items-center justify-center bg-slate-300 bg-cover bg-center bg-no-repeat'
         style={{
           backgroundImage:
             'url(https://ohey-demo.myshopify.com/cdn/shop/files/slide1_bd934178-052f-4c25-9f9a-850791039a3a_1950x.jpg?v=1631520338)'
@@ -87,14 +87,14 @@ function ContactUs() {
             <ul>
               <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <LocationIcon />
-                <span>123 Street, City, Country</span>
+                <span>17 Duy Tan Street, Hanoi, Vietnam</span>
               </li>
               <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
-                <PhoneIcon /> <span>123-456-7890</span>
+                <PhoneIcon /> <span>0333344444</span>
               </li>
               <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <EmailIcon />
-                <span>example@example.com</span>
+                <span>highteam@example.com</span>
               </li>
               <li className='my-4 flex h-12 items-center gap-7 '>
                 <ClockIcon />

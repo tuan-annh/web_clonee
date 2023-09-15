@@ -8,7 +8,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       <HeaderMobileBottom />
-      <div className='min-h-screen'>{children}</div>
+      <div className='min-h-screen '>{children}</div>
       <Footer />
       <BackToTop />
     </>

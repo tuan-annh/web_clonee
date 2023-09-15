@@ -383,7 +383,7 @@ export default function CartPage() {
             alt=''
             className='max-w-max'
           />
-          <span className='mb-5 text-xl font-semibold opacity-60'>Your shopping cart is empty</span>
+          <span className='mb-5 text-xl font-semibold opacity-60'>Your shopping cart is empty!</span>
           <button
             type='submit'
             className='rounded bg-main px-7 py-4 text-white shadow-md duration-200 ease-in-out hover:bg-hover'
