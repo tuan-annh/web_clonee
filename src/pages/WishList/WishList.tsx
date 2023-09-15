@@ -19,7 +19,7 @@ const WishList: FC = () => {
   }
 
   const handleAddCart = (item: Product) => {
-    console.log(item)
+    // console.log(item)
     const productToAdd = item && {
       id: item.id,
       title: item.title,
