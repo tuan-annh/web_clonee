@@ -7,7 +7,8 @@ const path: Record<string, string> = {
   about: '/about',
   contact: '/contact',
   paycart: '/paycart',
-  changePassword: '/changepassword'
+  changePassword: '/changepassword',
+  wishList: '/wish_list'
 } as const
 
 export default path

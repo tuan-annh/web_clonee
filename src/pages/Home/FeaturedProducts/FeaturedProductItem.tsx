@@ -17,7 +17,7 @@ const FeaturedProductItem: FC<FeaturedProductItemProps> = ({ data }) => {
       />
       <div className='absolute left-14 top-12'>
         <p className='my-6 text-hover'>{data.subTitle}</p>
-        <h2 className='my-7 w-48 text-[40px] font-medium'>{data.title}</h2>
+        <h2 className='my-7 w-48 text-[36px] font-medium'>{data.title}</h2>
         <Link to={data.link} className='font-bold hover:text-hover'>
           Shop Now
         </Link>

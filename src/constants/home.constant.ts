@@ -11,7 +11,7 @@ export const PRODUCT_SALES: ProductSaleItemType[] = [
   },
   {
     subTitle: 'GET REWARDED',
-    title: 'Shoes & Bags 2',
+    title: 'Shoes & Bags',
     detail: 'Valid Online & In-store',
     link: '/products',
     backgroundUrl: 'https://ohey-demo.myshopify.com/cdn/shop/files/8_540x.jpg?v=1634273850'
@@ -19,7 +19,7 @@ export const PRODUCT_SALES: ProductSaleItemType[] = [
   {
     subTitle: 'NEW ARRIVALS',
     title: 'Up To 70%',
-    detail: 'Just landed warm up styles.',
+    detail: 'Warm up style',
     link: '/products',
     backgroundUrl:
       'https://ohey-demo.myshopify.com/cdn/shop/files/img3_46f72c07-11ea-49e5-951b-19181b742a95_540x.jpg?v=1633689787%27'

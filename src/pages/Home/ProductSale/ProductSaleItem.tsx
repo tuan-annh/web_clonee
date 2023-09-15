@@ -18,8 +18,8 @@ const ProductSaleItem: FC<ProductSaleItemProps> = ({ data }) => {
         />
         <div className='absolute flex-col items-center justify-center gap-1 text-center text-white'>
           <p className='my-6 text-white'>{data.subTitle}</p>
-          <h2 className='my-7 text-4xl font-medium'>{data.title}</h2>
-          <p className='pb-3 text-2xl font-medium'>{data.detail}</p>
+          <h2 className='lg: my-7 text-4xl font-medium md:text-[30px]'>{data.title}</h2>
+          <p className='md:text-[20px]font-medium mb-2 pb-3 text-2xl lg:text-2xl'>{data.detail}</p>
           <Link
             to={data.link}
             className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold hover:text-hover'

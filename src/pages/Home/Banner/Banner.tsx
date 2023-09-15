@@ -9,7 +9,7 @@ import 'swiper/css'
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/css/pagination'
 // eslint-disable-next-line import/no-unresolved
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 const BANNERS = [
   {
@@ -21,8 +21,8 @@ const BANNERS = [
   },
   {
     url: 'https://ohey-demo.myshopify.com/cdn/shop/files/5_b99107af-f0d8-4a57-8266-301f014af374_1950x.jpg?v',
-    title: 'Glamorous Men"s Hoodies',
-    description: 'New Spring Drop From Over. Shop The Collection',
+    title: "Glamorous Men's Hoodies",
+    description: 'New Spring. Shop The Collection',
     linkTo: '/',
     discount: 70
   },
@@ -51,20 +51,21 @@ const Banner = () => {
   }
 
   return (
-    <div className='hero-part relative'>
+    <div className='hero-part relative '>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         navigation={{
           prevEl: '#prev-btn',
           nextEl: '#next-btn'
         }}
         pagination={pagination}
         onSlideChange={handleSlideChange}
+        autoplay={{ disableOnInteraction: true, delay: 3000 }}
       >
         {BANNERS.map(({ url, title, description, discount }, index) => (
           <SwiperSlide key={index.toString()}>
             <div
-              className='flex h-screen items-center justify-center bg-slate-300 '
+              className='flex aspect-[1.6] items-center justify-center bg-slate-300'
               style={{
                 backgroundImage: `url("${url}")`,
                 backgroundSize: 'cover',
@@ -73,12 +74,12 @@ const Banner = () => {
                 transitionDuration: 'initial'
               }}
             >
-              <div className='absolute left-28 top-1/3 text-left'>
+              <div className='md:top-30 top-20% absolute text-left md:left-28'>
                 <div className='mb-5 flex w-fit items-center border bg-hover px-3 py-2 text-white hover:border hover:border-hover hover:bg-white hover:text-hover'>
-                  <h3 className=' hover:text-hover'>SALE UP TO {discount}%</h3>
+                  <h3 className='hover:text-hover '>SALE UP TO {discount}%</h3>
                 </div>
-                <p className='mb-5 text-[44px] font-bold'>{title}</p>
-                <p className='mb-8 text-lg'>{description}</p>
+                <p className='mb-5 text-[28px] font-bold lg:text-[40px]'>{title}</p>
+                <p className='mb-6 text-lg lg:mb-8'>{description}</p>
                 <NavLink className='flex items-center gap-4 hover:gap-8 hover:text-hover' to={path.products}>
                   <p>Explore Now</p>
                   <span>
@@ -92,9 +93,7 @@ const Banner = () => {
       </Swiper>
       <div
         id='prev-btn'
-        //   className='user-select-none absolute left-4 top-[40%] z-20 rounded bg-gray-400 opacity-20 hover:bg-hover '
-
-        className={`user-select-none absolute left-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
+        className={`user-select-none absolute left-4 top-[40%] z-20 hidden cursor-pointer bg-gray-400 md:block ${
           isFirstSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}
@@ -111,8 +110,7 @@ const Banner = () => {
       </div>
       <div
         id='next-btn'
-        //   className='user-select-none absolute right-4 top-[40%] z-20 bg-gray-400 opacity-20 hover:bg-hover'
-        className={`user-select-none absolute right-4 top-[40%] z-20 cursor-pointer bg-gray-400 ${
+        className={`user-select-none absolute right-4 top-[40%] z-20 hidden cursor-pointer bg-gray-400 md:block ${
           isLastSlide ? 'opacity-20' : 'opacity-60 hover:bg-hover'
         }`}
         style={{ background: '' }}

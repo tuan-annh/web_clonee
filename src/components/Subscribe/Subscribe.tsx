@@ -17,9 +17,9 @@ const Subscribe: FC = () => {
           </div>
           <div className='m-auto mx-8 flex justify-center'>
             <form className='w-full md:w-2/3'>
-              <div className='flex flex-col justify-center py-2 md:flex-row md:items-center md:border-b md:border-b-black'>
+              <div className='flex flex-col py-2 md:flex-row md:items-center md:border-b md:border-b-black'>
                 <input
-                  className='my-3 mr-3 w-full appearance-none border-b border-b-black bg-transparent px-2 py-3 leading-tight text-gray-700 focus:outline-none md:w-3/4 md:border-none '
+                  className='my-3 mr-3 w-full appearance-none border-b border-b-black bg-transparent px-2 py-3 leading-tight text-gray-700 focus:outline-none md:border-none '
                   type='text'
                   placeholder='Your email address...'
                   aria-label='Full name'
@@ -27,7 +27,7 @@ const Subscribe: FC = () => {
                   onChange={(e) => setKey(e.target.value)}
                 />
                 <button
-                  className=' flex-shrink-0 cursor-pointer border-4 bg-black px-4 py-3 text-sm text-white hover:bg-hover'
+                  className=' flex-shrink-0 cursor-pointer border-4 bg-black px-4 py-3 text-sm font-bold text-white duration-200 hover:bg-hover'
                   type='button'
                   onClick={() => {
                     setIsSubscribed(true)

@@ -4,7 +4,7 @@ const SearchIcon = () => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='peer-focus:border-black-300 peer-focus:black-lime-500 absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5'
+      className='peer-focus:border-black-300 peer-focus:black-lime-500 inset-y-0 my-auto h-5 w-5 border-r border-transparent stroke-gray-500 '
       fill='none'
       viewBox='0 0 24 24'
       stroke='currentColor'
