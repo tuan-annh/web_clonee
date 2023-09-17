@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../redux/hooks' // Import the Redux dispatch 
 import { addCart } from '../../redux/allCart'
 import { capitalizeFirstLetter } from '../../utils/utils'
 import { CircularProgress } from '@mui/material'
+import Subscribe from '../../components/Subscribe/Subscribe'
 
 function ProductDetail() {
   // Define a state variable to keep track of the quantity
@@ -55,6 +56,24 @@ function ProductDetail() {
       image: productDetail.data.image,
       count: quantity, // Use the selected quantity
       checkbox: false
+    }
+
+    // Dispatch the addCart action to add the product to the cart
+    if (productToAdd) dispatch(addCart(productToAdd))
+
+    // Navigate to the cart page ("/paycart")
+
+    // Optional: You can show a success message or trigger some other action here
+  }
+  const handleBuyToCart = () => {
+    const productToAdd = productDetail && {
+      id: productDetail.data.id,
+      title: productDetail.data.title,
+      price: productDetail.data.price,
+      category: productDetail.data.category,
+      image: productDetail.data.image,
+      count: quantity, // Use the selected quantity
+      checkbox: true
     }
 
     // Dispatch the addCart action to add the product to the cart
@@ -177,11 +196,11 @@ function ProductDetail() {
                   <div className='mt-6 flex gap-3'>
                     <button
                       onClick={handleAddToCart}
-                      className='w-full basis-2/3 rounded border border-main bg-main py-3 font-semibold text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main '
+                      className='w-full rounded border border-main bg-main py-3 font-semibold text-product-bg duration-300 ease-in-out hover:bg-white hover:text-main sm:w-2/3 md:w-1/2'
                     >
                       Add to Cart
                     </button>
-                    <button className='w-full basis-1/3 rounded border border-main  py-3 font-semibold text-main duration-300 ease-in-out hover:bg-white hover:text-hover'>
+                    <button className='w-full rounded border border-main py-3  font-semibold text-main duration-300 ease-in-out hover:bg-white hover:text-hover sm:w-1/3 md:w-1/2'>
                       Add to Wishlist
                     </button>
                   </div>
@@ -191,11 +210,10 @@ function ProductDetail() {
                       to={{
                         pathname: '/paycart'
                       }}
+                      onClick={handleBuyToCart}
                       className='w-full grow rounded border-main bg-main py-3 text-center font-semibold  text-white duration-300 ease-in-out hover:bg-hover '
                     >
-                      <button onClick={handleAddToCart} className='uppercase'>
-                        Buy it now
-                      </button>
+                      <button className='uppercase'>Buy it now</button>
                     </Link>
                   </div>
                 </div>
@@ -243,6 +261,7 @@ function ProductDetail() {
               </div>
             </div>
           </section>
+          <Subscribe />
         </div>
       </div>
     )

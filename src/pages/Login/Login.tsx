@@ -67,7 +67,7 @@ function Login() {
         Cookies.set('access_token', response.data.token, { expires: 7, secure: true, sameSite: 'strict' })
         console.log('User', loginUser)
         console.log('API Response:', response.data)
-        toast.success('login successfully')
+        toast.success('Login successfully!')
 
         setisAuthenticated(true)
         if (loginUser) {

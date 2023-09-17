@@ -27,7 +27,11 @@ import { clearLS } from '../../utils/auth.util'
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   const { setisAuthenticated, userData } = useContext(AppContext)
-  // console.log(userData)
+
+  if (!userData?.data) {
+    return <div> user data is empty</div>
+  }
+
   return (
     <div className='h-max lg:h-screen-80'>
       <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>

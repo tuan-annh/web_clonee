@@ -1,4 +1,4 @@
-const path = {
+const path: Record<string, string> = {
   home: '/',
   login: '/login',
   register: '/register',
@@ -7,7 +7,8 @@ const path = {
   about: '/about',
   contact: '/contact',
   paycart: '/paycart',
-  changePassword: '/changepassword'
+  changePassword: '/changepassword',
+  wishList: '/wish_list'
 } as const
 
 export default path
