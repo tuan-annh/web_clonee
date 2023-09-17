@@ -13,8 +13,8 @@ import Cookies from 'js-cookie'
 
 function Login() {
   const { setisAuthenticated, setUserId } = useContext(AppContext)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('johnd')
+  const [password, setPassword] = useState('m38rmF$')
   const [loginError, setLoginError] = useState('')
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isLoggingIn, setIsLoggingIn] = useState(false) // Add a state for login status
