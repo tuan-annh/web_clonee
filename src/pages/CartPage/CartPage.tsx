@@ -41,13 +41,14 @@ export default function CartPage() {
 
   const checkOut = async () => {
     if (isAuthenticated) {
-      setLoading(true)
       const isCheckout = allListCart.find((item) => item.checkbox)
 
       if (!isCheckout) {
         toast.info('Please select your items')
+        return
       }
 
+      setLoading(true)
       if (isCheckout && userData) {
         try {
           const res = await userApi.addUserCart({
