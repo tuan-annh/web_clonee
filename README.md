@@ -20,7 +20,5 @@
 **3. Tài khoản để đăng nhập:**
 ```
 tk: johnd
-```
-```
 mk: m38rmF$
 ```
