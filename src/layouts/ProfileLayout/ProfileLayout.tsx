@@ -2,6 +2,10 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '../../contexts/HighApp.context'
 import { clearLS } from '../../utils/auth.util'
+import { CircularProgress } from '@mui/material'
+import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
+
 // const user = {
 //   address: {
 //     geolocation: {
@@ -26,15 +30,19 @@ import { clearLS } from '../../utils/auth.util'
 // }
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
-  const { setisAuthenticated, userData } = useContext(AppContext)
+  const { setIsAuthenticated: setisAuthenticated, userData } = useContext(AppContext)
 
   if (!userData?.data) {
-    return <div> user data is empty</div>
+    return (
+      <div className='relative h-[500px] text-center lg:h-[700px]'>
+        <CircularProgress style={{ color: '#c7ab62' }} className='absolute top-20' />
+      </div>
+    )
   }
 
   return (
-    <div className='h-max lg:h-screen-80'>
-      <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-4/5 lg:flex-row'>
+    <div className='mt-5 lg:mt-0'>
+      <div className='mx-auto flex w-5/6 flex-col gap-10 pb-7 lg:mt-32 lg:h-[600px] lg:flex-row'>
         <div className='rounded shadow-box-2 lg:w-1/4'>
           <div className='p-2 text-center lg:p-5'>
             <img
@@ -106,8 +114,10 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
                 }
               }}
               onClick={() => {
-                setisAuthenticated(false)
                 clearLS()
+                Cookies.remove('access_token')
+                toast.info('Logout successfully')
+                setisAuthenticated(false)
               }}
             >
               <svg

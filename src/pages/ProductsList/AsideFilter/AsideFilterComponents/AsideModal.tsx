@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import AsideFilter from '../AsideFilter'
-import classNames from 'classnames'
 
 interface Props {
   showModal: boolean
@@ -16,30 +15,37 @@ function AsideModal({ showModal, setShowModal }: Props) {
       if (showModal) {
         // Use a setTimeout to ensure the transition is applied after rendering
         setTimeout(() => {
-          if (asideRef.current) asideRef.current.style.transform = 'translateX(0)' // Add a CSS class to trigger the slide-in animation
+          if (asideRef.current) {
+            asideRef.current.style.transform = 'translateX(0)'
+            asideRef.current.parentElement?.classList.add('bg-main/50')
+          }
+          // Add a CSS class to trigger the slide-in animation
         }, 0)
       }
     }
   }, [showModal])
 
   const handleCloseButton = () => {
-    if (asideRef.current) asideRef.current.style.transform = 'translateX(-100%)'
+    if (asideRef.current) {
+      asideRef.current.style.transform = 'translateX(-100%)'
+      asideRef.current.parentElement?.classList.remove('bg-main/50')
+    }
     setTimeout(() => {
       setShowModal(false)
-    }, 200)
+    }, 300)
   }
 
   return (
     showModal &&
     createPortal(
       <div
-        className={classNames('fixed top-0 z-50 grid h-screen w-screen grid-cols-6 bg-main/50')}
+        className={'fixed top-0 z-50 grid h-screen w-screen grid-cols-6 duration-500 ease-in-out'}
         onClick={handleCloseButton}
       >
         <div
           ref={asideRef}
           onClick={(event) => event.stopPropagation()}
-          className='col-span-4 -translate-x-full overflow-y-scroll bg-white transition-transform duration-300 ease-in-out sm:col-span-3 md:col-span-2'
+          className='col-span-4 -translate-x-full overflow-y-scroll bg-white duration-500 ease-in-out sm:col-span-3 md:col-span-2'
         >
           <div className='flex items-center justify-between bg-main px-6 text-product-bg'>
             <p className='text-sm font-semibold'>Filters</p>

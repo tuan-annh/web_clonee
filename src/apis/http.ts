@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosInstance } from 'axios'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
+import HttpStatusCode from '../constants/HttpStatusCode.enum'
 
 class Http {
   instance: AxiosInstance
@@ -33,7 +34,7 @@ class Http {
         return response
       },
       (error: AxiosError) => {
-        toast.error(error.message)
+        if (error.response?.status !== HttpStatusCode.Unauthorized) toast.error(error.message)
         return Promise.reject(error)
       }
     )

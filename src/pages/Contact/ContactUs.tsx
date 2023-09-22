@@ -72,7 +72,7 @@ function ContactUs() {
               </div>
               <div className='flex items-center justify-center'>
                 <button
-                  className=' focus:shadow-outline w-full rounded bg-black px-4 py-2 font-bold text-white hover:bg-main focus:outline-none'
+                  className=' focus:shadow-outline w-full rounded bg-main px-4 py-2 font-bold text-white hover:bg-main focus:outline-none'
                   type='submit'
                 >
                   Send Message
@@ -94,7 +94,7 @@ function ContactUs() {
               </li>
               <li className='my-4 flex h-12 items-center gap-7 border-b border-b-gray-400 pb-3'>
                 <EmailIcon />
-                <span>highteam@example.com</span>
+                <span>HighTeam@example.com</span>
               </li>
               <li className='my-4 flex h-12 items-center gap-7 '>
                 <ClockIcon />

@@ -11,7 +11,7 @@ const ProductSaleItem: FC<ProductSaleItemProps> = ({ data }) => {
     <>
       <div className='relative flex aspect-[2/3] flex-1 cursor-pointer items-center justify-center overflow-hidden'>
         <div
-          className='absolute flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-1000 hover:scale-125'
+          className='absolute flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-[1500ms] hover:scale-125'
           style={{
             backgroundImage: `url("${data.backgroundUrl}")`
           }}
@@ -22,7 +22,7 @@ const ProductSaleItem: FC<ProductSaleItemProps> = ({ data }) => {
           <p className='md:text-[20px]font-medium mb-2 pb-3 text-2xl lg:text-2xl'>{data.detail}</p>
           <Link
             to={data.link}
-            className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold hover:text-hover'
+            className='mx-auto w-1/2 cursor-pointer bg-main px-3 py-2 text-center font-bold duration-300 hover:text-hover'
           >
             Shop Now
           </Link>

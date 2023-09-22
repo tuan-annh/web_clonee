@@ -4,14 +4,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductViewType, productViewList } from '../../constants/productListConst.enum'
 import path from '../../constants/path'
-import { Fade, Tooltip } from '@mui/material'
-import { FavoriteBorderOutlined } from '@mui/icons-material'
-// import { AppContext } from '../../contexts/HighApp.context'
 import { useAppDispatch } from '../../redux/hooks'
 import { addCart } from '../../redux/allCart'
-import { addProductToWishList } from '../../redux/wishList'
+import WishlistIcon from './WishlistIcon'
 
-interface ProductComponentInteface {
+interface ProductComponentInterface {
   product: Product
   type: ProductViewType
   //type ở đây là kiểu component cho grid hay list
@@ -19,40 +16,21 @@ interface ProductComponentInteface {
 
 // CHÚ Ý: Chỉ có mỗi trang ProductList dùng đến kiểu list thôi nên các phần khác mn auto cho nó kiểu Grid (Như trang home hay chi tiết sp)
 
-function ProductComponent({ product, type }: ProductComponentInteface) {
+function ProductComponent({ product, type }: ProductComponentInterface) {
   // const { setCartData, cartData } = useContext(AppContext)
-  const [onMouseOver, setOnMouveOver] = useState(false)
+  const [onMouseOver, setOnMouseOver] = useState(false)
   const dispatch = useAppDispatch()
 
   const onMouseOverHandler = () => {
-    setOnMouveOver(true)
+    setOnMouseOver(true)
   }
 
   const onMouseLeaveHandler = () => {
-    setOnMouveOver(false)
+    setOnMouseOver(false)
   }
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault() // Ngăn chặn nổi bọt gây ra việc tự nhảy vào chi tiết sản phẩm khi ấn add product to cart
-
-    // Trường hợp khi product có trong cart rồi
-    // if (cartData.products.some((productCart) => productCart.productId === product.id)) {
-    //   setCartData((prev) => ({
-    //     ...prev,
-    //     products: [...prev.products].map((productCart) => {
-    //       if (productCart.productId === product.id)
-    //         return { ...productCart, quantity: productCart.quantity + 1, price: product.price, title: product.title }
-    //       return productCart
-    //     })
-    //   }))
-    //   return
-    // }
-
-    // // Trường hợp khi product chưa trong cart
-    // setCartData((prev) => ({
-    //   ...prev,
-    //   products: [...prev.products, { productId: product.id, quantity: 1, title: product.title, price: product.price }]
-    // }))
     dispatch(
       addCart({
         id: product.id,
@@ -109,27 +87,7 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
                   </div>
                 </div>
               </div>
-              <Tooltip
-                title={<p className='text-sm tracking-wide'>Add to Wishlist</p>}
-                placement='left'
-                TransitionComponent={Fade}
-                arrow
-              >
-                <button
-                  onClick={(event) => {
-                    event.preventDefault()
-                    dispatch(addProductToWishList(product))
-                  }}
-                  className={classNames(
-                    'mt-2 flex w-full items-center justify-center rounded-md bg-white py-2 text-main-text opacity-0 duration-200 ease-in-out hover:bg-hover hover:text-product-bg',
-                    {
-                      'opacity-100': onMouseOver
-                    }
-                  )}
-                >
-                  <FavoriteBorderOutlined />
-                </button>
-              </Tooltip>
+              <WishlistIcon onMouseOver={onMouseOver} product={product} />
             </div>
             <div className={classNames('opacity-0 duration-200 ease-in-out', { 'opacity-100': onMouseOver })}>
               <button
@@ -202,24 +160,7 @@ function ProductComponent({ product, type }: ProductComponentInteface) {
                     </div>
                   </div>
                 </div>
-                <Tooltip
-                  title={<p className='text-sm tracking-wide'>Add to Wishlist</p>}
-                  placement='left'
-                  TransitionComponent={Fade}
-                  arrow
-                >
-                  <button
-                    onClick={(event) => event.preventDefault()}
-                    className={classNames(
-                      'mt-2 flex w-full items-center justify-center rounded-md bg-white py-2 text-main-text opacity-0 duration-200 ease-in-out hover:bg-hover hover:text-product-bg',
-                      {
-                        'opacity-100': onMouseOver
-                      }
-                    )}
-                  >
-                    <FavoriteBorderOutlined />
-                  </button>
-                </Tooltip>
+                <WishlistIcon onMouseOver={onMouseOver} product={product} />
               </div>
               <div className={classNames('opacity-0 duration-200 ease-in-out', { 'opacity-100': onMouseOver })}>
                 <button

@@ -65,7 +65,7 @@ export default function ChangePassword() {
           <FormControl sx={{ width: '100%' }} variant='outlined'>
             <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
             <OutlinedInput
-              id='outlined-adornment-password'
+              id='current-password'
               type={showPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position='end'>
@@ -88,10 +88,10 @@ export default function ChangePassword() {
         </div>
 
         <div>
-          <FormControl sx={{ width: '100%' }} variant='outlined'>
+          <FormControl sx={{ width: '100%' }} variant='outlined' id='new-password'>
             <InputLabel htmlFor='outlined-adornment-password'>Confirm Password</InputLabel>
             <OutlinedInput
-              id='outlined-adornment-password'
+              id='new-password'
               type={showConfirmPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position='end'>
@@ -115,10 +115,7 @@ export default function ChangePassword() {
           <Box className='text-left text-red-900'>{errors.new_password?.message}</Box>
         </div>
 
-        <button
-          type='submit'
-          className='hover:bg-hovev rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'
-        >
+        <button type='submit' className='rounded bg-main py-4 text-white duration-200 ease-in-out hover:bg-hover'>
           Save Password
         </button>
       </form>

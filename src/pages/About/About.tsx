@@ -15,8 +15,10 @@ function About() {
       >
         <div className='absolute left-14'>
           <h2 className='text-6xl font-semibold text-white'>We're High team</h2>
-          <p className='my-7 font-medium text-white'>Follow your passsion, and success will follow you</p>
-          <button className=' bg-hover px-4 py-3 font-bold text-white hover:text-main'>Contact Us</button>
+          <p className='my-7 font-medium text-white'>Follow your passion, and success will follow you</p>
+          <button className=' rounded-sm bg-hover px-4 py-3 font-bold text-white duration-300 hover:text-main'>
+            Contact Us
+          </button>
         </div>
       </div>
       <div className='ml-14 mt-5'>
@@ -36,7 +38,7 @@ function About() {
         </div>
         <div className='mt-14 w-full lg:w-1/2 lg:pl-10'>
           <p className=' bg-hover px-3 py-2 text-center text-white md:w-36'>OUR STORIES</p>
-          <h2 className='my-5 font-bold'>We Work In The Fields OfUI/UX Design, Photographyand Art Direction.</h2>
+          <h2 className='my-5 font-bold'>We Work In The Fields Of UI/UX Design, Photography and Art Direction.</h2>
           <p className='my-10'>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo dolores odit quidem, maxime ipsum soluta fuga
             corrupti ut nostrum assuae quae? sum doloribus, vel nam quo minima, iure quasi incidunt.
@@ -46,7 +48,7 @@ function About() {
             suscipit quis quibusdam, sapiente hic? Quos itaque iste eum quidem est vitae praesentium reprehenderit odio
             ex, amet pariatur nemo assumenda. Eveniet doloremque consequatur qui placeat nostrum?
           </p>
-          <button className='mt-8 bg-main px-4 py-2 text-white hover:bg-hover'>Read more</button>
+          <button className='mt-8 bg-main px-4 py-2 text-white duration-300 hover:bg-hover'>Read more</button>
         </div>
       </div>
       <LabelBenefits />

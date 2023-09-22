@@ -13,7 +13,7 @@ import Home from './pages/Home/Home'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import ProfileLayout from './layouts/ProfileLayout/ProfileLayout'
-import MyAcount from './pages/Profile/MyAcount'
+import MyAccount from './pages/Profile/MyAccount'
 import ChangePassword from './pages/Profile/ChangePassword'
 import ContactUs from './pages/Contact/ContactUs'
 import CartPage from './pages/CartPage/CartPage'
@@ -65,7 +65,7 @@ function App() {
           element: isAuthenticated ? (
             <MainLayout>
               <ProfileLayout>
-                <MyAcount />
+                <MyAccount />
               </ProfileLayout>
             </MainLayout>
           ) : (
@@ -135,7 +135,7 @@ function App() {
       {elements}
       <ToastContainer
         autoClose={1000}
-        // hideProgressBar
+        hideProgressBar
         newestOnTop={false}
         closeOnClick
         pauseOnHover={false}

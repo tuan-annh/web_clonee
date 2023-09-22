@@ -5,6 +5,21 @@ const Subscribe: FC = () => {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [key, setKey] = useState('')
 
+  const emailSubscribe = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (emailRegex.test(key)) {
+      setIsSubscribed(true)
+      toast.success('Subscribed successfully!')
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    } else {
+      toast.error('Email is invalid')
+    }
+  }
+
   return (
     <>
       {!isSubscribed && (
@@ -16,7 +31,7 @@ const Subscribe: FC = () => {
             </p>
           </div>
           <div className='m-auto mx-8 flex justify-center'>
-            <form className='w-full md:w-2/3'>
+            <form className='w-full md:w-2/3' onSubmit={emailSubscribe}>
               <div className='flex flex-col py-2 md:flex-row md:items-center md:border-b md:border-b-black'>
                 <input
                   className='my-3 mr-3 w-full appearance-none border-b border-b-black bg-transparent px-2 py-3 leading-tight text-gray-700 focus:outline-none md:border-none '
@@ -27,16 +42,8 @@ const Subscribe: FC = () => {
                   onChange={(e) => setKey(e.target.value)}
                 />
                 <button
-                  className=' flex-shrink-0 cursor-pointer border-4 bg-black px-4 py-3 text-sm font-bold text-white duration-200 hover:bg-hover'
-                  type='button'
-                  onClick={() => {
-                    setIsSubscribed(true)
-                    toast.success('Subscribed successfully!')
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth'
-                    })
-                  }}
+                  className=' flex-shrink-0 cursor-pointer rounded-sm bg-main px-4 py-3 text-sm font-bold text-white duration-200 hover:bg-hover'
+                  type='submit'
                   disabled={!key.trim()}
                 >
                   Subscribe

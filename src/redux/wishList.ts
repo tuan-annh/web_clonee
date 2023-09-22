@@ -23,6 +23,7 @@ export const wishListSlice = createSlice({
     },
     removeProductFromWishList: (state, action: PayloadAction<number>) => {
       state.list = state.list.filter((item) => item.id != action.payload)
+      // toast.info('Remove product out of wish list successfully')
     }
   }
 })

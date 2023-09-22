@@ -10,9 +10,6 @@ export const userApi = {
     // Vì useQuery không chấp nhận queryFn trả về undefined nên phải để thế này
     return id ? http.get<User>(`users/${id}`) : ({} as Promise<AxiosResponse<User, unknown>>)
   },
-  // getUserCart(id?: number | string) {
-  //   return id ? http.get(`/carts/user/${id}`) : undefined
-  // },
   addUserCart(body: CartInterface) {
     return http.post('carts', body)
   }

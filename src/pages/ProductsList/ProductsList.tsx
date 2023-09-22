@@ -57,7 +57,7 @@ function ProductsList() {
   return (
     <ProductsContext.Provider value={{ filters, setFilters, categoriesData }}>
       <div
-        className='flex min-h-screen w-screen items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
+        className='flex h-screen items-center justify-center bg-slate-300 bg-cover bg-no-repeat'
         style={{
           backgroundImage: 'url(https://ohey-demo.myshopify.com/cdn/shop/files/bg-breadcrumb_1920x.jpg?v=1632273468)'
         }}

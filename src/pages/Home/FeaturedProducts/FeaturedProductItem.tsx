@@ -10,7 +10,7 @@ const FeaturedProductItem: FC<FeaturedProductItemProps> = ({ data }) => {
   return (
     <div className='featured-product relative flex aspect-square flex-1 cursor-pointer items-center justify-center overflow-hidden'>
       <div
-        className='absolute flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-1000 hover:scale-125'
+        className='absolute flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-[1500ms] hover:scale-125'
         style={{
           backgroundImage: `url("${data.backgroundUrl}")`
         }}

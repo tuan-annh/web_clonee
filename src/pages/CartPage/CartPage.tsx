@@ -71,8 +71,7 @@ export default function CartPage() {
             dispatch(paymentCart())
           }
         } catch (error) {
-          toast.error('Payment unsuccessful.')
-          setLoading(false)
+          return
         }
       }
     } else {
@@ -102,24 +101,39 @@ export default function CartPage() {
                     </svg>
                   </div>
 
-                  <img src={item.image} alt='' className='h-28 w-28 object-contain md:h-32 md:w-32 lg:h-36 lg:w-36' />
-                  <div className='w-2/5 text-start text-sm md:text-base'>
-                    <h4 className='font-semibold'>{item.title}</h4>
+                  <img
+                    src={item.image}
+                    alt=''
+                    className='h-28 w-28 cursor-pointer object-contain md:h-32 md:w-32 lg:h-36 lg:w-36'
+                    onClick={() => navigate(`${path.products}/${item.category}/${item.id}`)}
+                  />
+                  <div className='w-2/5 text-start text-sm text-main md:text-base'>
+                    <h4
+                      className='cursor-pointer font-semibold hover:text-hover'
+                      onClick={() => navigate(`${path.products}/${item.category}/${item.id}`)}
+                    >
+                      {item.title}
+                    </h4>
                     <span className='flex flex-col md:flex-row md:gap-2'>
                       <span className='flex gap-2'>
                         <p className='font-semibold'>Price:</p>
-                        <p>${(Number(item.price) * 0.8).toFixed(2)}</p>
+                        <p className='font-semibold text-current-product'>${(Number(item.price) * 0.8).toFixed(2)}</p>
                       </span>
                       <p className='line-through opacity-60'>${item.price} (20%)</p>
                     </span>
                     <span className='flex gap-2 capitalize'>
                       <p className='font-semibold'>Category:</p>
-                      <p>{item.category}</p>
+                      <p
+                        className='cursor-pointer hover:text-hover'
+                        onClick={() => navigate(`${path.products}/${item.category}`)}
+                      >
+                        {item.category}
+                      </p>
                     </span>
                   </div>
-                  <div className='flex gap-1'>
+                  <div className='flex rounded-md border-2 border-main '>
                     <button
-                      className='hover:text-hover'
+                      className=' hover:text-hover'
                       onClick={() => handleReduceProduct(item.id, index, item.count)}
                     >
                       <svg
@@ -133,7 +147,7 @@ export default function CartPage() {
                         <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 12h-15' />
                       </svg>
                     </button>
-                    <span className='w-7 rounded border-2 border-slate-300 text-center text-sm md:w-10 md:px-2 md:text-base'>
+                    <span className='w-7 rounded border-x-2 border-main text-center text-sm md:w-10 md:px-2 md:text-base'>
                       {item.count}
                     </span>
                     <button className='hover:text-hover' onClick={() => handleIncreaseProduct(item.id)}>
@@ -192,7 +206,7 @@ export default function CartPage() {
 
               <div className='my-1 flex justify-between md:my-3'>
                 <span className='font-semibold uppercase'>
-                  Items {allListCart.filter((item) => item.checkbox === true).reduce((acc, cur) => acc + cur.count, 0)}
+                  Items {allListCart.filter((item) => item.checkbox === true).length}
                 </span>
                 <span>
                   ${' '}

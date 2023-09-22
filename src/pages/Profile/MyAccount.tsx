@@ -6,7 +6,7 @@ import { AppContext } from '../../contexts/HighApp.context'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
 
-function MyAcount() {
+function MyAccount() {
   const { register, handleSubmit } = useForm<User>()
   const { userData } = useContext(AppContext)
   const handleSaveChange = (data: User) => {
@@ -58,4 +58,4 @@ function MyAcount() {
   )
 }
 
-export default MyAcount
+export default MyAccount

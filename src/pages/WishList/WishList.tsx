@@ -1,12 +1,12 @@
 import React, { FC, memo } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Tooltip } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
-import DeleteIcon from '../../components/Icons/DeleteIcon'
 import { removeProductFromWishList } from '../../redux/wishList'
 import CartIcon from '../../components/Icons/CartIcon'
 import { addCart } from '../../redux/allCart'
 import { Product } from '../../types/product.type'
+import DeleteIcon from '../../components/Icons/DeleteIcon'
 
 const WishList: FC = () => {
   const dispatch = useAppDispatch()
@@ -18,7 +18,7 @@ const WishList: FC = () => {
     dispatch(removeProductFromWishList(id))
   }
 
-  const handleAddCart = (item: Product) => {
+  const handleAddTOCart = (item: Product) => {
     // console.log(item)
     const productToAdd = item && {
       id: item.id,
@@ -57,9 +57,16 @@ const WishList: FC = () => {
                 {wishList.map((item) => (
                   <TableRow key={item.id} className='hover:bg-slate-50'>
                     <TableCell>
-                      <div className='flex items-center gap-5'>
+                      <div className='flex items-center gap-6 py-5'>
                         <Link to={`/products/${item.category}/${item.id}`}>
-                          <img src={item.image} alt={item.title} width='100px' height='100px' />
+                          <div className='relative h-[100px] w-[100px] p-3'>
+                            <img
+                              className='absolute left-1/2 top-1/2 h-full -translate-x-1/2 -translate-y-1/2 object-cover py-2'
+                              src={item.image}
+                              alt={item.title}
+                              style={{ mixBlendMode: 'multiply' }}
+                            />
+                          </div>
                         </Link>
                         <Link to={`/products/${item.category}/${item.id}`} className='text-[16px] font-bold'>
                           {item.title}
@@ -70,22 +77,26 @@ const WishList: FC = () => {
                       <p className='text-[20px] font-bold'>${item.price}</p>
                     </TableCell>
                     <TableCell>
-                      <button
-                        className=' inline-block hover:text-hover hover:underline'
-                        onClick={() => handleAddCart(item)}
-                      >
-                        <CartIcon />
-                      </button>
+                      <Tooltip title='Add product to cart'>
+                        <button
+                          className=' inline-block hover:text-hover hover:underline'
+                          onClick={() => handleAddTOCart(item)}
+                        >
+                          <CartIcon />
+                        </button>
+                      </Tooltip>
                     </TableCell>
                     <TableCell>
-                      <button
-                        className=' inline-block hover:text-hover hover:underline'
-                        onClick={() => {
-                          handleDelete(item.id)
-                        }}
-                      >
-                        <DeleteIcon />
-                      </button>
+                      <Tooltip title='Delete product from wish list'>
+                        <button
+                          className=' inline-block hover:text-hover hover:underline'
+                          onClick={() => {
+                            handleDelete(item.id)
+                          }}
+                        >
+                          <DeleteIcon />
+                        </button>
+                      </Tooltip>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -103,14 +114,13 @@ const WishList: FC = () => {
           <span className='mb-5 text-xl font-semibold opacity-60'>Your wish list is empty!</span>
           <button
             type='submit'
-            className='rounded bg-main px-7 py-4 text-white shadow-md duration-200 ease-in-out hover:bg-hover'
+            className='rounded bg-main px-7 py-4 text-white shadow-md duration-300 ease-in-out hover:bg-hover'
             onClick={() => navigate('/')}
           >
             Make a Wish
           </button>
         </div>
       )}
-      )
     </>
   )
 }
